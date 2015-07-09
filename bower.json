@@ -1,0 +1,23 @@
+{
+  "name": "appirio-tech-ng-asp-ui-components",
+  "version": "0.0.1",
+  "description": "Appiro Work Platform",
+  "authors": [
+    ""
+  ],
+  "license": "",
+  "devDependencies": {
+    "angular-mocks": "1.4.x",
+    "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
+    "appirio-tech-api-schemas": "git@github.com:appirio-tech/api-schemas#2.0.x",
+    "auto-config-fake-server": "1.x.x"
+  },
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-resource": "1.4.x"
+  },
+  "ignore": [
+    "**/*",
+    "!dist/**/*"
+  ]
+}
