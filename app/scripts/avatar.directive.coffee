@@ -2,9 +2,12 @@
 
 directive = (UserAPIService) ->
 
-
-  directive.$inject = ['UserAPIService']
-
   restrict   : 'E'
   templateUrl: 'views/avatar.directive.html'
-  link       : link
+  scope      :
+    avatarUrl: '@avatarUrl'
+
+directive.$inject = ['UserAPIService']
+
+angular.module('appirio-tech-ng-ui-components').directive 'avatar', directive
+
