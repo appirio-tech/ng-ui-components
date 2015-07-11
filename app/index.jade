@@ -1,0 +1,42 @@
+- var scripts = []
+- scripts.push('ng-ui-components.module')
+- scripts.push('avatar.controller')
+- scripts.push('avatar.directive')
+
+- var bowers = []
+- bowers.push('angular/angular')
+- bowers.push('angular-resource/angular-resource')
+
+- var cssPaths   = ['main', 'avatar']
+- var landscapes = []
+- var desktops   = []
+
+doctype html
+html(ng-app='appirio-tech-ng-ui-components')
+  head
+    title UI Components
+
+    meta(charset='utf-8')
+
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+
+    meta(name='viewport', content='width=device-width initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
+
+    each path in cssPaths
+      link(href="styles/#{path}.css", rel="stylesheet")
+
+    each path in landscapes
+      link(href="styles/#{path}.landscape.css", rel="stylesheet", media="(min-width: 568px)")
+
+    each path in desktops
+      link(href="styles/#{path}.desktop.css", rel="stylesheet", media="(min-width: 767px)")
+
+  body
+    main.avatar("role"="main", class="{{ pageClass }}", ui-view="")
+      avatar
+
+    each path in bowers
+      script(src="bower_components/#{path}.js", type="text/javascript")
+
+    each path in scripts
+      script(src="scripts/#{path}.js", type="text/javascript")

@@ -1,0 +1,8 @@
+$avatar-diameter: 35px;
+.avatar {
+  width           : $avatar-diameter;
+  height          : $avatar-diameter;
+  background-color: #eee;
+  border-radius   : $avatar-diameter;
+  position        : absolute;
+}

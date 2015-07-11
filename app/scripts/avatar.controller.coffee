@@ -6,10 +6,12 @@ AvatarController = ($scope) ->
 
   activate = ->
     $scope.$watch 'avatarUrl', ->
-      vm.avatarUrl = $scope.avatarUrl
+      vm.avatarUrl = $scope.avatarUrl if $scope.avatarUrl
+
+    vm
 
   activate()
 
 AvatarController.$inject = ['$scope']
 
-angular.module('appirio-tech-ui-components').controller 'AvatarController', AvatarController
+angular.module('appirio-tech-ng-ui-components').controller 'AvatarController', AvatarController

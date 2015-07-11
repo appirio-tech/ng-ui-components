@@ -7,5 +7,10 @@
     "appirio-gulp-tasks": "^1.0.102",
     "appirio-work-styles": "0.0.102",
     "gulp": "^3.8.11"
+  },
+  "dependencies": {
+    "wiredep": "~3.0.0-beta",
+    "gulp-load-plugins": "~1.0.0-rc.1",
+    "karma": "~0.12.37"
   }
 }

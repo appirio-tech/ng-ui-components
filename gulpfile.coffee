@@ -16,12 +16,7 @@ configs.fixture =
 configs.fixture.files = [
   'bower_components/appirio-tech-api-schemas/v3.json'
   'bower_components/appirio-tech-api-schemas/v2.json'
-  'bower_components/appirio-tech-api-schemas/v3-users.json'
 ]
-
-# TODO: CORS for https://topcoder-dev.auth0.com/oauth/ro is hard coded to allow http://localhost:3000/
-configs.serve =
-  port: 3000
 
 configs.cdnify =
   url: '//work.topcoder-dev.com'
@@ -39,10 +34,14 @@ configs.ngConstants =
   destPath: '.tmp'
 
 configs.templateCache =
-  files   : ['app/**/*.html', '.tmp/**/*.html', '!.tmp/index.html']
-  module  : 'appirio-tech-ng-ui-components'
-  destPath: '.tmp'
-  # root  : '/views'
+    files   : [
+      'app/**/*.html',
+      '.tmp/**/*.html',
+      '!.tmp/index.html',
+      '.tmp/views/avatar.directive.html']
+    module  : 'appirio-tech-ng-ui-components'
+    destPath: '.tmp'
+    root    : '/views'
 
 #TODO: remove using wiredep
 wiredep    = require 'wiredep'
@@ -56,12 +55,9 @@ configs.karma =
     __dirname + '/src/client/**/*.coffee'
   ]
   files: karmaFiles.concat([
-    __dirname + '/.tmp/json-fixtures.js'
     __dirname + '/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js'
-    __dirname + '/bower_components/appirio-tech-ng-auth/dist/main.js'
     __dirname + '/tests/*.js'
     __dirname + '/app/**/*.stubs.js'
-    # __dirname + '/src/client/mock-api/*.coffee'
     __dirname + '/tests/*.coffee'
     __dirname + '/app/**/*.module.{js,coffee}'
     __dirname + '/app/**/*.{js,coffee}'
