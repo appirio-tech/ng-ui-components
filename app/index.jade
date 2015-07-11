@@ -22,14 +22,34 @@ html(ng-app='appirio-tech-ng-ui-components')
 
     meta(name='viewport', content='width=device-width initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
 
+    = "\n"
+    // build:css styles/portrait.css
+    = "\n"
+
     each path in cssPaths
       link(href="styles/#{path}.css", rel="stylesheet")
+      = "\n"
 
+    // endbuild
+    = "\n"
+
+    // build:css styles/landscape.css
+    = "\n"
     each path in landscapes
       link(href="styles/#{path}.landscape.css", rel="stylesheet", media="(min-width: 568px)")
+      = "\n"
 
+    // endbuild
+    = "\n"
+
+    // build:css styles/desktop.css
+    = "\n"
     each path in desktops
       link(href="styles/#{path}.desktop.css", rel="stylesheet", media="(min-width: 767px)")
+      = "\n"
+
+    // endbuild
+    = "\n"
 
   body
     main.avatar("role"="main", class="{{ pageClass }}", ui-view="")
@@ -38,5 +58,12 @@ html(ng-app='appirio-tech-ng-ui-components')
     each path in bowers
       script(src="bower_components/#{path}.js", type="text/javascript")
 
+    = "\n"
+    // build:css styles/main.js
+    = "\n"
     each path in scripts
       script(src="scripts/#{path}.js", type="text/javascript")
+      = "\n"
+
+    // endbuild
+    = "\n"
