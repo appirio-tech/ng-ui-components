@@ -9,29 +9,11 @@ configs =
   envFile         : __dirname + '/.env'
   taskPath        : __dirname + '/node_modules/appirio-gulp-tasks'
 
-# TODO: upgrade api schemas in order to use default configs instead of below
-configs.fixture =
-  destPath: configs.tempFolder
-
-configs.fixture.files = [
-  'bower_components/appirio-tech-api-schemas/v3.json'
-  'bower_components/appirio-tech-api-schemas/v2.json'
-]
-
 configs.cdnify =
   url: '//work.topcoder-dev.com'
 
 configs.useref =
   searchPath: ['.tmp', 'src/client/app/', '.']
-
-configs.copyFiles =
-  files:
-    'dist': 'app/**/*.{gif,png,jpg,jpeg,svg}'
-  base: 'app/'
-
-# TODO:  use default settings
-configs.ngConstants =
-  destPath: '.tmp'
 
 configs.templateCache =
     files   : [
