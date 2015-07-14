@@ -6,6 +6,7 @@ configs =
   tempFolder      : '.tmp'
   appFolder       : 'app'
   distFolder      : 'dist'
+  exampleFolder   : 'example'
   envFile         : __dirname + '/.env'
   taskPath        : __dirname + '/node_modules/appirio-gulp-tasks'
 
@@ -13,17 +14,17 @@ configs.cdnify =
   url: '//work.topcoder-dev.com'
 
 configs.useref =
-  searchPath: ['.tmp', 'src/client/app/', '.']
+  searchPath: ['.tmp', 'app/', '.']
 
 configs.templateCache =
     files   : [
       'app/**/*.html',
       '.tmp/**/*.html',
-      '!.tmp/index.html',
-      '.tmp/views/avatar.directive.html']
+      'example/**/*.html',
+      '!.tmp/index.html'
+    ]
     module  : 'appirio-tech-ng-ui-components'
     destPath: '.tmp'
-    root    : '/views'
 
 #TODO: remove using wiredep
 wiredep    = require 'wiredep'
@@ -34,7 +35,7 @@ configs.karma =
   configFile  : __dirname + '/node_modules/appirio-gulp-tasks/tasks/karma.conf.coffee'
   basePath    : __dirname
   coffeeFiles : [
-    __dirname + '/src/client/**/*.coffee'
+    __dirname + '/**/*.coffee'
   ]
   files: karmaFiles.concat([
     __dirname + '/bower_components/auto-config-fake-server/dist/auto-config-fake-server.js'

@@ -1,7 +1,7 @@
 'use strict'
 
 AvatarController = ($scope) ->
-  vm        = this
+  vm           = this
   vm.avatarUrl = null
 
   activate = ->
