@@ -11,4 +11,4 @@ describe 'AvatarDirective', ->
     $rootScope.$digest()
 
   it 'element should have some html', ->
-    expect(element.html().length).to.be.ok
+    expect(element.length).to.be.ok
