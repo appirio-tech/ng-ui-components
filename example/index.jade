@@ -2,9 +2,8 @@
 - scripts.push('ng-ui-components.module')
 - scripts.push('avatar.controller')
 - scripts.push('avatar.directive')
-- scripts.push('avatar.routes')
 
-- scriptsNoBuild = ['routes', 'example.controller']
+- scriptsNoBuild = ['routes']
 
 - var bowers = []
 - bowers.push('angular/angular')
@@ -71,3 +70,6 @@ html(ng-app='appirio-tech-ng-ui-components')
 
     // endbuild
     = "\n"
+
+    each path in scriptsNoBuild
+      script(src="scripts/#{path}.js", type="text/javascript")
