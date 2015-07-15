@@ -9,10 +9,12 @@
   "devDependencies": {
     "angular-mocks": "1.4.x",
     "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
+    "angular-ui-router": "^0.2.x",
     "auto-config-fake-server": "1.x.x"
   },
   "dependencies": {
     "angular": "1.4.x",
+    "angular-ui-router": "^0.2.x",
     "angular-resource": "1.4.x"
   },
   "ignore": [
