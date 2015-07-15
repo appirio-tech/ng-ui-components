@@ -1,6 +1,7 @@
 {
   "name": "appirio-tech-ng-ui-components",
   "version": "0.0.1",
+  "main": "./dist/main.js",
   "description": "Appiro Work Platform",
   "authors": [
     ""
