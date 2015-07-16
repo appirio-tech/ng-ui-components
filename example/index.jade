@@ -26,7 +26,7 @@ html(ng-app='appirio-tech-ng-ui-components')
     meta(name='viewport', content='width=device-width initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
 
     = "\n"
-    // build:css styles/portrait.css
+    // build:css main.css
     = "\n"
 
     each path in cssPaths
@@ -36,7 +36,7 @@ html(ng-app='appirio-tech-ng-ui-components')
     // endbuild
     = "\n"
 
-    // build:css styles/landscape.css
+    // build:css landscape.css
     = "\n"
     each path in landscapes
       link(href="styles/#{path}.landscape.css", rel="stylesheet", media="(min-width: 568px)")
@@ -45,7 +45,7 @@ html(ng-app='appirio-tech-ng-ui-components')
     // endbuild
     = "\n"
 
-    // build:css styles/desktop.css
+    // build:css desktop.css
     = "\n"
     each path in desktops
       link(href="styles/#{path}.desktop.css", rel="stylesheet", media="(min-width: 767px)")
