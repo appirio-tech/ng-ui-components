@@ -8,6 +8,10 @@ config = ($stateProvider) ->
     title       : 'Avatar'
     templateUrl : 'views/avatar.html'
 
+  states['loader'] =
+    url         : '/loader'
+    templateUrl : 'views/loader.html'
+
   for key, state of states
     $stateProvider.state key, state
 
