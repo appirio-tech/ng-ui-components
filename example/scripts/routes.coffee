@@ -7,8 +7,6 @@ config = ($stateProvider) ->
     url         : '/'
     title       : 'Avatar'
     templateUrl : 'views/avatar.html'
-    controller  : 'AvatarController'
-    controllerAs: 'vm'
 
   for key, state of states
     $stateProvider.state key, state
