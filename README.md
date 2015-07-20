@@ -1,2 +1,2 @@
-# ng-asp-ui-components
-Common UI components for ASP app
+# ng-ui-components
+Common UI components for ASP and Topcoder
