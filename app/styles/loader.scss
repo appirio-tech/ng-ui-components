@@ -10,6 +10,13 @@ loader {
   justify-content: center;
   align-items    : center;
 
+  .container {
+    padding: $spacing-biggest;
+    background-color: $primary-color;
+    opacity: .9;
+    border-radius: 10px;
+  }
+
   .loader {
     width            : 100px;
     height           : 100px;
