@@ -1,0 +1,32 @@
+- var cssPaths   = ['main', 'avatar', 'loader']
+- var landscapes = []
+- var desktops   = []
+
+= "\n"
+// build:css main.css
+= "\n"
+
+each path in cssPaths
+  link(href="styles/#{path}.css", rel="stylesheet")
+  = "\n"
+
+// endbuild
+= "\n"
+
+// build:css landscape.css
+= "\n"
+each path in landscapes
+  link(href="styles/#{path}.landscape.css", rel="stylesheet", media="(min-width: 568px)")
+  = "\n"
+
+// endbuild
+= "\n"
+
+// build:css desktop.css
+= "\n"
+each path in desktops
+  link(href="styles/#{path}.desktop.css", rel="stylesheet", media="(min-width: 767px)")
+  = "\n"
+
+// endbuild
+= "\n"

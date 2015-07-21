@@ -1,0 +1,15 @@
+- var scripts = []
+- scripts.push('ng-ui-components.module')
+- scripts.push('avatar.controller')
+- scripts.push('avatar.directive')
+- scripts.push('loader.directive')
+- scripts.push('templates')
+
+= "\n"
+// build:js main.js
+= "\n"
+each path in scripts
+  script(src="scripts/#{path}.js", type="text/javascript")
+  = "\n"
+// endbuild
+= "\n"
