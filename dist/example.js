@@ -14,6 +14,10 @@
       url: '/loader',
       templateUrl: 'views/loader.html'
     };
+    states['filters'] = {
+      url: '/filters',
+      templateUrl: 'views/filters.html'
+    };
     results = [];
     for (key in states) {
       state = states[key];

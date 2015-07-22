@@ -4,4 +4,4 @@ filter = ->
   (createdAt) ->
     moment(createdAt).fromNow()
 
-angular.module('appirio-tech-submissions').filter 'timeLapse', filter
+angular.module('appirio-tech-ng-ui-components').filter 'timeLapse', filter

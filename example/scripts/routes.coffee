@@ -12,6 +12,10 @@ config = ($stateProvider) ->
     url         : '/loader'
     templateUrl : 'views/loader.html'
 
+  states['filters'] =
+    url         : '/filters'
+    templateUrl : 'views/filters.html'
+
   for key, state of states
     $stateProvider.state key, state
 
