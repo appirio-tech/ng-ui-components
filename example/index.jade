@@ -1,10 +1,3 @@
-- scriptsNoBuild = ['routes']
-
-- var bowers = []
-- bowers.push('angular/angular')
-- bowers.push('angular-resource/angular-resource')
-- bowers.push('angular-ui-router/release/angular-ui-router')
-
 doctype html
 html(ng-app='appirio-tech-ng-ui-components')
   head
@@ -23,10 +16,8 @@ html(ng-app='appirio-tech-ng-ui-components')
 
     main.layout-main("role"="main", class="{{ pageClass }}", ui-view="")
 
-    each path in bowers
-      script(src="bower_components/#{path}.js", type="text/javascript")
+    include lib-files
 
     include app-files
 
-    each path in scriptsNoBuild
-      script(src="scripts/#{path}.js", type="text/javascript")
+    include example-files
