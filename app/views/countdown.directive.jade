@@ -1,0 +1,24 @@
+ul.countdown
+  li(ng-if="vm.days > 0")
+    span.value {{ vm.days }}
+
+    span.unit day
+      span(ng-if="vm.days > 1") s
+
+  li(ng-if="vm.hours > 0 || vm.days > 0")
+    span.value {{ vm.hours }}
+
+    span.unit hr
+      span(ng-if="vm.hours > 1") s
+
+  li(ng-if="vm.minutes > 0 || vm.hours > 0 || vm.days > 0")
+    span.value {{ vm.minutes }}
+
+    span.unit min
+      span(ng-if="vm.minutes > 1") s
+
+  li
+    span.value {{ vm.seconds }}
+
+    span.unit sec
+      span(ng-if="vm.seconds > 1") s

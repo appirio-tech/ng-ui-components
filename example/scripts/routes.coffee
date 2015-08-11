@@ -8,6 +8,10 @@ config = ($stateProvider) ->
     title       : 'Avatar'
     templateUrl : 'views/avatar.html'
 
+  states['countdown'] =
+    url         : '/countdown'
+    templateUrl : 'views/countdown.html'
+
   states['loader'] =
     url         : '/loader'
     templateUrl : 'views/loader.html'
