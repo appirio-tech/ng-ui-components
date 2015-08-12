@@ -9,15 +9,12 @@ html(ng-app='appirio-tech-ng-ui-components')
 
     meta(name='viewport', content='width=device-width initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
 
-    include css
+    include css-files
 
   body
     include nav
 
     main.layout-main("role"="main", class="{{ pageClass }}", ui-view="")
 
-    include lib-files
+    include js-files
 
-    include app-files
-
-    include example-files

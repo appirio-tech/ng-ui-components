@@ -20,6 +20,11 @@ config = ($stateProvider) ->
     url         : '/filters'
     templateUrl : 'views/filters.html'
 
+  states['modal'] =
+    url         : '/modal'
+    templateUrl : 'views/modal.html'
+    controller  : 'ModalExampleController as vm'
+
   for key, state of states
     $stateProvider.state key, state
 

@@ -1,0 +1,52 @@
+- var scripts     = []
+- var bowers      = []
+- var examples    = ['routes', 'modal.controller']
+- var directives  = ['avatar', 'loader', 'modal']
+- var controllers = ['avatar']
+- var filters     = ['time-lapse']
+
+- scripts.push('ng-ui-components.module')
+- scripts.push('templates')
+
+each directive in directives
+  - scripts.push('/directives/' + directive + '.directive')
+end
+
+each controller in controllers
+  - scripts.push('/controllers/' + controller + '.controller')
+end
+
+each filter in filters
+  - scripts.push('/filters/' + filter + '.filter')
+end
+
+- bowers.push('zepto/zepto')
+- bowers.push('angular/angular')
+- bowers.push('angular-resource/angular-resource')
+- bowers.push('angular-ui-router/release/angular-ui-router')
+- bowers.push('moment/moment')
+
+= "\n"
+// build:js lib.js
+= "\n"
+each path in bowers
+  script(src="bower_components/#{path}.js", type="text/javascript")
+  = "\n"
+// endbuild
+= "\n"
+
+// build:js main.js
+= "\n"
+each path in scripts
+  script(src="scripts/#{path}.js", type="text/javascript")
+  = "\n"
+// endbuild
+= "\n"
+
+// build:js example.js
+= "\n"
+each path in examples
+  script(src="scripts/#{path}.js", type="text/javascript")
+  = "\n"
+// endbuild
+= "\n"

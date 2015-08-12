@@ -22,6 +22,11 @@
       url: '/filters',
       templateUrl: 'views/filters.html'
     };
+    states['modal'] = {
+      url: '/modal',
+      templateUrl: 'views/modal.html',
+      controller: 'ModalExampleController as vm'
+    };
     results = [];
     for (key in states) {
       state = states[key];
@@ -33,5 +38,25 @@
   config.$inject = ['$stateProvider'];
 
   angular.module('appirio-tech-ng-ui-components').config(config).run();
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var ModalExampleController;
+
+  ModalExampleController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.show = false;
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  ModalExampleController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-ui-components').controller('ModalExampleController', ModalExampleController);
 
 }).call(this);
