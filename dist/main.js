@@ -38,6 +38,26 @@ $templateCache.put("views/loader.directive.html","<div class=\"container\"><div 
   directive = function() {
     return {
       restrict: 'E',
+      templateUrl: 'views/countdown.directive.html',
+      controller: 'CountdownController',
+      controllerAs: 'vm',
+      scope: {
+        end: '@end'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-ui-components').directive('countdown', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
       templateUrl: 'views/loader.directive.html'
     };
   };
@@ -119,6 +139,40 @@ $templateCache.put("views/loader.directive.html","<div class=\"container\"><div 
   AvatarController.$inject = ['$scope'];
 
   angular.module('appirio-tech-ng-ui-components').controller('AvatarController', AvatarController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var CountdownController;
+
+  CountdownController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.days = 0;
+    vm.hours = 0;
+    vm.minutes = 0;
+    vm.seconds = 0;
+    activate = function() {
+      $scope.$watch('end', function() {
+        var diff, duration, end, now;
+        now = moment();
+        end = new Date($scope.end);
+        diff = moment(end).diff(now);
+        duration = moment.duration(diff);
+        vm.days = duration.days();
+        vm.hours = duration.hours();
+        vm.minutes = duration.minutes();
+        return vm.seconds = duration.seconds();
+      });
+      return vm;
+    };
+    return activate();
+  };
+
+  CountdownController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-ui-components').controller('CountdownController', CountdownController);
 
 }).call(this);
 
