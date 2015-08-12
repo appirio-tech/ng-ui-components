@@ -17,7 +17,8 @@
     "angular": "1.4.x",
     "angular-ui-router": "^0.2.x",
     "angular-resource": "1.4.x",
-    "moment": "^2.10.x"
+    "moment": "^2.10.x",
+    "zepto": "1.1.x"
   },
   "ignore": [
     "**/*",

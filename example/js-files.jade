@@ -1,7 +1,7 @@
 - var scripts     = []
 - var bowers      = []
-- var examples    = ['routes']
-- var directives  = ['avatar', 'loader']
+- var examples    = ['routes', 'modal.controller']
+- var directives  = ['avatar', 'loader', 'modal']
 - var controllers = ['avatar']
 - var filters     = ['time-lapse']
 
@@ -20,6 +20,7 @@ each filter in filters
   - scripts.push('/filters/' + filter + '.filter')
 end
 
+- bowers.push('zepto/zepto')
 - bowers.push('angular/angular')
 - bowers.push('angular-resource/angular-resource')
 - bowers.push('angular-ui-router/release/angular-ui-router')
