@@ -20,3 +20,7 @@ body > .nav {
     display: inline-block;
   }
 }
+
+.focus-on-click:focus {
+  border: 4px solid red;
+}
