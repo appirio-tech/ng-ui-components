@@ -27,6 +27,11 @@
       templateUrl: 'views/modal.html',
       controller: 'ModalExampleController as vm'
     };
+    states['focus-on-click'] = {
+      url: '/focus-on-click',
+      templateUrl: 'views/focus-on-click.html',
+      controller: 'FocusOnClickController as vm'
+    };
     results = [];
     for (key in states) {
       state = states[key];

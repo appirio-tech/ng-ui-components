@@ -119,6 +119,29 @@ $templateCache.put("views/loader.directive.html","<div class=\"container\"><div 
 
 (function() {
   'use strict';
+  var dir;
+
+  dir = function() {
+    var link;
+    link = function(scope, element, attrs) {
+      return $(element).bind('click', function() {
+        return $(element).focus();
+      });
+    };
+    return {
+      restrict: 'A',
+      link: link
+    };
+  };
+
+  dir.$inject = [];
+
+  angular.module('appirio-tech-ng-ui-components').directive('focusOnClick', dir);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var AvatarController;
 
   AvatarController = function($scope) {
