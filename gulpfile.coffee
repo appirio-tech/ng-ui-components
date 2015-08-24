@@ -4,6 +4,7 @@ configs =
 configs.templateCache =
   files : [
     '.tmp/views/avatar.directive.html'
+    '.tmp/views/countdown.directive.html'
     '.tmp/views/loader.directive.html'
   ]
   root  : 'views/'
