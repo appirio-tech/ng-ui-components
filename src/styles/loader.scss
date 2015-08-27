@@ -20,10 +20,10 @@ loader {
   .loader {
     width: 50px;
     height: 50px;
-    border-top       : 10px solid $primary-color-light;
-    border-right     : 10px solid $primary-color-light;
-    border-bottom    : 10px solid $primary-color-light;
-    border-left      : 10px solid $primary-color-lightest ;
+    border-top       : 10px solid $neutral-color-light;
+    border-right     : 10px solid $neutral-color-light;
+    border-bottom    : 10px solid $neutral-color-light;
+    border-left      : 10px solid $neutral-color-lightest ;
     -webkit-transform: translateZ(0);
     -ms-transform    : translateZ(0);
     transform        : translateZ(0);
