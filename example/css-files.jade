@@ -1,14 +1,10 @@
-- var cssPaths   = ['avatar', 'loader', 'modal']
+- var cssPaths   = ['main', 'avatar', 'loader', 'modal']
 - var landscapes = []
 - var desktops   = []
-
-//- link(href="styles/main.css", rel="stylesheet")
 
 = "\n"
 // build:css main.css
 = "\n"
-
-link(href="styles/main.css", rel="stylesheet")
 
 each path in cssPaths
   link(href="styles/#{path}.css", rel="stylesheet")

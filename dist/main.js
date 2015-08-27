@@ -15,7 +15,7 @@ $templateCache.put("views/countdown.html","<countdown end=\"2015-08-013 09:30:26
 $templateCache.put("views/filters.html","<time>{{ \"1995-12-25T08:00:00.000Z\" | timeLapse }}</time>");
 $templateCache.put("views/focus-on-click.html","<button type=\"button\" focus-on-click=\"focus-on-click\" class=\"focus-on-click\">should have red border when focused</button>");
 $templateCache.put("views/loader.directive.html","<div class=\"container\"><div class=\"loader\"></div></div>");
-$templateCache.put("views/loader.html","<img src=\"images/turtles-breaking.jpg\" style=\"width:100%\"/><loader></loader>");
+$templateCache.put("views/loader.html","<loader></loader>");
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");}]);
 (function() {
