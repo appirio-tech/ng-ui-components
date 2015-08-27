@@ -1,0 +1,25 @@
+@import "work-includes";
+
+checkbox {
+  @include flex-center();
+
+  button.clean {
+    border-radius   : 50%;
+    background-color: $primary-color;
+    padding         : $spacing-smallest;
+
+    .icon {
+      visibility: hidden;
+    }
+
+    &.checked {
+      .icon {
+        visibility: visible;
+      }
+    }
+  }
+
+  label {
+    margin-left: $spacing-smallest;
+  }
+}

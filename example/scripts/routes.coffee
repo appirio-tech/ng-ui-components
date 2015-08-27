@@ -28,7 +28,11 @@ config = ($stateProvider) ->
   states['focus-on-click'] =
     url         : '/focus-on-click'
     templateUrl : 'views/focus-on-click.html'
-    controller  : 'FocusOnClickController as vm'
+
+  states['checkbox'] =
+    url         : '/checkbox'
+    templateUrl : 'views/checkbox.html'
+    controller  : 'CheckboxExampleController as vm'
 
   for key, state of states
     $stateProvider.state key, state
