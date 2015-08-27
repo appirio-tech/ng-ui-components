@@ -2,10 +2,17 @@ language: node_js
 node_js:
 - 0.10.25
 before_install:
+- npm install -g npm
 - npm install -g gulp
+- npm install -g bower
 - npm install
+- bower install
 script:
-- gulp scss
+- gulp preprocessors
+- gulp test
+- gulp useref
+- gulp copy-files
+- gulp remove-code
 sudo: false
 deploy:
 - provider: s3
