@@ -13,7 +13,9 @@ script:
 - gulp test
 - gulp useref
 - gulp copy-files
-- gulp remove-code
+- gulp optimize-build
+- gulp finger-print
+- gulp finger-print-replace
 sudo: false
 deploy:
 - provider: s3
