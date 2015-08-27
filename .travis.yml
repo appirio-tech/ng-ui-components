@@ -1,19 +1,31 @@
 language: node_js
 node_js:
 - 0.10.25
-install:
+before_install:
 - npm install -g npm
 - npm install -g gulp
 - npm install -g bower
 - npm install
 - bower install
-before_script:
-- gulp clean
-- gulp test
 script:
+- gulp clean
 - gulp preprocessors
+- gulp test
 - gulp useref
 - gulp copy-files
 sudo: false
-after_success:
-- gulp coveralls
+deploy:
+- provider: s3
+  cache_control: max-age=31536000
+  detect_encoding: true
+  access_key_id: $AWS_KEY
+  secret_access_key: $AWS_SECRET
+  bucket: components.topcoder-dev.com
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: master
+env:
+  global:
+  - secure: mbTia+d32wFSIbNEFzG2fSBmWeeT399jp35gG3KIgbQ5vyQ10+BJqOSyi4U39llbQTKmVx2aKfvbWx039HDVTV3seul+dcAxl8I4yRxcDw+/u6i7Anh0ghtxD22Sg8kpSqXWQRhvV7Hewu4Z0imGfeZ0yZECYQdi9HY/QMlHODVfWOrSQgfkcFPAZvQoduQKpDfamgZPDLROUqycWYzKROOsODmB+WIgTj+2SDEcVGwaR+NUUZaQ0XGAfmkANonjGrJjfsRbfqELT/jP/Ce34vRayU4TGlDaNgybZyO7EH/oOPDDpWUnq/OmRnDGQEk/fcDSNBXGZJtFU7zmrpO4F4+kkkZd8FogNQFGYGmJ2U+HL0bXndhQuQ6tKyIcDwd6HyTiP8SjSK2oCGYnvY8R0PncLXTcGh3GcJskNA1rqZhg69YXpXtanvUa0UhootP7nJxDhoRaulQox5+mayZyPfemmioRhWVzOFgw/UPepKTsWAn5j6bGvb+/ieBFcJKltJVtnljmRrljzRXytApmZiOPrDIjI/Bn03Am+1Dex9v66RJXzqPsPqTpY65VU1yvvS23OwIrCRUjgQGm1GAOFV2I1RtEiQbWR8uYVyj/ryfPwF23pqTM2WPr3PKM/3Og7Hg0jLZ6topy1fu9iJ74AuXUhoyHhndcLagNXVxCt78=
+  - secure: h2fqoiaeJLbfHnhuR98xGTyCTz6ptfNPUlYulJ8Gr/6hhNATfzU4RuRzG3gqw46Oairrn80RY+HO2Zw5Hg5S48uqEYfMYmDrkRA5wYw/yF17QaPv8DerUTE/LlrgopRufih4GjoKntu6CCAvHV5DVm0ATI4CxYIiQO6oJQeM6RGzDTREuVYtEBp70iFkLV3fxhq22VsU5qevm147EfWQLV8pERK0YastLvDeaKjuoWvYU31RJ9QlK9DzQkt9wROSAYcohcZGgrGpOl3HCLexYRdD92USkf3nfsMIH8M+cpftXVgrNiscAZPOYk3pXiTNjW83u2rmilh6O/h6pY1Zn2G1VM4yaDoZk24XerG4yq1JUbZeauGnBmc9mh0wupk5o/nsWDrYYU5RZigXpVHHQAUv8SyNe/Dy+QqALleauVzuSeOQ+DiIcRmReeA3aFVfzSIXRgWlHnahZuz4SJ2IUg4Foze26dJwCTAWA99TO+9k/PRwanjXCfCCna8TAbx2tOIK/6COwOi0KEeHXyGq9LaWmgWn245qXBTg6OCLI8OMlLvVfLc3YdYnyBKz23uCEehWSRdzsgYh/67Akp/ox7rOfKb0Eo+UgX2UM7YYtKU0rQJw9XmsS3oFVLfIBHVXc+92CdkQF31Bo1AeeMA2Oo+XNmW+V9r7lWqOJsXo9hs=
