@@ -29,8 +29,12 @@
     };
     states['focus-on-click'] = {
       url: '/focus-on-click',
-      templateUrl: 'views/focus-on-click.html',
-      controller: 'FocusOnClickController as vm'
+      templateUrl: 'views/focus-on-click.html'
+    };
+    states['checkbox'] = {
+      url: '/checkbox',
+      templateUrl: 'views/checkbox.html',
+      controller: 'CheckboxExampleController as vm'
     };
     results = [];
     for (key in states) {
@@ -63,5 +67,25 @@
   ModalExampleController.$inject = ['$scope'];
 
   angular.module('appirio-tech-ng-ui-components').controller('ModalExampleController', ModalExampleController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var CheckboxExampleController;
+
+  CheckboxExampleController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.value = false;
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  CheckboxExampleController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-ui-components').controller('CheckboxExampleController', CheckboxExampleController);
 
 }).call(this);
