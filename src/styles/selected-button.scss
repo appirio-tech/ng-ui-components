@@ -1,0 +1,28 @@
+@import "work-includes";
+
+selected-button {
+  button {
+    position: relative;
+    width: 160px;
+
+    .icon-container {
+      visibility: hidden;
+    }
+
+    &.checked {
+      .icon-container {
+        visibility: visible;
+      }
+    }
+
+    .icon-container {
+      @include flex-center(space-around);
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      margin-right: $spacing-smallest;
+    }
+  }
+}

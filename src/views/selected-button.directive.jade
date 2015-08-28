@@ -1,0 +1,7 @@
+button(ng-class="{'checked': ngModel, 'action': ngModel}" ng-click="vm.toggle()")
+  p(ng-show="!ngModel") Select
+
+  p(ng-show="ngModel") Selected
+
+  .icon-container
+    .icon.checkmark.smallest
