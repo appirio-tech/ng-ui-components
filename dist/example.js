@@ -36,6 +36,11 @@
       templateUrl: 'views/checkbox.html',
       controller: 'CheckboxExampleController as vm'
     };
+    states['selected-button'] = {
+      url: '/selected-button',
+      templateUrl: 'views/selected-button.html',
+      controller: 'SelectedButtonExampleController as vm'
+    };
     results = [];
     for (key in states) {
       state = states[key];
@@ -87,5 +92,25 @@
   CheckboxExampleController.$inject = ['$scope'];
 
   angular.module('appirio-tech-ng-ui-components').controller('CheckboxExampleController', CheckboxExampleController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var SelectedButtonExampleController;
+
+  SelectedButtonExampleController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.value = false;
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  SelectedButtonExampleController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-ui-components').controller('SelectedButtonExampleController', SelectedButtonExampleController);
 
 }).call(this);

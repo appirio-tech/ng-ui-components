@@ -19,7 +19,9 @@ $templateCache.put("views/focus-on-click.html","<button type=\"button\" focus-on
 $templateCache.put("views/loader.directive.html","<div class=\"container\"><div class=\"loader\"></div></div>");
 $templateCache.put("views/loader.html","<loader></loader>");
 $templateCache.put("views/modal.directive.html","");
-$templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");}]);
+$templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");
+$templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': ngModel, \'action\': ngModel}\" ng-click=\"vm.toggle()\"><p ng-show=\"!ngModel\">Select</p><p ng-show=\"ngModel\">Selected</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");
+$templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");}]);
 (function() {
   'use strict';
   var directive;
@@ -171,6 +173,25 @@ $templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show<
 
 (function() {
   'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/selected-button.directive.html',
+      controller: 'SelectedButtonController as vm',
+      scope: {
+        ngModel: '=ngModel'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-ui-components').directive('selectedButton', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var AvatarController;
 
   AvatarController = function($scope) {
@@ -248,6 +269,29 @@ $templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show<
   CheckboxController.$inject = ['$scope'];
 
   angular.module('appirio-tech-ng-ui-components').controller('CheckboxController', CheckboxController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var SelectedButtonController;
+
+  SelectedButtonController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.avatarUrl = null;
+    vm.toggle = function() {
+      return $scope.ngModel = !$scope.ngModel;
+    };
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  SelectedButtonController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-ui-components').controller('SelectedButtonController', SelectedButtonController);
 
 }).call(this);
 
