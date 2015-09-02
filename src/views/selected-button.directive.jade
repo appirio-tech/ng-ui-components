@@ -1,7 +1,9 @@
 button(ng-class="{'checked': ngModel, 'action': ngModel}" ng-click="vm.toggle()" type="button")
-  p(ng-show="!ngModel") Select
+  p(ng-show="!ngModel && !label") Select
 
-  p(ng-show="ngModel") Selected
+  p(ng-show="ngModel && !label") Selected
+
+  p(ng-show="label") {{ label }}
 
   .icon-container
     .icon.checkmark.smallest

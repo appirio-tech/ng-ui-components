@@ -6,5 +6,6 @@ directive = ->
   controller  : 'SelectedButtonController as vm'
   scope       :
     ngModel: '=ngModel'
+    label  : '@label'
 
 angular.module('appirio-tech-ng-ui-components').directive 'selectedButton', directive
