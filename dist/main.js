@@ -20,8 +20,8 @@ $templateCache.put("views/loader.directive.html","<div class=\"container\"><div 
 $templateCache.put("views/loader.html","<loader></loader>");
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");
-$templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': ngModel, \'action\': ngModel}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!ngModel\">Select</p><p ng-show=\"ngModel\">Selected</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");
-$templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");}]);
+$templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': ngModel, \'action\': ngModel}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!ngModel &amp;&amp; !label\">Select</p><p ng-show=\"ngModel &amp;&amp; !label\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");
+$templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><selected-button ng-model=\"vm.value\" label=\"show me the money\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");}]);
 (function() {
   'use strict';
   var directive;
@@ -181,7 +181,8 @@ $templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.
       templateUrl: 'views/selected-button.directive.html',
       controller: 'SelectedButtonController as vm',
       scope: {
-        ngModel: '=ngModel'
+        ngModel: '=ngModel',
+        label: '@label'
       }
     };
   };
