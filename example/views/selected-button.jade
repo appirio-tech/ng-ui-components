@@ -17,3 +17,19 @@ selected-button(ng-model="vm.value" label="no" value="false")
 hr
 
 img(src="http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif" ng-show="vm.value")
+
+h2 Tracking a list
+
+selected-button(ng-model="vm.fruits" label="apples" value="vm.apples")
+
+br
+
+selected-button(ng-model="vm.fruits" label="oranges" value="vm.oranges")
+
+br
+
+selected-button(ng-model="vm.fruits" label="mangos" value="vm.mangos")
+
+br
+
+.fruits {{ vm.fruits }}
