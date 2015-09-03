@@ -21,7 +21,7 @@ $templateCache.put("views/loader.html","<loader></loader>");
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");
 $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': vm.isSelected(), \'action\': vm.isSelected()}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</p><p ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");
-$templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><selected-button ng-model=\"vm.value\" label=\"show me the money\"></selected-button><hr/><h2>Show me the money?</h2><selected-button ng-model=\"vm.value\" label=\"yes\" value=\"true\"></selected-button><br/><selected-button ng-model=\"vm.value\" label=\"no\" value=\"false\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");}]);
+$templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><selected-button ng-model=\"vm.value\" label=\"show me the money\"></selected-button><hr/><h2>Show me the money?</h2><selected-button ng-model=\"vm.value\" label=\"yes\" value=\"true\"></selected-button><br/><selected-button ng-model=\"vm.value\" label=\"no\" value=\"false\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/><h2>Tracking a list</h2><selected-button ng-model=\"vm.fruits\" label=\"apples\" value=\"vm.apples\"></selected-button><br/><selected-button ng-model=\"vm.fruits\" label=\"oranges\" value=\"vm.oranges\"></selected-button><br/><selected-button ng-model=\"vm.fruits\" label=\"mangos\" value=\"vm.mangos\"></selected-button><br/><div class=\"fruits\">{{ vm.fruits }}</div>");}]);
 (function() {
   'use strict';
   var directive;
@@ -183,7 +183,7 @@ $templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.
       scope: {
         ngModel: '=ngModel',
         label: '@label',
-        value: '@value'
+        value: '=value'
       }
     };
   };
@@ -276,35 +276,57 @@ $templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.
 
 (function() {
   'use strict';
-  var SelectedButtonController;
+  var SelectedButtonController, removeFromArray;
+
+  removeFromArray = function(items, lookFor) {
+    var i, item, len, newItems;
+    newItems = [];
+    for (i = 0, len = items.length; i < len; i++) {
+      item = items[i];
+      if (item !== lookFor) {
+        newItems.push(item);
+      }
+    }
+    return newItems;
+  };
 
   SelectedButtonController = function($scope) {
-    var activate, value, vm;
+    var activate, isArrayModel, toggleArray, vm;
     vm = this;
     vm.avatarUrl = null;
-    value = function() {
-      if ($scope.value === 'true') {
-        return true;
+    toggleArray = function() {
+      if (vm.isSelected()) {
+        return $scope.ngModel = removeFromArray($scope.ngModel, $scope.value);
+      } else {
+        return $scope.ngModel.push($scope.value);
       }
-      if ($scope.value === 'false') {
-        return false;
-      }
-      return $scope.value;
+    };
+    isArrayModel = function() {
+      var ref;
+      return ((ref = $scope.ngModel) != null ? ref.push : void 0) && $scope.value;
     };
     vm.toggle = function() {
-      if (vm.isSelected()) {
-        return $scope.ngModel = void 0;
-      } else if ($scope.value) {
-        return $scope.ngModel = value();
+      if (isArrayModel()) {
+        return toggleArray();
       } else {
-        return $scope.ngModel = true;
+        if (vm.isSelected()) {
+          return $scope.ngModel = void 0;
+        } else if ($scope.value !== void 0) {
+          return $scope.ngModel = $scope.value;
+        } else {
+          return $scope.ngModel = true;
+        }
       }
     };
     vm.isSelected = function() {
-      if ($scope.value) {
-        return $scope.ngModel === value();
+      if (isArrayModel()) {
+        return $scope.ngModel.indexOf($scope.value) !== -1;
       } else {
-        return $scope.ngModel;
+        if ($scope.value !== void 0) {
+          return $scope.ngModel === $scope.value;
+        } else {
+          return $scope.ngModel;
+        }
       }
     };
     activate = function() {

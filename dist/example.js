@@ -103,6 +103,10 @@
     var activate, vm;
     vm = this;
     vm.value = void 0;
+    vm.fruits = [];
+    vm.apples = 'apples';
+    vm.oranges = 'oranges';
+    vm.mangos = 'mangos';
     activate = function() {
       return vm;
     };
