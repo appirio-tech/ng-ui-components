@@ -2,7 +2,7 @@
 
 SelectedButtonExampleController = ($scope) ->
   vm       = this
-  vm.value = false
+  vm.value = undefined
 
   activate = ->
     vm

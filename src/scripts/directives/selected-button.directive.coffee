@@ -7,5 +7,6 @@ directive = ->
   scope       :
     ngModel: '=ngModel'
     label  : '@label'
+    value  : '@value'
 
 angular.module('appirio-tech-ng-ui-components').directive 'selectedButton', directive

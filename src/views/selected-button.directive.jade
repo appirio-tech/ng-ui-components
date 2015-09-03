@@ -1,7 +1,7 @@
-button(ng-class="{'checked': ngModel, 'action': ngModel}" ng-click="vm.toggle()" type="button")
-  p(ng-show="!ngModel && !label") Select
+button(ng-class="{'checked': vm.isSelected(), 'action': vm.isSelected()}" ng-click="vm.toggle()" type="button")
+  p(ng-show="!label && !vm.isSelected()") Select
 
-  p(ng-show="ngModel && !label") Selected
+  p(ng-show="!label && vm.isSelected()") Selected
 
   p(ng-show="label") {{ label }}
 
