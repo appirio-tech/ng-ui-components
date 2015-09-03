@@ -20,8 +20,8 @@ $templateCache.put("views/loader.directive.html","<div class=\"container\"><div 
 $templateCache.put("views/loader.html","<loader></loader>");
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");
-$templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': ngModel, \'action\': ngModel}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!ngModel &amp;&amp; !label\">Select</p><p ng-show=\"ngModel &amp;&amp; !label\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");
-$templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><selected-button ng-model=\"vm.value\" label=\"show me the money\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");}]);
+$templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': vm.isSelected(), \'action\': vm.isSelected()}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</p><p ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");
+$templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><selected-button ng-model=\"vm.value\" label=\"show me the money\"></selected-button><hr/><h2>Show me the money?</h2><selected-button ng-model=\"vm.value\" label=\"yes\" value=\"true\"></selected-button><br/><selected-button ng-model=\"vm.value\" label=\"no\" value=\"false\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");}]);
 (function() {
   'use strict';
   var directive;
@@ -182,7 +182,8 @@ $templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.
       controller: 'SelectedButtonController as vm',
       scope: {
         ngModel: '=ngModel',
-        label: '@label'
+        label: '@label',
+        value: '@value'
       }
     };
   };
@@ -278,11 +279,33 @@ $templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.
   var SelectedButtonController;
 
   SelectedButtonController = function($scope) {
-    var activate, vm;
+    var activate, value, vm;
     vm = this;
     vm.avatarUrl = null;
+    value = function() {
+      if ($scope.value === 'true') {
+        return true;
+      }
+      if ($scope.value === 'false') {
+        return false;
+      }
+      return $scope.value;
+    };
     vm.toggle = function() {
-      return $scope.ngModel = !$scope.ngModel;
+      if (vm.isSelected()) {
+        return $scope.ngModel = void 0;
+      } else if ($scope.value) {
+        return $scope.ngModel = value();
+      } else {
+        return $scope.ngModel = true;
+      }
+    };
+    vm.isSelected = function() {
+      if ($scope.value) {
+        return $scope.ngModel === value();
+      } else {
+        return $scope.ngModel;
+      }
     };
     activate = function() {
       return vm;

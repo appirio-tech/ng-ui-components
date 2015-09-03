@@ -102,7 +102,7 @@
   SelectedButtonExampleController = function($scope) {
     var activate, vm;
     vm = this;
-    vm.value = false;
+    vm.value = void 0;
     activate = function() {
       return vm;
     };
