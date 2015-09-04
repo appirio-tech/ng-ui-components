@@ -24,8 +24,9 @@ directive = ->
       overlay = $ '<div id="modal-overlay"></div>'
       overlay.appendTo 'body'
 
-    $element.bind 'click', (e) ->
-      close() if e.target == $element[0]
+    unless attrs['backgroundClickClose']
+      $element.bind 'click', (e) ->
+        close() if e.target == $element[0]
 
     scope.$watch 'show', toggleShow
 
