@@ -46,6 +46,10 @@
       templateUrl: 'views/selectable.html',
       controller: 'SelectedButtonExampleController as vm'
     };
+    states['scroll'] = {
+      url: '/scroll',
+      templateUrl: 'views/scroll.html'
+    };
     results = [];
     for (key in states) {
       state = states[key];

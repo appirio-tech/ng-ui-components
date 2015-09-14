@@ -44,6 +44,10 @@ config = ($stateProvider) ->
     templateUrl : 'views/selectable.html'
     controller  : 'SelectedButtonExampleController as vm'
 
+  states['scroll'] =
+    url         : '/scroll'
+    templateUrl : 'views/scroll.html'
+
   for key, state of states
     $stateProvider.state key, state
 
