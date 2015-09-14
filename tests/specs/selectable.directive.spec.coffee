@@ -1,7 +1,7 @@
 'use strict'
 
 element = null
-html    = '<selected-box ng-model="vm.value"></selected-box>'
+html    = '<button ng-model="vm.value"></button>'
 
 describe 'Selected Box Directive', ->
   beforeEach inject ($compile, $rootScope) ->

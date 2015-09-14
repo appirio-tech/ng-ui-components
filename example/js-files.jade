@@ -15,6 +15,7 @@
 - directives.push('focus-on-click')
 - directives.push('checkbox')
 - directives.push('selected-button')
+- directives.push('selectable')
 
 - var controllers = []
 - controllers.push('avatar')
@@ -28,7 +29,7 @@
 - scripts.push('templates')
 
 each directive in directives
-  - scripts.push('/directives/' + directive + '.directive')
+  - scripts.push('directives/' + directive + '.directive')
 end
 
 each controller in controllers

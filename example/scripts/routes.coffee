@@ -39,6 +39,11 @@ config = ($stateProvider) ->
     templateUrl : 'views/selected-button.html'
     controller  : 'SelectedButtonExampleController as vm'
 
+  states['selectable'] =
+    url         : '/selectable'
+    templateUrl : 'views/selectable.html'
+    controller  : 'SelectedButtonExampleController as vm'
+
   for key, state of states
     $stateProvider.state key, state
 
