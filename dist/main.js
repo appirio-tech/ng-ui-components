@@ -20,6 +20,8 @@ $templateCache.put("views/loader.directive.html","<div class=\"container\"><div 
 $templateCache.put("views/loader.html","<loader></loader>");
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/modal.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\" background-click-close=\"background-click-close\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");
+$templateCache.put("views/selectable.directive.html","<div ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</div><div ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</div><div ng-show=\"label\">{{ label }}</div><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div>");
+$templateCache.put("views/selectable.html","<p>button.widest.biggest(ng-model=\"vm.value\" selectable=true)</p><br/><button ng-model=\"vm.value\" selectable=\"selectable\" class=\"widest biggest\"></button><hr/><p>button.wider.bigger(ng-model=\"vm.value\" label=\"show me the money\" selectable=true)</p><br/><button ng-model=\"vm.value\" label=\"show me the money\" selectable=\"selectable\" class=\"wider bigger\"></button><hr/><label>Show me the money?</label><p>button(ng-model=\"vm.value\" label=\"yes\" value=\"true\" selectable=true)</p><br/><button ng-model=\"vm.value\" label=\"yes\" value=\"true\" selectable=\"selectable\"></button><br/><p>button(ng-model=\"vm.value\" label=\"no\" value=\"false\" selectable=true)</p><br/><button ng-model=\"vm.value\" label=\"no\" value=\"false\" selectable=\"selectable\"></button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/><label>Tracking a list</label><p>button(ng-model=\"vm.fruits\" label=\"apples\" value=\"vm.apples\" selectable=true)</p><br/><button ng-model=\"vm.fruits\" label=\"apples\" value=\"vm.apples\" selectable=\"selectable\"></button><br/><p>button(ng-model=\"vm.fruits\" label=\"oranges\" value=\"vm.oranges\" selectable=true)</p><br/><button ng-model=\"vm.fruits\" label=\"oranges\" value=\"vm.oranges\" selectable=\"selectable\"></button><br/><p>button(ng-model=\"vm.fruits\" label=\"mangos\" value=\"vm.mangos\" selectable=true)</p><br/><button ng-model=\"vm.fruits\" label=\"mangos\" value=\"vm.mangos\" selectable=\"selectable\"></button><br/><div class=\"fruits\">{{ vm.fruits }}</div>");
 $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': vm.isSelected(), \'action\': vm.isSelected()}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</p><p ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");
 $templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.value\"></selected-button><hr/><selected-button ng-model=\"vm.value\" label=\"show me the money\"></selected-button><hr/><h2>Show me the money?</h2><selected-button ng-model=\"vm.value\" label=\"yes\" value=\"true\"></selected-button><br/><selected-button ng-model=\"vm.value\" label=\"no\" value=\"false\"></selected-button><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/><h2>Tracking a list</h2><selected-button ng-model=\"vm.fruits\" label=\"apples\" value=\"vm.apples\"></selected-button><br/><selected-button ng-model=\"vm.fruits\" label=\"oranges\" value=\"vm.oranges\"></selected-button><br/><selected-button ng-model=\"vm.fruits\" label=\"mangos\" value=\"vm.mangos\"></selected-button><br/><div class=\"fruits\">{{ vm.fruits }}</div>");}]);
 (function() {
@@ -191,6 +193,46 @@ $templateCache.put("views/selected-button.html","<selected-button ng-model=\"vm.
   };
 
   angular.module('appirio-tech-ng-ui-components').directive('selectedButton', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    var link;
+    link = function($scope, element, attrs) {
+      var $element;
+      $element = $(element[0]);
+      $element.addClass('selected-button');
+      $scope.$watch($scope.vm.isSelected, function() {
+        $element.removeClass('checked');
+        $element.removeClass('action');
+        if ($scope.vm.isSelected()) {
+          $element.addClass('checked');
+          return $element.addClass('action');
+        }
+      });
+      return $element.bind('click', function() {
+        $scope.vm.toggle();
+        return $scope.$apply();
+      });
+    };
+    return {
+      restrict: 'A',
+      templateUrl: 'views/selectable.directive.html',
+      controller: 'SelectedButtonController as vm',
+      link: link,
+      scope: {
+        ngModel: '=ngModel',
+        label: '@label',
+        value: '=value'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-ui-components').directive('selectable', directive);
 
 }).call(this);
 

@@ -41,6 +41,11 @@
       templateUrl: 'views/selected-button.html',
       controller: 'SelectedButtonExampleController as vm'
     };
+    states['selectable'] = {
+      url: '/selectable',
+      templateUrl: 'views/selectable.html',
+      controller: 'SelectedButtonExampleController as vm'
+    };
     results = [];
     for (key in states) {
       state = states[key];
