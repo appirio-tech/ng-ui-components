@@ -20,7 +20,7 @@ modal {
   left    : 0;
   width   : 100%;
   height  : 100%;
-  z-index : 11;
+  z-index : 1000;
 
   &.show {
     @include flex-center(center);
