@@ -32,6 +32,7 @@ modal {
     top             : $spacing;
     padding         : $spacing-small;
     background-color: white;
+    z-index         : 1000;
   }
 }
 
