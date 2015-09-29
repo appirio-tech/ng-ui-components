@@ -11,4 +11,4 @@ ModalExampleController = ($scope) ->
 
 ModalExampleController.$inject = ['$scope']
 
-angular.module('appirio-tech-ng-ui-components').controller 'ModalExampleController', ModalExampleController
+angular.module('example').controller 'ModalExampleController', ModalExampleController

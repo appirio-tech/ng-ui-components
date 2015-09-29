@@ -11,4 +11,4 @@ CheckboxExampleController = ($scope) ->
 
 CheckboxExampleController.$inject = ['$scope']
 
-angular.module('appirio-tech-ng-ui-components').controller 'CheckboxExampleController', CheckboxExampleController
+angular.module('example').controller 'CheckboxExampleController', CheckboxExampleController

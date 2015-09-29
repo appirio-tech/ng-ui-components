@@ -15,4 +15,4 @@ SelectedButtonExampleController = ($scope) ->
 
 SelectedButtonExampleController.$inject = ['$scope']
 
-angular.module('appirio-tech-ng-ui-components').controller 'SelectedButtonExampleController', SelectedButtonExampleController
+angular.module('example').controller 'SelectedButtonExampleController', SelectedButtonExampleController
