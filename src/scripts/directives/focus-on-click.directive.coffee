@@ -2,8 +2,10 @@
 
 dir = ->
   link = (scope, element, attrs) ->
-    $(element).bind 'click', ->
-      $(element).focus()
+    $element = $ element[0]
+
+    $element.bind 'click', ->
+      $element.focus()
 
   restrict: 'A'
   link: link
