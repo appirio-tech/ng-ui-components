@@ -130,8 +130,10 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
   dir = function() {
     var link;
     link = function(scope, element, attrs) {
-      return $(element).bind('click', function() {
-        return $(element).focus();
+      var $element;
+      $element = $(element[0]);
+      return $element.bind('click', function() {
+        return $element.focus();
       });
     };
     return {
