@@ -1,7 +1,7 @@
 @import "work-includes";
 
 button.selected-button {
-  display      : block;
+  display      : inline-block;
   position     : relative;
   padding-left : $padding-big;
   padding-right: $padding-big;
