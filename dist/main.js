@@ -255,6 +255,93 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
 
 (function() {
   'use strict';
+  var dir;
+
+  dir = function($window, $rootScope) {
+    var elements, flushHeight, link, setViewPortHeight, viewPortHeight;
+    viewPortHeight = 0;
+    elements = [];
+    setViewPortHeight = function() {
+      viewPortHeight = $($window).height();
+      return viewPortHeight;
+    };
+    setViewPortHeight();
+    flushHeight = function($element) {
+      var heightDiff, ref, ref1, top;
+      top = (ref = $element[0]) != null ? (ref1 = ref.getBoundingClientRect()) != null ? ref1.top : void 0 : void 0;
+      heightDiff = viewPortHeight - top;
+      return $element.height(heightDiff);
+    };
+    $($window).bind('resize', function() {
+      var element, i, len, results;
+      setViewPortHeight();
+      results = [];
+      for (i = 0, len = elements.length; i < len; i++) {
+        element = elements[i];
+        results.push(flushHeight(element));
+      }
+      return results;
+    });
+    link = function(scope, element, attrs) {
+      elements.push($(element[0]));
+      return flushHeight($(element[0]));
+    };
+    return {
+      restrict: 'A',
+      link: link
+    };
+  };
+
+  dir.$inject = ['$window', '$rootScope'];
+
+  angular.module('appirio-tech-ng-ui-components').directive('flushHeight', dir);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var dir;
+
+  dir = function($window, $rootScope) {
+    var elements, fullHeight, link, setViewPortHeight, viewPortHeight;
+    viewPortHeight = 0;
+    elements = [];
+    setViewPortHeight = function() {
+      viewPortHeight = $($window).height();
+      return viewPortHeight;
+    };
+    setViewPortHeight();
+    fullHeight = function($element) {
+      return $element.height(viewPortHeight);
+    };
+    $($window).bind('resize', function() {
+      var element, i, len, results;
+      setViewPortHeight();
+      results = [];
+      for (i = 0, len = elements.length; i < len; i++) {
+        element = elements[i];
+        results.push(fullHeight(element));
+      }
+      return results;
+    });
+    link = function(scope, element, attrs) {
+      elements.push($(element[0]));
+      return fullHeight($(element[0]));
+    };
+    return {
+      restrict: 'A',
+      link: link
+    };
+  };
+
+  dir.$inject = ['$window', '$rootScope'];
+
+  angular.module('appirio-tech-ng-ui-components').directive('fullHeight', dir);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var AvatarController;
 
   AvatarController = function($scope) {

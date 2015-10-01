@@ -60,6 +60,14 @@
       url: '/scroll',
       templateUrl: 'views/scroll.example.html'
     };
+    states['flush-height'] = {
+      url: '/flush-height',
+      templateUrl: 'views/flush-height.example.html'
+    };
+    states['full-height'] = {
+      url: '/full-height',
+      templateUrl: 'views/full-height.example.html'
+    };
     results = [];
     for (key in states) {
       state = states[key];
@@ -142,7 +150,9 @@ angular.module("example").run(["$templateCache", function($templateCache) {$temp
 $templateCache.put("views/checkbox.example.html","<checkbox ng-model=\"vm.value\" label=\"Show me the money\"></checkbox><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");
 $templateCache.put("views/countdown.example.html","<countdown end=\"2015-08-013 09:30:26.123+07:00\"></countdown>");
 $templateCache.put("views/filters.example.html","<time>{{ \"1995-12-25T08:00:00.000Z\" | timeLapse }}</time>");
+$templateCache.put("views/flush-height.example.html","<div flush-height=\"flush-height\" style=\"background-color:grey\">Flush Height</div>");
 $templateCache.put("views/focus-on-click.example.html","<button type=\"button\" focus-on-click=\"focus-on-click\" class=\"focus-on-click\">should have red border when focused</button>");
+$templateCache.put("views/full-height.example.html","<div full-height=\"full-height\" style=\"background-color:grey\">Full Height</div>");
 $templateCache.put("views/loader.example.html","<loader></loader>");
 $templateCache.put("views/modal.example.html","<button ng-click=\"vm.show = true\">Show</button><modal show=\"vm.show\" background-click-close=\"background-click-close\"><img src=\"http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg\"/></modal>");
 $templateCache.put("views/scroll.example.html","<button type=\"button\" scroll-element=\"section2\">Scroll to Section 2</button><div id=\"section1\" class=\"scrollSection\"><h2>Section 1</h2></div><div id=\"section2\" class=\"scrollSection\"><h2>Section 2</h2></div>");
