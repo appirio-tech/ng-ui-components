@@ -24,7 +24,7 @@ dir = ($window) ->
     top = getOffsetTop $element[0]
     heightDiff = viewPortHeight - top
 
-    $element.height heightDiff
+    $element.css('min-height', heightDiff + 'px')
 
   $($window).bind 'resize', ->
     setViewPortHeight()

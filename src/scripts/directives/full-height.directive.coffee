@@ -12,7 +12,7 @@ dir = ($window) ->
   setViewPortHeight()
 
   fullHeight = ($element) ->
-    $element.height viewPortHeight
+    $element.css('min-height', viewPortHeight + 'px')
 
   $($window).bind 'resize', ->
     setViewPortHeight()
