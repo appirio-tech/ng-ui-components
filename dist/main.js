@@ -255,7 +255,18 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
 
 (function() {
   'use strict';
-  var dir;
+  var dir, getOffsetTop;
+
+  getOffsetTop = function(elem) {
+    var offsetTop;
+    offsetTop = elem.offsetTop;
+    while (elem = elem.offsetParent) {
+      if (!isNaN(elem.offsetTop)) {
+        offsetTop += elem.offsetTop;
+      }
+    }
+    return offsetTop;
+  };
 
   dir = function($window) {
     var elements, flushHeight, link, setViewPortHeight, viewPortHeight;
@@ -267,8 +278,8 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     };
     setViewPortHeight();
     flushHeight = function($element) {
-      var heightDiff, ref, ref1, top;
-      top = (ref = $element[0]) != null ? (ref1 = ref.getBoundingClientRect()) != null ? ref1.top : void 0 : void 0;
+      var heightDiff, top;
+      top = getOffsetTop($element[0]);
       heightDiff = viewPortHeight - top;
       return $element.height(heightDiff);
     };
