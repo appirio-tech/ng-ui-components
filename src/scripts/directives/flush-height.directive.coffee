@@ -1,4 +1,13 @@
-'use strict';
+'use strict'
+
+getOffsetTop = (elem) ->
+  offsetTop = elem.offsetTop
+
+  while elem = elem.offsetParent
+    unless isNaN(elem.offsetTop)
+      offsetTop += elem.offsetTop
+
+  offsetTop
 
 dir = ($window) ->
   viewPortHeight = 0
@@ -12,7 +21,7 @@ dir = ($window) ->
   setViewPortHeight()
 
   flushHeight = ($element) ->
-    top        = $element[0]?.getBoundingClientRect()?.top
+    top = getOffsetTop $element[0]
     heightDiff = viewPortHeight - top
 
     $element.height heightDiff
