@@ -1,6 +1,6 @@
 'use strict';
 
-dir = ($window, $rootScope) ->
+dir = ($window) ->
   viewPortHeight = 0
   elements = []
 
@@ -23,12 +23,13 @@ dir = ($window, $rootScope) ->
   link = (scope, element, attrs) ->
     elements.push $(element[0])
 
-    fullHeight $(element[0])
+    element.ready ->
+      fullHeight $(element[0])
 
   restrict: 'A'
   link: link
 
-dir.$inject = ['$window', '$rootScope']
+dir.$inject = ['$window']
 
 angular.module('appirio-tech-ng-ui-components').directive 'fullHeight', dir
 
