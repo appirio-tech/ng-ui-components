@@ -48,6 +48,14 @@ config = ($stateProvider) ->
     url         : '/scroll'
     templateUrl : 'views/scroll.example.html'
 
+  states['flush-height'] =
+    url         : '/flush-height'
+    templateUrl : 'views/flush-height.example.html'
+
+  states['full-height'] =
+    url         : '/full-height'
+    templateUrl : 'views/full-height.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 
