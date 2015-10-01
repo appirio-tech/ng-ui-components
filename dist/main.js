@@ -257,7 +257,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
   'use strict';
   var dir;
 
-  dir = function($window, $rootScope) {
+  dir = function($window) {
     var elements, flushHeight, link, setViewPortHeight, viewPortHeight;
     viewPortHeight = 0;
     elements = [];
@@ -284,7 +284,9 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     });
     link = function(scope, element, attrs) {
       elements.push($(element[0]));
-      return flushHeight($(element[0]));
+      return element.ready(function() {
+        return flushHeight($(element[0]));
+      });
     };
     return {
       restrict: 'A',
@@ -292,7 +294,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     };
   };
 
-  dir.$inject = ['$window', '$rootScope'];
+  dir.$inject = ['$window'];
 
   angular.module('appirio-tech-ng-ui-components').directive('flushHeight', dir);
 
@@ -302,7 +304,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
   'use strict';
   var dir;
 
-  dir = function($window, $rootScope) {
+  dir = function($window) {
     var elements, fullHeight, link, setViewPortHeight, viewPortHeight;
     viewPortHeight = 0;
     elements = [];
@@ -326,7 +328,9 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     });
     link = function(scope, element, attrs) {
       elements.push($(element[0]));
-      return fullHeight($(element[0]));
+      return element.ready(function() {
+        return fullHeight($(element[0]));
+      });
     };
     return {
       restrict: 'A',
@@ -334,7 +338,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     };
   };
 
-  dir.$inject = ['$window', '$rootScope'];
+  dir.$inject = ['$window'];
 
   angular.module('appirio-tech-ng-ui-components').directive('fullHeight', dir);
 
