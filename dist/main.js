@@ -281,7 +281,8 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
       var heightDiff, top;
       top = getOffsetTop($element[0]);
       heightDiff = viewPortHeight - top;
-      return $element.css('min-height', heightDiff + 'px');
+      $element.css('min-height', heightDiff + 'px');
+      return $element.css('height', heightDiff + 'px');
     };
     $($window).bind('resize', function() {
       var element, i, len, results;
@@ -325,7 +326,8 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     };
     setViewPortHeight();
     fullHeight = function($element) {
-      return $element.css('min-height', viewPortHeight + 'px');
+      $element.css('min-height', viewPortHeight + 'px');
+      return $element.css('height', viewPortHeight + 'px');
     };
     $($window).bind('resize', function() {
       var element, i, len, results;
