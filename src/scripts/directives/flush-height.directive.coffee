@@ -25,6 +25,7 @@ dir = ($window) ->
     heightDiff = viewPortHeight - top
 
     $element.css('min-height', heightDiff + 'px')
+    $element.css('height', heightDiff + 'px') # for ie flex grow bug
 
   $($window).bind 'resize', ->
     setViewPortHeight()

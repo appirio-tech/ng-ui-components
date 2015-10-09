@@ -13,6 +13,7 @@ dir = ($window) ->
 
   fullHeight = ($element) ->
     $element.css('min-height', viewPortHeight + 'px')
+    $element.css('height', viewPortHeight + 'px') # for ie flex grow bug
 
   $($window).bind 'resize', ->
     setViewPortHeight()
