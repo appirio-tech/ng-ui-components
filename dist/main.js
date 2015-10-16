@@ -201,10 +201,8 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
       $element.addClass('selected-button');
       $scope.$watch($scope.vm.isSelected, function() {
         $element.removeClass('checked');
-        $element.removeClass('action');
         if ($scope.vm.isSelected()) {
-          $element.addClass('checked');
-          return $element.addClass('action');
+          return $element.addClass('checked');
         }
       });
       return $element.bind('click', function() {
