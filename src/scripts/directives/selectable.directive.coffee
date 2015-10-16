@@ -7,11 +7,9 @@ directive = ->
 
     $scope.$watch $scope.vm.isSelected, ->
       $element.removeClass 'checked'
-      $element.removeClass 'action'
 
       if $scope.vm.isSelected()
         $element.addClass 'checked'
-        $element.addClass 'action'
 
     $element.bind 'click', ->
       $scope.vm.toggle()
