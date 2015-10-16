@@ -278,11 +278,14 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     };
     setViewPortHeight();
     flushHeight = function($element) {
-      var heightDiff, top;
+      var currentHeight, heightDiff, top;
       top = getOffsetTop($element[0]);
       heightDiff = viewPortHeight - top;
-      $element.css('min-height', heightDiff + 'px');
-      return $element.css('height', heightDiff + 'px');
+      currentHeight = $element.height();
+      if (heightDiff > currentHeight) {
+        $element.css('min-height', heightDiff + 'px');
+        return $element.css('height', heightDiff + 'px');
+      }
     };
     $($window).bind('resize', function() {
       var element, i, len, results;
