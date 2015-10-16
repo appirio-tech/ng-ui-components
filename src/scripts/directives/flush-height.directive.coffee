@@ -21,11 +21,13 @@ dir = ($window) ->
   setViewPortHeight()
 
   flushHeight = ($element) ->
-    top = getOffsetTop $element[0]
-    heightDiff = viewPortHeight - top
+    top           = getOffsetTop $element[0]
+    heightDiff    = viewPortHeight - top
+    currentHeight = $element.height()
 
-    $element.css('min-height', heightDiff + 'px')
-    $element.css('height', heightDiff + 'px') # for ie flex grow bug
+    if heightDiff > currentHeight
+      $element.css('min-height', heightDiff + 'px')
+      $element.css('height', heightDiff + 'px') # for ie flex grow bug
 
   $($window).bind 'resize', ->
     setViewPortHeight()
