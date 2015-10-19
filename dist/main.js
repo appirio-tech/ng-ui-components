@@ -375,9 +375,9 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     return biggestLeft;
   };
 
-  dir = function($window, $timeout) {
-    var elements, fittedWidth, link;
-    elements = [];
+  dir = function($window) {
+    var fittedWidth, link, watchElements;
+    watchElements = [];
     fittedWidth = function($element) {
       var biggestLeft, newWidth;
       $element.css('width', '100%');
@@ -395,16 +395,23 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     $($window).bind('resize', function() {
       var element, i, len, results;
       results = [];
-      for (i = 0, len = elements.length; i < len; i++) {
-        element = elements[i];
+      for (i = 0, len = watchElements.length; i < len; i++) {
+        element = watchElements[i];
         results.push(fittedWidth(element));
       }
       return results;
     });
     link = function(scope, element, attrs) {
-      elements.push($(element[0]));
-      return $timeout(function() {
-        return fittedWidth($(element[0]));
+      return element.ready(function() {
+        var parent;
+        if (scope.$last === void 0) {
+          watchElements.push($(element[0]));
+          return fittedWidth($(element[0]));
+        } else if (scope.$last) {
+          parent = $(element[0]).parent();
+          watchElements.push(parent);
+          return fittedWidth(parent);
+        }
       });
     };
     return {
@@ -413,7 +420,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     };
   };
 
-  dir.$inject = ['$window', '$timeout'];
+  dir.$inject = ['$window'];
 
   angular.module('appirio-tech-ng-ui-components').directive('fittedWidth', dir);
 
