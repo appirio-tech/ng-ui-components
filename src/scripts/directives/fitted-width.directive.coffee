@@ -19,14 +19,15 @@ dir = ($window) ->
 
     biggestLeft = getBiggestLeft $element.children()
 
-    newWidth = biggestLeft.position().left
-    newWidth -= $element.position().left
-    newWidth += parseInt biggestLeft.css('margin-left')
-    newWidth += biggestLeft.width()
-    newWidth += parseInt biggestLeft.css('margin-right')
-    newWidth += parseInt $element.css('padding-right')
+    if biggestLeft
+      newWidth = biggestLeft.position().left
+      newWidth -= $element.position().left
+      newWidth += parseInt biggestLeft.css('margin-left')
+      newWidth += biggestLeft.width()
+      newWidth += parseInt biggestLeft.css('margin-right')
+      newWidth += parseInt $element.css('padding-right')
 
-    $element.css 'width', newWidth + 'px'
+      $element.css 'width', newWidth + 'px'
 
   $($window).bind 'resize', ->
     for element in elements
