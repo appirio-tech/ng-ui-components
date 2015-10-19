@@ -375,7 +375,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     return biggestLeft;
   };
 
-  dir = function($window) {
+  dir = function($window, $timeout) {
     var elements, fittedWidth, link;
     elements = [];
     fittedWidth = function($element) {
@@ -403,7 +403,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     });
     link = function(scope, element, attrs) {
       elements.push($(element[0]));
-      return element.ready(function() {
+      return $timeout(function() {
         return fittedWidth($(element[0]));
       });
     };
@@ -413,7 +413,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     };
   };
 
-  dir.$inject = ['$window'];
+  dir.$inject = ['$window', '$timeout'];
 
   angular.module('appirio-tech-ng-ui-components').directive('fittedWidth', dir);
 
