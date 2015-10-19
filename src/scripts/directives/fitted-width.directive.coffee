@@ -11,8 +11,8 @@ getBiggestLeft = (elements) ->
 
   biggestLeft
 
-dir = ($window, $timeout) ->
-  elements = []
+dir = ($window) ->
+  watchElements = []
 
   fittedWidth = ($element) ->
     $element.css 'width', '100%'
@@ -30,22 +30,24 @@ dir = ($window, $timeout) ->
       $element.css 'width', newWidth + 'px'
 
   $($window).bind 'resize', ->
-    for element in elements
+    for element in watchElements
       fittedWidth element
 
   link = (scope, element, attrs) ->
-    elements.push $(element[0])
+    element.ready ->
+      if scope.$last == undefined
+        watchElements.push $(element[0])
+        fittedWidth $(element[0])
+      else if scope.$last # handle ng-repeat
+        parent = $(element[0]).parent()
 
-    $timeout ->
-      fittedWidth $(element[0])
-
-    # element.ready ->
-    #   fittedWidth $(element[0])
+        watchElements.push parent
+        fittedWidth parent
 
   restrict: 'A'
   link: link
 
-dir.$inject = ['$window', '$timeout']
+dir.$inject = ['$window']
 
 angular.module('appirio-tech-ng-ui-components').directive 'fittedWidth', dir
 

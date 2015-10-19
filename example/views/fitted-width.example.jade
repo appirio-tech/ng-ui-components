@@ -1,5 +1,9 @@
 h1 Fitted Width
 
+ul.flex.wrap.fitted-width
+  li(ng-repeat="n in [42, 42, 43, 43] track by $index" fitted-width=true) {{ $index }}
+
+
 ul.flex.wrap.fitted-width(fitted-width=true)
   li 1
 
