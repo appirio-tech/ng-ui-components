@@ -382,13 +382,15 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
       var biggestLeft, newWidth;
       $element.css('width', '100%');
       biggestLeft = getBiggestLeft($element.children());
-      newWidth = biggestLeft.position().left;
-      newWidth -= $element.position().left;
-      newWidth += parseInt(biggestLeft.css('margin-left'));
-      newWidth += biggestLeft.width();
-      newWidth += parseInt(biggestLeft.css('margin-right'));
-      newWidth += parseInt($element.css('padding-right'));
-      return $element.css('width', newWidth + 'px');
+      if (biggestLeft) {
+        newWidth = biggestLeft.position().left;
+        newWidth -= $element.position().left;
+        newWidth += parseInt(biggestLeft.css('margin-left'));
+        newWidth += biggestLeft.width();
+        newWidth += parseInt(biggestLeft.css('margin-right'));
+        newWidth += parseInt($element.css('padding-right'));
+        return $element.css('width', newWidth + 'px');
+      }
     };
     $($window).bind('resize', function() {
       var element, i, len, results;
