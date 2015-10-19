@@ -56,6 +56,10 @@ config = ($stateProvider) ->
     url         : '/full-height'
     templateUrl : 'views/full-height.example.html'
 
+  states['fitted-width'] =
+    url         : '/fitted-width'
+    templateUrl : 'views/fitted-width.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 
