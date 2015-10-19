@@ -11,7 +11,7 @@ getBiggestLeft = (elements) ->
 
   biggestLeft
 
-dir = ($window) ->
+dir = ($window, $timeout) ->
   elements = []
 
   fittedWidth = ($element) ->
@@ -36,13 +36,16 @@ dir = ($window) ->
   link = (scope, element, attrs) ->
     elements.push $(element[0])
 
-    element.ready ->
+    $timeout ->
       fittedWidth $(element[0])
+
+    # element.ready ->
+    #   fittedWidth $(element[0])
 
   restrict: 'A'
   link: link
 
-dir.$inject = ['$window']
+dir.$inject = ['$window', '$timeout']
 
 angular.module('appirio-tech-ng-ui-components').directive 'fittedWidth', dir
 
