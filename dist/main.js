@@ -359,6 +359,66 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
 
 (function() {
   'use strict';
+  var dir, getBiggestLeft;
+
+  getBiggestLeft = function(elements) {
+    var biggestLeft, element, i, len;
+    biggestLeft = null;
+    for (i = 0, len = elements.length; i < len; i++) {
+      element = elements[i];
+      if (!biggestLeft) {
+        biggestLeft = $(element);
+      } else if ($(element).position().left > biggestLeft.position().left) {
+        biggestLeft = $(element);
+      }
+    }
+    return biggestLeft;
+  };
+
+  dir = function($window) {
+    var elements, fittedWidth, link;
+    elements = [];
+    fittedWidth = function($element) {
+      var biggestLeft, newWidth;
+      $element.css('width', '100%');
+      biggestLeft = getBiggestLeft($element.children());
+      newWidth = biggestLeft.position().left;
+      newWidth -= $element.position().left;
+      newWidth += parseInt(biggestLeft.css('margin-left'));
+      newWidth += biggestLeft.width();
+      newWidth += parseInt(biggestLeft.css('margin-right'));
+      newWidth += parseInt($element.css('padding-right'));
+      return $element.css('width', newWidth + 'px');
+    };
+    $($window).bind('resize', function() {
+      var element, i, len, results;
+      results = [];
+      for (i = 0, len = elements.length; i < len; i++) {
+        element = elements[i];
+        results.push(fittedWidth(element));
+      }
+      return results;
+    });
+    link = function(scope, element, attrs) {
+      elements.push($(element[0]));
+      return element.ready(function() {
+        return fittedWidth($(element[0]));
+      });
+    };
+    return {
+      restrict: 'A',
+      link: link
+    };
+  };
+
+  dir.$inject = ['$window'];
+
+  angular.module('appirio-tech-ng-ui-components').directive('fittedWidth', dir);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var AvatarController;
 
   AvatarController = function($scope) {
