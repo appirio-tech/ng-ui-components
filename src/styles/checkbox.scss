@@ -1,8 +1,6 @@
 @import "work-includes";
 
 checkbox {
-  @include flex-center();
-
   label {
     margin-left: $margin-smallest;
   }

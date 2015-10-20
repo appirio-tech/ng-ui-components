@@ -1,6 +1,7 @@
-button.clean(ng-class="{'checked': ngModel}" ng-click="vm.toggle()" type="button")
-  img.icon.plus(src="/images/icon-plus.svg" ng-hide="ngModel")
+.flex.center
+  button.clean(ng-class="{'checked': ngModel}" ng-click="vm.toggle()" type="button")
+    img.icon.plus(src="/images/icon-plus.svg" ng-hide="ngModel")
 
-  img.icon.check-solid(src="/images/icon-check-solid.svg" ng-show="ngModel")
+    img.icon.check-solid(src="/images/icon-check-solid.svg" ng-show="ngModel")
 
-label(ng-if="label" ng-click="vm.toggle()") {{ label }}
+  label(ng-if="label" ng-click="vm.toggle()") {{ label }}
