@@ -4,6 +4,6 @@ checkbox {
   @include flex-center();
 
   label {
-    margin-left: $spacing-smallest;
+    margin-left: $margin-smallest;
   }
 }
