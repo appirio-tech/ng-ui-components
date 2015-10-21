@@ -30,6 +30,10 @@ directive = ->
 
     scope.$watch 'show', toggleShow
 
+    # Remove overlay when directive is torn down
+    scope.$watch 'destroy', ->
+      overlay.remove()
+
   restrict: 'E'
   link    : link
   scope:
