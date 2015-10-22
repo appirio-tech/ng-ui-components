@@ -14,7 +14,7 @@ $templateCache.put("views/countdown.directive.html","<ul class=\"countdown\"><li
 $templateCache.put("views/loader.directive.html","<div class=\"container\"><div class=\"loader\"></div></div>");
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/selectable.directive.html","<div ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</div><div ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</div><div ng-show=\"label\">{{ label }}</div><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div>");
-$templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': vm.isSelected(), \'action\': vm.isSelected()}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</p><p ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark smallest\"></div></div></button>");}]);
+$templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': vm.isSelected(), \'action\': vm.isSelected()}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</p><p ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark-white smallest\"></div></div></button>");}]);
 (function() {
   'use strict';
   var directive;
@@ -106,7 +106,10 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
           }
         });
       }
-      return scope.$watch('show', toggleShow);
+      scope.$watch('show', toggleShow);
+      return scope.$watch('destroy', function() {
+        return overlay.remove();
+      });
     };
     return {
       restrict: 'E',
