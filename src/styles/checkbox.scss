@@ -1,6 +1,8 @@
 @import "work-includes";
 
 checkbox {
+  display: block;
+
   label {
     margin-left: $margin-smallest;
   }
@@ -8,6 +10,5 @@ checkbox {
   .icon, button {
     width   : 24px;
     height  : 24px;
-    overflow: hidden;
   }
 }
