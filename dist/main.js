@@ -204,10 +204,14 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
       $element.addClass('selected-button');
       $scope.$watch($scope.vm.isSelected, function() {
         $element.removeClass('checked');
-        $element.removeClass('action');
+        if (typeof attrs.selectable === 'string') {
+          $element.removeClass(attrs.selectable);
+        }
         if ($scope.vm.isSelected()) {
           $element.addClass('checked');
-          return $element.addClass('action');
+          if (typeof attrs.selectable === 'string') {
+            return $element.addClass(attrs.selectable);
+          }
         }
       });
       return $element.bind('click', function() {
