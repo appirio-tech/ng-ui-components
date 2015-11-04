@@ -10,6 +10,6 @@ checkbox {
   .icon, button {
     width   : 24px;
     height  : 24px;
-    overflow: hidden;
+    outline : none; /* fixing jumping issues on webkit */
   }
 }
