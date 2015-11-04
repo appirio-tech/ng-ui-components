@@ -2,6 +2,6 @@
   button.clean(ng-class="{'checked': ngModel}" ng-click="vm.toggle()" type="button")
     .icon.plus.hollow(ng-hide="ngModel")
 
-    img.icon.check-solid(src="/images/icon-check-solid.svg" ng-show="ngModel")
+    .icon.checkmark.active(ng-show="ngModel")
 
   label(ng-if="label" ng-click="vm.toggle()") {{ label }}
