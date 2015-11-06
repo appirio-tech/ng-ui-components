@@ -459,7 +459,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
         $element.removeClass(classToToggle);
       }
       $element.css('max-height', $element.height() + 'px');
-      if ($element.attr('retain-class')) {
+      if ($element.attr('retain-class') === 'true') {
         if (classToToggle) {
           $element.addClass(classToToggle);
         }
