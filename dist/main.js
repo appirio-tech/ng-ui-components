@@ -459,11 +459,13 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
         $element.removeClass(classToToggle);
       }
       $element.css('max-height', $element.height() + 'px');
-      if (classToToggle) {
-        $element.addClass(classToToggle);
-      }
-      if (childrenWithClass) {
-        return childrenWithClass.addClass(classToToggle);
+      if ($element.attr('retain-class')) {
+        if (classToToggle) {
+          $element.addClass(classToToggle);
+        }
+        if (childrenWithClass) {
+          return childrenWithClass.addClass(classToToggle);
+        }
       }
     };
     $($window).bind('resize', function() {
@@ -484,7 +486,10 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     return {
       restrict: 'A',
       link: link,
-      priority: -1
+      priority: -1,
+      scope: {
+        retainClass: '@retainClass'
+      }
     };
   };
 
