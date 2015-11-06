@@ -18,7 +18,7 @@ dir = ($window) ->
 
     $element.css 'max-height', $element.height() + 'px'
 
-    if $element.attr('retain-class') == true
+    if $element.attr('retain-class') == 'true'
       $element.addClass classToToggle if classToToggle
       childrenWithClass.addClass classToToggle if childrenWithClass
 
