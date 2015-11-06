@@ -18,8 +18,9 @@ dir = ($window) ->
 
     $element.css 'max-height', $element.height() + 'px'
 
-    $element.addClass classToToggle if classToToggle
-    childrenWithClass.addClass classToToggle if childrenWithClass
+    if $element.attr 'retain-class'
+      $element.addClass classToToggle if classToToggle
+      childrenWithClass.addClass classToToggle if childrenWithClass
 
   $($window).bind 'resize', ->
     for element in elements
@@ -34,6 +35,8 @@ dir = ($window) ->
   restrict: 'A'
   link    : link
   priority: -1
+  scope:
+    retainClass: '@retainClass'
 
 dir.$inject = ['$window']
 
