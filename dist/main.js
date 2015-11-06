@@ -438,6 +438,57 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
 
 (function() {
   'use strict';
+  var dir;
+
+  dir = function($window) {
+    var elements, link, lockHeight;
+    elements = [];
+    lockHeight = function($element) {
+      var attr, classToToggle;
+      attr = $element.attr('lock-height');
+      if (typeof attr === 'string') {
+        classToToggle = attr;
+      }
+      $element.css('height', 'auto');
+      $element.css('max-height', 'none');
+      if (classToToggle) {
+        $element.removeClass(classToToggle);
+      }
+      $element.css('max-height', $element.height() + 'px');
+      if (classToToggle) {
+        return $element.addClass(classToToggle);
+      }
+    };
+    $($window).bind('resize', function() {
+      var element, i, len, results;
+      results = [];
+      for (i = 0, len = elements.length; i < len; i++) {
+        element = elements[i];
+        results.push(lockHeight(element));
+      }
+      return results;
+    });
+    link = function(scope, element, attrs) {
+      elements.push($(element[0]));
+      return element.ready(function() {
+        return lockHeight($(element[0]));
+      });
+    };
+    return {
+      restrict: 'A',
+      link: link,
+      priority: -1
+    };
+  };
+
+  dir.$inject = ['$window'];
+
+  angular.module('appirio-tech-ng-ui-components').directive('lockHeight', dir);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var AvatarController;
 
   AvatarController = function($scope) {
