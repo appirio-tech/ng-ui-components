@@ -444,7 +444,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
     var elements, link, lockHeight;
     elements = [];
     lockHeight = function($element) {
-      var attr, classToToggle;
+      var attr, childrenWithClass, classToToggle;
       attr = $element.attr('lock-height');
       if (typeof attr === 'string') {
         classToToggle = attr;
@@ -452,11 +452,18 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
       $element.css('height', 'auto');
       $element.css('max-height', 'none');
       if (classToToggle) {
+        childrenWithClass = $element.find('.' + classToToggle);
+        childrenWithClass.removeClass(classToToggle);
+      }
+      if (classToToggle) {
         $element.removeClass(classToToggle);
       }
       $element.css('max-height', $element.height() + 'px');
       if (classToToggle) {
-        return $element.addClass(classToToggle);
+        $element.addClass(classToToggle);
+      }
+      if (childrenWithClass) {
+        return childrenWithClass.addClass(classToToggle);
       }
     };
     $($window).bind('resize', function() {
