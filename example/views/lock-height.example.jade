@@ -1,0 +1,7 @@
+button.action(ng-click="vm.show = !vm.show") show? {{ vm.show }}
+
+div(flush-height="lock" style="background-color:black; padding: 50px;").flex.column
+  div.lock-height.flex-grow(ng-class="{ 'no-height': !vm.show }" lock-height="no-height" style="background-color:grey; overflow:auto; font-size:36px;")
+    ul
+      li(ng-repeat="n in [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] track by $index") Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+

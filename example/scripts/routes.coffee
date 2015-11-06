@@ -60,6 +60,11 @@ config = ($stateProvider) ->
     url         : '/fitted-width'
     templateUrl : 'views/fitted-width.example.html'
 
+  states['lock-height'] =
+    url         : '/lock-height'
+    templateUrl : 'views/lock-height.example.html'
+    controller  : 'LockHeightExampleController as vm'
+
   for key, state of states
     $stateProvider.state key, state
 
