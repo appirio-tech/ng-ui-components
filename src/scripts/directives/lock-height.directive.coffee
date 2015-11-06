@@ -10,11 +10,16 @@ dir = ($window) ->
     $element.css 'height', 'auto'
     $element.css 'max-height', 'none'
 
+    if classToToggle
+      childrenWithClass = $element.find('.' + classToToggle)
+      childrenWithClass.removeClass classToToggle
+
     $element.removeClass classToToggle if classToToggle
 
     $element.css 'max-height', $element.height() + 'px'
 
     $element.addClass classToToggle if classToToggle
+    childrenWithClass.addClass classToToggle if childrenWithClass
 
   $($window).bind 'resize', ->
     for element in elements
