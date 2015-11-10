@@ -15,7 +15,7 @@ $templateCache.put("views/loader.directive.html","<div class=\"container\"><div 
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/selectable.directive.html","<div ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</div><div ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</div><div ng-show=\"label\">{{ label }}</div><div class=\"icon-container\"><div class=\"icon checkmark-white smallest\"></div></div>");
 $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\'checked\': vm.isSelected(), \'action\': vm.isSelected()}\" ng-click=\"vm.toggle()\" type=\"button\"><p ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</p><p ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</p><p ng-show=\"label\">{{ label }}</p><div class=\"icon-container\"><div class=\"icon checkmark-white smallest\"></div></div></button>");
-$templateCache.put("views/simple-countdown.directive.html","<span>{{vm.timeRemaining}}</span>");}]);
+$templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemaining}} left</p>");}]);
 (function() {
   'use strict';
   var directive;
