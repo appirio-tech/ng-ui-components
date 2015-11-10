@@ -12,6 +12,10 @@ config = ($stateProvider) ->
     url         : '/countdown'
     templateUrl : 'views/countdown.example.html'
 
+  states['simple-countdown'] =
+    url         : '/simple-countdown'
+    templateUrl : 'views/simple-countdown.example.html'
+
   states['loader'] =
     url         : '/loader'
     templateUrl : 'views/loader.example.html'
