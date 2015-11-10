@@ -697,8 +697,11 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
   var filter;
 
   filter = function() {
-    return function(createdAt) {
-      return moment(createdAt).fromNow();
+    return function(createdAt, hideSuffix) {
+      if (hideSuffix == null) {
+        hideSuffix = false;
+      }
+      return moment(createdAt).fromNow(hideSuffix);
     };
   };
 
