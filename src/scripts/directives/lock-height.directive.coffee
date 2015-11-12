@@ -6,7 +6,7 @@ dir = ($window) ->
   lockHeight = ($element) ->
     attr          = $element.attr 'lock-height'
     classToToggle = attr if attr != 'lock-height'
-    ignoreContent = $element.attr('ignore-content') == 'true'
+    ignoreContent = $element.attr('ignore-content').length
 
     $element.css 'height', 'auto'
     $element.css 'max-height', 'none'
