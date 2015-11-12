@@ -465,13 +465,18 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
     var elements, link, lockHeight;
     elements = [];
     lockHeight = function($element) {
-      var attr, childrenWithClass, classToToggle;
+      var attr, childrenWithClass, classToToggle, ignoreContent;
       attr = $element.attr('lock-height');
-      if (typeof attr === 'string') {
+      if (attr !== 'lock-height') {
         classToToggle = attr;
       }
+      ignoreContent = $element.attr('ignore-content') === 'true';
       $element.css('height', 'auto');
       $element.css('max-height', 'none');
+      $element.addClass('lock-height');
+      if (ignoreContent) {
+        $element.addClass('ignore-content');
+      }
       if (classToToggle) {
         childrenWithClass = $element.find('.' + classToToggle);
         childrenWithClass.removeClass(classToToggle);
@@ -485,8 +490,11 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
           $element.addClass(classToToggle);
         }
         if (childrenWithClass) {
-          return childrenWithClass.addClass(classToToggle);
+          childrenWithClass.addClass(classToToggle);
         }
+      }
+      if (ignoreContent) {
+        return $element.removeClass('ignore-content');
       }
     };
     $($window).bind('resize', function() {
@@ -509,7 +517,8 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
       link: link,
       priority: -1,
       scope: {
-        retainClass: '@retainClass'
+        retainClass: '@',
+        ignoreContent: '@'
       }
     };
   };
