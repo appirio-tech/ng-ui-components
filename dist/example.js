@@ -182,7 +182,7 @@
 angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/avatar.example.html","<avatar avatar-url=\"http://www.topcoder.com/i/m/cardiboy_big.jpg\"></avatar>");
 $templateCache.put("views/checkbox.example.html","<checkbox ng-model=\"vm.value\" label=\"Show me the money\"></checkbox><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");
 $templateCache.put("views/countdown.example.html","<countdown end=\"2015-08-013 09:30:26.123+07:00\"></countdown>");
-$templateCache.put("views/filters.example.html","<time>{{ \"1995-12-25T08:00:00.000Z\" | timeLapse }}</time>");
+$templateCache.put("views/filters.example.html","<time>{{ \"1995-12-25T08:00:00.000Z\" | timeLapse }}</time><div><p>{{1 | ordinalNumber}}</p></div>");
 $templateCache.put("views/fitted-width.example.html","<h1>Fitted Width</h1><ul class=\"flex wrap fitted-width\"><li ng-repeat=\"n in [42, 42, 43, 43] track by $index\" fitted-width=\"fitted-width\">{{ $index }}</li></ul><ul fitted-width=\"fitted-width\" class=\"flex wrap fitted-width\"><li>1</li><li>2</li><li>3</li><li>4</li></ul>");
 $templateCache.put("views/flush-height.example.html","<div flush-height=\"flush-height\" style=\"background-color:grey\">Flush Height</div>");
 $templateCache.put("views/focus-on-click.example.html","<button type=\"button\" focus-on-click=\"focus-on-click\" class=\"focus-on-click\">should have red border when focused</button>");

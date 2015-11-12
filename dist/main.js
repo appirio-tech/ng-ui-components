@@ -708,3 +708,23 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
   angular.module('appirio-tech-ng-ui-components').filter('timeLapse', filter);
 
 }).call(this);
+
+(function() {
+  'use strict';
+  var filter;
+
+  filter = function() {
+    return function(number) {
+      var ordinalMap;
+      ordinalMap = {
+        1: '1st',
+        2: '2nd',
+        3: '3rd'
+      };
+      return ordinalMap[number];
+    };
+  };
+
+  angular.module('appirio-tech-ng-ui-components').filter('ordinalNumber', filter);
+
+}).call(this);
