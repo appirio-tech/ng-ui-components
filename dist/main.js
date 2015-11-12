@@ -470,7 +470,7 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
       if (attr !== 'lock-height') {
         classToToggle = attr;
       }
-      ignoreContent = $element.attr('ignore-content') === 'true';
+      ignoreContent = $element.attr('ignore-content').length;
       $element.css('height', 'auto');
       $element.css('max-height', 'none');
       $element.addClass('lock-height');
