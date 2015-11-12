@@ -5,10 +5,13 @@ dir = ($window) ->
 
   lockHeight = ($element) ->
     attr          = $element.attr 'lock-height'
-    classToToggle = attr if typeof attr == 'string'
+    classToToggle = attr if attr != 'lock-height'
+    ignoreContent = $element.attr('ignore-content').length
 
     $element.css 'height', 'auto'
     $element.css 'max-height', 'none'
+    $element.addClass 'lock-height'
+    $element.addClass 'ignore-content' if ignoreContent
 
     if classToToggle
       childrenWithClass = $element.find('.' + classToToggle)
@@ -21,6 +24,8 @@ dir = ($window) ->
     if $element.attr('retain-class') == 'true'
       $element.addClass classToToggle if classToToggle
       childrenWithClass.addClass classToToggle if childrenWithClass
+
+    $element.removeClass 'ignore-content' if ignoreContent
 
   $($window).bind 'resize', ->
     for element in elements
@@ -36,7 +41,8 @@ dir = ($window) ->
   link    : link
   priority: -1
   scope:
-    retainClass: '@retainClass'
+    retainClass: '@'
+    ignoreContent: '@'
 
 dir.$inject = ['$window']
 
