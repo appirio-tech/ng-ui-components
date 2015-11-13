@@ -1,0 +1,36 @@
+@import "work-includes";
+
+.tooltip {
+  position        : absolute;
+  top             : 0;
+  left            : 100%;
+  text-align      : left;
+  width           : 260px;
+  margin-left     : 20px;
+  background-color: $white;
+  padding         : 20px;
+
+  .arrow {
+    width     : 10px;
+    overflow  : hidden;
+    position  : absolute;
+    top       : 0px;
+    left      : -15px;
+    width     : 15px;
+    height    : 40px;
+    text-align: center;
+
+    &:before {
+      @include transform(rotate(45deg));
+      @include elevated;
+
+      content         : "";
+      display         : inline-block;
+      background-color: $white;
+      width           : 20px;
+      height          : 20px;
+      margin-left     : 8px;
+      margin-top      : 8px;
+    }
+  }
+}

@@ -69,6 +69,10 @@ config = ($stateProvider) ->
     templateUrl : 'views/lock-height.example.html'
     controller  : 'LockHeightExampleController as vm'
 
+  states['tooltip'] =
+    url         : '/tooltip'
+    templateUrl : 'views/tooltip.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 

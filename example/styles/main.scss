@@ -56,3 +56,18 @@ body > .nav {
 .no-height {
   max-height: 0 !important;
 }
+
+.username {
+  width: 300px;
+  position: relative;
+
+  .tooltip {
+    display: none;
+  }
+
+  input {
+    &:focus + .tooltip {
+      display: block;
+    }
+  }
+}
