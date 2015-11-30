@@ -33,6 +33,11 @@ modal {
     padding         : $spacing-small;
     background-color: white;
     z-index         : 1000;
+
+    .icon {
+      width: 25px;
+      height: 25px;
+    }
   }
 }
 
