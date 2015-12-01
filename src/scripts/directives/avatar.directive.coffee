@@ -3,8 +3,6 @@
 directive = ->
   restrict    : 'E'
   templateUrl : 'views/avatar.directive.html'
-  controller  : 'AvatarController'
-  controllerAs: 'vm'
   scope       :
     avatarUrl: '@avatarUrl'
 
