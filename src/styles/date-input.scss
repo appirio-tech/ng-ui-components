@@ -1,0 +1,15 @@
+@import "work-includes";
+
+date-input {
+  display: block;
+
+  input {
+    width: 136px;
+  }
+
+  .icon {
+    width      : 20px;
+    height     : 20px;
+    margin-left: 10px;
+  }
+}
