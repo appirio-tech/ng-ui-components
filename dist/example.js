@@ -85,6 +85,11 @@
       url: '/tooltip',
       templateUrl: 'views/tooltip.example.html'
     };
+    states['date-input'] = {
+      url: '/date-input',
+      controller: 'DateInputExampleController as vm',
+      templateUrl: 'views/date-input.example.html'
+    };
     results = [];
     for (key in states) {
       state = states[key];
@@ -183,9 +188,30 @@
 
 }).call(this);
 
+(function() {
+  'use strict';
+  var DateInputExampleController;
+
+  DateInputExampleController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.date = '2015-12-01';
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  DateInputExampleController.$inject = ['$scope'];
+
+  angular.module('example').controller('DateInputExampleController', DateInputExampleController);
+
+}).call(this);
+
 angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/avatar.example.html","<avatar avatar-url=\"http://www.topcoder.com/i/m/cardiboy_big.jpg\"></avatar>");
 $templateCache.put("views/checkbox.example.html","<checkbox ng-model=\"vm.value\" label=\"Show me the money\"></checkbox><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");
 $templateCache.put("views/countdown.example.html","<countdown end=\"2015-08-013 09:30:26.123+07:00\"></countdown>");
+$templateCache.put("views/date-input.example.html","{{ vm.date }}<date-input date=\"vm.date\"></date-input>");
 $templateCache.put("views/filters.example.html","<time>{{ \"1995-12-25T08:00:00.000Z\" | timeLapse }}</time><div><p>{{1 | ordinalNumber}}</p></div>");
 $templateCache.put("views/fitted-width.example.html","<h1>Fitted Width</h1><ul class=\"flex wrap fitted-width\"><li ng-repeat=\"n in [42, 42, 43, 43] track by $index\" fitted-width=\"fitted-width\">{{ $index }}</li></ul><ul fitted-width=\"fitted-width\" class=\"flex wrap fitted-width\"><li>1</li><li>2</li><li>3</li><li>4</li></ul>");
 $templateCache.put("views/flush-height.example.html","<div flush-height=\"flush-height\" style=\"background-color:grey\">Flush Height</div>");
