@@ -50,16 +50,6 @@ dir = ($window, $timeout) ->
 
           timeoutSet = true
 
-#   var hasRegistered = false;
-# $scope.$watch(function() {
-#   if (hasRegistered) return;
-#   hasRegistered = true;
-#   $scope.$$postDigest(function() {
-#     hasRegistered = false;
-#     fn();
-#   });
-# });
-
   restrict: 'A'
   link    : link
   priority: -1
