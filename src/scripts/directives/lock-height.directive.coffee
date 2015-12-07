@@ -1,6 +1,6 @@
 'use strict';
 
-dir = ($window) ->
+dir = ($window, $timeout) ->
   elements = []
 
   lockHeight = ($element) ->
@@ -37,8 +37,28 @@ dir = ($window) ->
     element.ready ->
       lockHeight $(element[0])
 
+      timeoutSet = false
+
       scope.$watch ->
-        lockHeight $(element[0])
+        unless timeoutSet
+          callback = ->
+            timeoutSet = false
+
+            lockHeight $(element[0])
+
+          $timeout callback, 0, false
+
+          timeoutSet = true
+
+#   var hasRegistered = false;
+# $scope.$watch(function() {
+#   if (hasRegistered) return;
+#   hasRegistered = true;
+#   $scope.$$postDigest(function() {
+#     hasRegistered = false;
+#     fn();
+#   });
+# });
 
   restrict: 'A'
   link    : link
@@ -47,7 +67,7 @@ dir = ($window) ->
     retainClass: '@'
     ignoreContent: '@'
 
-dir.$inject = ['$window']
+dir.$inject = ['$window', '$timeout']
 
 angular.module('appirio-tech-ng-ui-components').directive 'lockHeight', dir
 
