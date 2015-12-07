@@ -508,7 +508,10 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
     link = function(scope, element, attrs) {
       elements.push($(element[0]));
       return element.ready(function() {
-        return lockHeight($(element[0]));
+        lockHeight($(element[0]));
+        return scope.$watch(function() {
+          return lockHeight($(element[0]));
+        });
       });
     };
     return {
