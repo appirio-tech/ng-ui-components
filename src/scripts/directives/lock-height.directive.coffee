@@ -37,6 +37,9 @@ dir = ($window) ->
     element.ready ->
       lockHeight $(element[0])
 
+      scope.$watch ->
+        lockHeight $(element[0])
+
   restrict: 'A'
   link    : link
   priority: -1
