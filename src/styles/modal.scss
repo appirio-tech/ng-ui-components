@@ -28,9 +28,8 @@ modal {
 
   .close {
     position        : absolute;
-    right           : $spacing;
-    top             : $spacing;
-    padding         : $spacing-small;
+    right           : 30px;
+    top             : 30px;
     background-color: white;
     z-index         : 1000;
 
