@@ -78,6 +78,11 @@ config = ($stateProvider) ->
     controller  : 'DateInputExampleController as vm'
     templateUrl : 'views/date-input.example.html'
 
+  states['image-viewer'] =
+    url         : '/image-viewer/:id'
+    controller  : 'ImageViewerExampleController as vm'
+    templateUrl : 'views/image-viewer.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 
