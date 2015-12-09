@@ -12,6 +12,7 @@ angular.module("appirio-tech-ng-ui-components").run(["$templateCache", function(
 $templateCache.put("views/checkbox.directive.html","<div class=\"flex middle\"><button ng-class=\"{\'checked\': ngModel}\" ng-click=\"vm.toggle()\" type=\"button\" class=\"clean\"><div ng-hide=\"ngModel\" class=\"icon plus hollow\"></div><div ng-show=\"ngModel\" class=\"icon checkmark active\"></div></button><label ng-if=\"label\" ng-click=\"vm.toggle()\">{{ label }}</label></div>");
 $templateCache.put("views/countdown.directive.html","<ul class=\"countdown\"><li ng-if=\"vm.days &gt; 0\"><span class=\"value\">{{ vm.days }}</span><span class=\"unit\">day<span ng-if=\"vm.days &gt; 1\">s</span></span></li><li ng-if=\"vm.hours &gt; 0 || vm.days &gt; 0\"><span class=\"value\">{{ vm.hours }}</span><span class=\"unit\">hr<span ng-if=\"vm.hours &gt; 1\">s</span></span></li><li ng-if=\"vm.minutes &gt; 0 || vm.hours &gt; 0 || vm.days &gt; 0\"><span class=\"value\">{{ vm.minutes }}</span><span class=\"unit\">min<span ng-if=\"vm.minutes &gt; 1\">s</span></span></li><li><span class=\"value\">{{ vm.seconds }}</span><span class=\"unit\">sec<span ng-if=\"vm.seconds &gt; 1\">s</span></span></li></ul>");
 $templateCache.put("views/date-input.directive.html","<div class=\"flex middle\"><input type=\"text\" ng-model=\"date\" placeholder=\"{{ placeHolder }}\"/><button class=\"clean\"><div class=\"icon warning\"></div></button></div>");
+$templateCache.put("views/image-viewer.directive.html","<main class=\"flex column middle light-bg\"><div class=\"content flex flex-grow\"><div class=\"slideshow flex column flex-grow\"><div class=\"preview flex center flex-grow flex-shrink\"><div class=\"previous flex flex-grow\"><a ng-if=\"vm.prevFile\" ng-click=\"vm.viewPrevious()\" class=\"arrow-previous\"><button class=\"clean icon arrow\"></button></a></div><div class=\"image flex column center\"><div class=\"img-container\"><p ng-if=\"vm.file.name\" class=\"file-name\">{{ vm.file.name }}</p><p ng-if=\"vm.file.caption\" class=\"file-caption\">{{ vm.file.caption }}</p><img ng-src=\"{{ vm.file.url }}\"/></div></div><div class=\"next flex flex-grow\"><a ng-if=\"vm.nextFile\" ng-click=\"vm.viewNext()\" class=\"arrow-next\"><button class=\"clean icon arrow right\"></button></a></div></div><ul class=\"thumbnails\"><li ng-repeat=\"file in vm.files\" ng-class=\"{ elevated: !vm.isCurrent(file) }\" class=\"thumbnail\"><a href=\"{{ file.detailUrl }}\"><img ng-src=\"{{ file.url }}\"/><div ng-if=\"file.unreadMessages &gt; 0 &amp;&amp; vm.showNotifications\" class=\"notification absolute\">{{ file.unreadMessages }}</div></a></li></ul></div></div></main>");
 $templateCache.put("views/loader.directive.html","<div class=\"container\"><div class=\"loader\"></div></div>");
 $templateCache.put("views/modal.directive.html","");
 $templateCache.put("views/selectable.directive.html","<div ng-show=\"!label &amp;&amp; !vm.isSelected()\">Select</div><div ng-show=\"!label &amp;&amp; vm.isSelected()\">Selected</div><div ng-show=\"label\">{{ label }}</div><div class=\"icon-container\"><div class=\"icon checkmark-white smallest\"></div></div>");
@@ -551,6 +552,27 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
 
 (function() {
   'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      controller: 'ImageViewerController as vm',
+      templateUrl: 'views/image-viewer.directive.html',
+      scope: {
+        files: '=',
+        startingFile: '=',
+        showNotifications: '@'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-ui-components').directive('imageSlideViewer', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var CountdownController;
 
   CountdownController = function($scope) {
@@ -718,6 +740,59 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
   DateInputController.$inject = ['$scope'];
 
   angular.module('appirio-tech-ng-ui-components').controller('DateInputController', DateInputController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var ImageViewerController;
+
+  ImageViewerController = function($scope) {
+    var activate, startingFile, updateFiles, vm;
+    vm = this;
+    vm.files = $scope.files;
+    vm.showNotifications = $scope.showNotifications;
+    startingFile = $scope.startingFile;
+    vm.prevFile = null;
+    vm.nextFile = null;
+    updateFiles = function() {
+      if (vm.currentIndex + 1 < vm.files.length) {
+        vm.nextFile = true;
+      } else {
+        vm.nextFile = null;
+      }
+      if (vm.currentIndex - 1 >= 0) {
+        return vm.prevFile = true;
+      } else {
+        return vm.prevFile = null;
+      }
+    };
+    activate = function() {
+      vm.file = startingFile;
+      vm.currentIndex = vm.files.indexOf(vm.file);
+      vm.nextFile = vm.currentIndex + 1 < vm.files.length;
+      return vm.prevFile = vm.currentIndex - 1 >= 0;
+    };
+    vm.viewNext = function() {
+      vm.file = vm.files[vm.currentIndex + 1];
+      vm.currentIndex = vm.files.indexOf(vm.file);
+      return updateFiles();
+    };
+    vm.viewPrevious = function() {
+      vm.file = vm.files[vm.currentIndex - 1];
+      vm.currentIndex = vm.files.indexOf(vm.file);
+      return updateFiles();
+    };
+    vm.isCurrent = function(file) {
+      return vm.files.indexOf(file === vm.currentIndex);
+    };
+    activate();
+    return vm;
+  };
+
+  ImageViewerController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-ui-components').controller('ImageViewerController', ImageViewerController);
 
 }).call(this);
 
