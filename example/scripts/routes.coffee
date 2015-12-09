@@ -78,6 +78,10 @@ config = ($stateProvider) ->
     controller  : 'DateInputExampleController as vm'
     templateUrl : 'views/date-input.example.html'
 
+  states['dropdown'] =
+    url         : '/dropdown'
+    templateUrl : 'views/dropdown.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 
