@@ -6,9 +6,7 @@ directive = ->
   templateUrl: 'views/image-viewer.directive.html'
   scope:
     files:           '='
-    startingId:      '@'
-    userAvatar:      '@'
-    userHandle:      '@'
-    commentsAllowed: '@'
+    startingFile:    '='
+    showNotifications: '@'
 
-angular.module('appirio-tech-ng-ui-components').directive 'imageViewer', directive
+angular.module('appirio-tech-ng-ui-components').directive 'imageSlideViewer', directive

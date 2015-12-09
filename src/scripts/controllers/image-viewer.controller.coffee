@@ -1,40 +1,56 @@
 'use strict'
 
-ImageViewerController = ($scope, $state) ->
-  vm                 = this
-  vm.files           = $scope.files
-  vm.userAvatar      = $scope.userAvatar
-  vm.userHandle      = $scope.userHandle
-  startingId         = $scope.startingId
-  vm.commentsAllowed = $scope.commentsAllowed
+ImageViewerController = ($scope) ->
+  vm           = this
+  vm.files     = $scope.files
+  vm.showNotifications = $scope.showNotifications
+  startingFile = $scope.startingFile
+  vm.prevFile = null
+  vm.nextFile = null
+
+  updateFiles = ->
+    if vm.currentIndex + 1 < vm.files.length
+      vm.nextFile = true
+    else
+      vm.nextFile = null
+
+    if vm.currentIndex - 1 >= 0
+      vm.prevFile = true
+    else
+      vm.prevFile = null
+
 
   activate =  ->
-    vm.file       = vm.files.filter((file) -> file.id == startingId || file.fileId == startingId)[0]
-    vm.file.isCurrent = true
+    vm.file       = startingFile
 
-    vm.files.forEach (file) ->
-      if file.id
-        file.detailUrl = $state.href 'image-viewer',
-          id       : file.id
-      else if file.fileId
-        file.detailUrl = $state.href 'image-viewer',
-          id       : file.fileId
+    vm.currentIndex = vm.files.indexOf vm.file
 
-    currentIndex = vm.files.indexOf(vm.file)
+    vm.nextFile = vm.currentIndex + 1 < vm.files.length
 
-    if currentIndex > 0
-      vm.prevFile = vm.files[currentIndex - 1]
+    vm.prevFile =  vm.currentIndex - 1 >= 0
 
-    if currentIndex + 1 < vm.files.length
-      vm.nextFile = vm.files[currentIndex + 1]
+  vm.viewNext = ->
+    vm.file = vm.files[vm.currentIndex + 1]
 
-  vm.generateProfileUrl = (handle) ->
-    "https://www.topcoder.com/members/#{handle}"
+    vm.currentIndex = vm.files.indexOf vm.file
+
+    updateFiles()
+
+
+  vm.viewPrevious = ->
+    vm.file = vm.files[vm.currentIndex - 1]
+
+    vm.currentIndex = vm.files.indexOf vm.file
+
+    updateFiles()
+
+  vm.isCurrent = (file) ->
+    vm.files.indexOf file == vm.currentIndex
 
   activate()
 
   vm
 
-ImageViewerController.$inject = ['$scope', '$state']
+ImageViewerController.$inject = ['$scope']
 
 angular.module('appirio-tech-ng-ui-components').controller 'ImageViewerController', ImageViewerController
