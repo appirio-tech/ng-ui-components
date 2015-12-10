@@ -7,6 +7,7 @@ dir = ->
   scope:
     avatar : '@'
     handle : '@'
+    title  : '@'
     commentsAllowed : '@'
     downloadAllowed : '@'
     toggleComments: '&'

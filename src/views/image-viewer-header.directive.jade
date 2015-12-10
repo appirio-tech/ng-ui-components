@@ -1,4 +1,4 @@
-main.flex.column.middle.light-bg
+main.flex.column.light-bg
   .header.flex.middle.space-between
     .user.flex.middle
       a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
@@ -15,5 +15,7 @@ main.flex.column.middle.light-bg
 
       button.clean(ng-click="vm.toggleComments()" ng-if="vm.commentsAllowed")
        .icon.bubble
+
+  p.title(ng-if="vm.title") {{vm.title}}
 
   hr
