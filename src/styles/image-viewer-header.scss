@@ -4,6 +4,9 @@ image-viewer-header {
   display: block;
 
   main {
+    width: 100vw;
+    padding: 40px 70px;
+
     > hr {
       height    : 10px;
       width     : 100%;
@@ -18,7 +21,7 @@ image-viewer-header {
         height: 48px;
       }
 
-      .submitter {
+      .user {
         min-width: 240px;
       }
 
