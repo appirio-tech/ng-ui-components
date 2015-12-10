@@ -20,7 +20,8 @@
     "moment": "^2.10.x",
     "zepto": "1.1.x",
     "angular-scroll": "^0.6.x",
-    "react": "~0.14.3"
+    "react": "0.14.x",
+    "ngReact": "~0.2.0"
   },
   "ignore": [
     "**/*",

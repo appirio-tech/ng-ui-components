@@ -27,14 +27,17 @@
 - directives.push('fitted-width')
 - directives.push('lock-height')
 - directives.push('date-input')
+- directives.push('dropdown')
 
 - var controllers = []
-- controllers.push('avatar')
 - controllers.push('countdown')
 - controllers.push('simple-countdown')
 - controllers.push('checkbox')
 - controllers.push('selected-button')
 - controllers.push('date-input')
+
+- var elements = []
+- elements.push('dropdown')
 
 - var filters = ['time-lapse', 'ordinal-number']
 
@@ -49,15 +52,21 @@ each controller in controllers
   - scripts.push('/controllers/' + controller + '.controller')
 end
 
+each element in elements
+  - scripts.push('/elements/' + element + '.element')
+end
+
 each filter in filters
   - scripts.push('/filters/' + filter + '.filter')
 end
 
 - bowers.push('zepto/zepto')
 - bowers.push('react/react')
+- bowers.push('react/react-dom')
 - bowers.push('angular/angular')
 - bowers.push('angular-resource/angular-resource')
 - bowers.push('angular-ui-router/release/angular-ui-router')
+- bowers.push('ngReact/ngReact')
 - bowers.push('moment/moment')
 - bowers.push('angular-scroll/angular-scroll')
 
