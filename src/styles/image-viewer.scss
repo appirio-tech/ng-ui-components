@@ -14,44 +14,6 @@ image-slide-viewer {
       margin-top: 20px;
     }
 
-    .header {
-      width  : 100%;
-
-      avatar {
-        width: 48px;
-        height: 48px;
-      }
-
-      .submitter {
-        min-width: 240px;
-      }
-
-      .icons {
-        text-align: right;
-        margin-left: 30px;
-
-        .icon {
-          width: 20px;
-          height: 20px;
-        }
-
-        .icon.download {
-          width: 19px;
-          height: 23px;
-        }
-
-        > * {
-          margin-left: 15px;
-        }
-      }
-
-      .name {
-        margin-left: 15px;
-        font-size  : 16px;
-        font-weight: 200;
-      }
-    }
-
     .content {
       overflow: hidden;
 

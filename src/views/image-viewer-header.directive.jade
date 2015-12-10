@@ -1,0 +1,19 @@
+main.flex.column.middle.light-bg
+  .header.flex.middle.space-between
+    .submitter.flex.middle
+      a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
+        avatar(avatar-url="{{ vm.avatar }}")
+
+      a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
+        p.name {{ vm.handle }}
+
+
+    .icons
+      button.clean(ng-if="vm.downloadAllowed")
+        a(href="{{ vm.file.url }}" target="_blank")
+          .icon.download
+
+      button.clean(ng-click="vm.toggleComments()" ng-if="vm.commentsAllowed")
+       .icon.bubble
+
+  hr
