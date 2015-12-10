@@ -229,7 +229,7 @@ $templateCache.put("views/fitted-width.example.html","<h1>Fitted Width</h1><ul c
 $templateCache.put("views/flush-height.example.html","<div flush-height=\"flush-height\" style=\"background-color:grey\">Flush Height</div>");
 $templateCache.put("views/focus-on-click.example.html","<button type=\"button\" focus-on-click=\"focus-on-click\" class=\"focus-on-click\">should have red border when focused</button>");
 $templateCache.put("views/full-height.example.html","<div full-height=\"full-height\" style=\"background-color:grey\">Full Height</div>");
-$templateCache.put("views/image-viewer-header.example.html","<image-viewer-header avatar=\"{{vm.avatar}}\" handle=\"{{vm.handle}}\" toggle-comments=\"vm.toggleComments()\" comments-allowed=\"comments-allowed\" download-allowed=\"download-allowed\"></image-viewer-header>");
+$templateCache.put("views/image-viewer-header.example.html","<image-viewer-header avatar=\"{{vm.avatar}}\" handle=\"{{vm.handle}}\" title=\"{{vm.title}}\" toggle-comments=\"vm.toggleComments()\" comments-allowed=\"comments-allowed\" download-allowed=\"download-allowed\"></image-viewer-header>");
 $templateCache.put("views/image-viewer.example.html","<image-slide-viewer files=\"vm.files\" starting-file=\"vm.startingFile\" show-notifications=\"vm.showNotifications\"></image-slide-viewer>");
 $templateCache.put("views/loader.example.html","<loader></loader>");
 $templateCache.put("views/lock-height.example.html","<button ng-click=\"vm.show = !vm.show\" class=\"action\">show? {{ vm.show }}</button><div flush-height=\"lock\" style=\"background-color:black; padding: 50px;\" class=\"flex column\"><div ng-class=\"{ \'no-height\': !vm.show }\" lock-height=\"no-height\" style=\"background-color:grey; overflow:auto; font-size:36px;\" class=\"lock-height flex-grow\"><ul><li ng-repeat=\"n in [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] track by $index\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul></div></div>");
@@ -294,6 +294,7 @@ $templateCache.put("views/tooltip.example.html","<div class=\"username\"><input 
     vm = this;
     vm.avatar = "http://www.topcoder.com/i/m/cardiboy_big.jpg";
     vm.handle = "Darth Vader";
+    vm.title = "Hello World Report";
     vm.toggleComments = function() {
       return alert('comment toggled');
     };
