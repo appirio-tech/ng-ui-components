@@ -8,6 +8,7 @@
 - examples.push('checkbox-example.controller')
 - examples.push('selected-button-example.controller')
 - examples.push('lock-height-example.controller')
+- examples.push('dropdown.example.controller')
 - examples.push('date-input.example')
 - examples.push('example-templates')
 
@@ -37,7 +38,6 @@
 - controllers.push('date-input')
 
 - var elements = []
-- elements.push('dropdown')
 
 - var filters = ['time-lapse', 'ordinal-number']
 
@@ -61,15 +61,17 @@ each filter in filters
 end
 
 - bowers.push('zepto/zepto')
+- bowers.push('classnames/index')
 - bowers.push('react/react')
 - bowers.push('react/react-dom')
+- bowers.push('react-input-autosize/dist/react-input-autosize')
+- bowers.push('react-select/dist/react-select')
 - bowers.push('angular/angular')
 - bowers.push('angular-resource/angular-resource')
 - bowers.push('angular-ui-router/release/angular-ui-router')
 - bowers.push('ngReact/ngReact')
 - bowers.push('moment/moment')
 - bowers.push('angular-scroll/angular-scroll')
-
 
 = "\n"
 // build:js lib.js
