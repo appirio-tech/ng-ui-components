@@ -14,6 +14,9 @@ controller = ($scope) ->
     value: 'BLUE'
   ]
 
+  vm.onChange = (changeTo) ->
+    vm.currentColor = changeTo?.value
+
   activate = ->
     vm
 
