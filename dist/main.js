@@ -564,6 +564,20 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
 
 (function() {
   'use strict';
+  var directive;
+
+  directive = function(reactDirective) {
+    return reactDirective(Select);
+  };
+
+  directive.$inject = ['reactDirective'];
+
+  angular.module('appirio-tech-ng-ui-components').directive('dropdown', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var CountdownController;
 
   CountdownController = function($scope) {

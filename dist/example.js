@@ -2,7 +2,7 @@
   'use strict';
   var dependencies;
 
-  dependencies = ['ui.router', 'ngResource', 'appirio-tech-ng-ui-components'];
+  dependencies = ['react', 'ui.router', 'ngResource', 'appirio-tech-ng-ui-components'];
 
   angular.module('example', dependencies);
 
@@ -89,6 +89,11 @@
       url: '/date-input',
       controller: 'DateInputExampleController as vm',
       templateUrl: 'views/date-input.example.html'
+    };
+    states['dropdown'] = {
+      url: '/dropdown',
+      controller: 'DropdownExampleController as vm',
+      templateUrl: 'views/dropdown.example.html'
     };
     results = [];
     for (key in states) {
@@ -190,6 +195,41 @@
 
 (function() {
   'use strict';
+  var controller;
+
+  controller = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.currentColor = 'RED';
+    vm.colors = [
+      {
+        label: 'Red',
+        value: 'RED'
+      }, {
+        label: 'Green',
+        value: 'GREEN'
+      }, {
+        label: 'Blue',
+        value: 'BLUE'
+      }
+    ];
+    vm.onChange = function(changeTo) {
+      return vm.currentColor = changeTo != null ? changeTo.value : void 0;
+    };
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  controller.$inject = ['$scope'];
+
+  angular.module('example').controller('DropdownExampleController', controller);
+
+}).call(this);
+
+(function() {
+  'use strict';
   var DateInputExampleController;
 
   DateInputExampleController = function($scope) {
@@ -214,6 +254,7 @@ angular.module("example").run(["$templateCache", function($templateCache) {$temp
 $templateCache.put("views/checkbox.example.html","<checkbox ng-model=\"vm.value\" label=\"Show me the money\"></checkbox><hr/><img src=\"http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif\" ng-show=\"vm.value\"/>");
 $templateCache.put("views/countdown.example.html","<countdown end=\"2015-08-013 09:30:26.123+07:00\"></countdown>");
 $templateCache.put("views/date-input.example.html","{{ vm.date }} is valid? {{ vm.isDateValid }}<date-input date=\"vm.date\" is-valid=\"vm.isDateValid\"></date-input><br/><date-input date=\"vm.date2\" place-holder=\"hello world\"></date-input>");
+$templateCache.put("views/dropdown.example.html","{{ vm.currentColor }}<dropdown options=\"vm.colors\" on-change=\"vm.onChange\" value=\"vm.currentColor\"></dropdown>");
 $templateCache.put("views/filters.example.html","<time>{{ \"1995-12-25T08:00:00.000Z\" | timeLapse }}</time><div><p>{{1 | ordinalNumber}}</p></div>");
 $templateCache.put("views/fitted-width.example.html","<h1>Fitted Width</h1><ul class=\"flex wrap fitted-width\"><li ng-repeat=\"n in [42, 42, 43, 43] track by $index\" fitted-width=\"fitted-width\">{{ $index }}</li></ul><ul fitted-width=\"fitted-width\" class=\"flex wrap fitted-width\"><li>1</li><li>2</li><li>3</li><li>4</li></ul>");
 $templateCache.put("views/flush-height.example.html","<div flush-height=\"flush-height\" style=\"background-color:grey\">Flush Height</div>");
