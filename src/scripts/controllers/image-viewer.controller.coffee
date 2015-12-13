@@ -29,6 +29,8 @@ ImageViewerController = ($scope) ->
 
     vm.prevFile =  vm.currentIndex - 1 >= 0
 
+    vm.onFileChange({file: vm.file}) if vm.onFileChange
+
   vm.viewNext = ->
     vm.file = vm.files[vm.currentIndex + 1]
 

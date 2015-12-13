@@ -563,7 +563,7 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
       scope: {
         files: '=',
         startingFile: '=',
-        onFileChange: '=',
+        onFileChange: '&',
         showNotifications: '@'
       }
     };
@@ -800,7 +800,12 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
       vm.file = startingFile;
       vm.currentIndex = vm.files.indexOf(vm.file);
       vm.nextFile = vm.currentIndex + 1 < vm.files.length;
-      return vm.prevFile = vm.currentIndex - 1 >= 0;
+      vm.prevFile = vm.currentIndex - 1 >= 0;
+      if (vm.onFileChange) {
+        return vm.onFileChange({
+          file: vm.file
+        });
+      }
     };
     vm.viewNext = function() {
       vm.file = vm.files[vm.currentIndex + 1];

@@ -7,7 +7,7 @@ directive = ->
   scope:
     files             : '='
     startingFile      : '='
-    onFileChange      : '='
+    onFileChange      : '&'
     showNotifications : '@'
 
 angular.module('appirio-tech-ng-ui-components').directive 'imageSlideViewer', directive
