@@ -1,12 +1,13 @@
 'use strict'
 
 ImageViewerController = ($scope) ->
-  vm           = this
-  vm.files     = $scope.files
+  vm                   = this
+  vm.files             = $scope.files
   vm.showNotifications = $scope.showNotifications
-  startingFile = $scope.startingFile
-  vm.prevFile = null
-  vm.nextFile = null
+  startingFile         = $scope.startingFile
+  vm.onFileChange      = $scope.onFileChange
+  vm.prevFile          = null
+  vm.nextFile          = null
 
   updateFiles = ->
     if vm.currentIndex + 1 < vm.files.length
@@ -18,7 +19,6 @@ ImageViewerController = ($scope) ->
       vm.prevFile = true
     else
       vm.prevFile = null
-
 
   activate =  ->
     vm.file       = startingFile
@@ -36,6 +36,8 @@ ImageViewerController = ($scope) ->
 
     updateFiles()
 
+    vm.onFileChange({file: vm.file}) if vm.onFileChange
+
 
   vm.viewPrevious = ->
     vm.file = vm.files[vm.currentIndex - 1]
@@ -43,6 +45,8 @@ ImageViewerController = ($scope) ->
     vm.currentIndex = vm.files.indexOf vm.file
 
     updateFiles()
+
+    vm.onFileChange({file: vm.file}) if vm.onFileChange
 
   vm.isCurrent = (file) ->
     vm.files.indexOf file == vm.currentIndex
