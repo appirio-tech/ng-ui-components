@@ -88,6 +88,11 @@ config = ($stateProvider) ->
     controller  : 'ImageViewerHeaderExampleController as vm'
     templateUrl : 'views/image-viewer-header.example.html'
 
+  states['dropdown'] =
+    url         : '/dropdown'
+    controller  : 'DropdownExampleController as vm'
+    templateUrl : 'views/dropdown.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 

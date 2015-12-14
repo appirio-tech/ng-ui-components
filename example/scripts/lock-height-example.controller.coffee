@@ -1,8 +1,8 @@
 'use strict'
 
 LockHeightExampleController = ($scope) ->
-  vm      = this
-  vm.show = false
+  vm        = this
+  vm.height = '500px'
 
   activate = ->
     vm

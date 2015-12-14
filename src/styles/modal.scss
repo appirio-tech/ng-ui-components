@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 
 #modal-overlay {
   display         : none;
@@ -23,14 +23,14 @@ modal {
   z-index : 1000;
 
   &.show {
-    @include flex-center(center);
+    @include display(flex);
+    @include justify-content(center);
   }
 
   .close {
     position        : absolute;
-    right           : $spacing;
-    top             : $spacing;
-    padding         : $spacing-small;
+    right           : 20px;
+    top             : 20px;
     background-color: white;
     z-index         : 1000;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-dir = ($window) ->
+dir = ($window, $timeout) ->
   elements = []
 
   lockHeight = ($element) ->
@@ -34,8 +34,21 @@ dir = ($window) ->
   link = (scope, element, attrs) ->
     elements.push $(element[0])
 
-    element.ready ->
+    element.ready -> # allow dom to render
       lockHeight $(element[0])
+
+      timeoutSet = false
+
+      scope.$watch -> # watch for data changes
+        unless timeoutSet # only set it once
+          callback = ->
+            timeoutSet = false
+
+            lockHeight $(element[0])
+
+          $timeout callback, 0, false # run after digest cycle
+
+          timeoutSet = true
 
   restrict: 'A'
   link    : link
@@ -44,7 +57,7 @@ dir = ($window) ->
     retainClass: '@'
     ignoreContent: '@'
 
-dir.$inject = ['$window']
+dir.$inject = ['$window', '$timeout']
 
 angular.module('appirio-tech-ng-ui-components').directive 'lockHeight', dir
 

@@ -1,4 +1,4 @@
-@import "work-styles";
+@import "work/work-styles";
 
 h1 {
   text-align: center;
@@ -12,8 +12,6 @@ h1 {
 }
 
 body > .nav {
-  @include flex-center(flex-start, $spacing);
-
   a {
     color: white;
     margin: 10px;
@@ -22,7 +20,7 @@ body > .nav {
 }
 
 .scrollSection {
-  margin: $margin-biggest;
+  margin: 128px;
 }
 
 #section1 {
@@ -43,7 +41,7 @@ body > .nav {
     max-width: 100px;
     height: 100px;
     background-color: orange;
-    margin: $margin;
+    margin: 30px;
     border: 2px solid red;
     padding: 10px;
   }
