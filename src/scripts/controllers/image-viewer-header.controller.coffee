@@ -1,13 +1,14 @@
 'use strict'
 
 ImageViewerHeaderController = ($scope) ->
-  vm = this
-  vm.avatar = $scope.avatar
-  vm.handle = $scope.handle
-  vm.title = $scope.title
+  vm                 = this
+  vm.avatar          = $scope.avatar
+  vm.handle          = $scope.handle
+  vm.title           = $scope.title
   vm.commentsAllowed = $scope.commentsAllowed
   vm.downloadAllowed = $scope.downloadAllowed
-  vm.toggleComments = $scope.toggleComments
+  vm.toggleComments  = $scope.toggleComments
+  vm.downloadUrl     = $scope.downloadUrl
 
   vm.generateProfileUrl = (handle) ->
     "https://www.topcoder.com/members/#{handle}"

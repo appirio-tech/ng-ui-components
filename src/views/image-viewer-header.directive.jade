@@ -10,7 +10,7 @@ main.flex.column.light-bg
 
     .icons
       button.clean(ng-if="vm.downloadAllowed")
-        a(href="{{ vm.file.url }}" target="_blank")
+        a(href="{{ vm.downloadUrl }}" target="_blank")
           .icon.download
 
       button.clean(ng-click="vm.toggleComments()" ng-if="vm.commentsAllowed")
