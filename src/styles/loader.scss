@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 
 loader {
   position       : absolute;
@@ -11,19 +11,19 @@ loader {
   align-items    : center;
 
   .container {
-    padding         : $spacing-biggest;
+    padding         : 25px;
     // background-color: $primary-color;
     opacity         : .98;
-    border-radius   : $border-radius-biggest;
+    border-radius   : 10px;
   }
 
   .loader {
     width: 50px;
     height: 50px;
-    border-top       : 10px solid $neutral-color-light;
-    border-right     : 10px solid $neutral-color-light;
-    border-bottom    : 10px solid $neutral-color-light;
-    border-left      : 10px solid $neutral-color-lightest ;
+    border-top       : 10px solid $grey-light;
+    border-right     : 10px solid $grey-light;
+    border-bottom    : 10px solid $grey-light;
+    border-left      : 10px solid $grey-lighter ;
     -webkit-transform: translateZ(0);
     -ms-transform    : translateZ(0);
     transform        : translateZ(0);

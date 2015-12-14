@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 
 selected-button {
   display: block;
@@ -18,13 +18,11 @@ selected-button {
     }
 
     .icon-container {
-      @include flex-center(space-around);
-
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      margin-right: $spacing-smallest;
+      position    : absolute;
+      top         : 0;
+      right       : 0;
+      height      : 100%;
+      margin-right: 5px;
     }
   }
 }
