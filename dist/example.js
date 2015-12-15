@@ -90,6 +90,16 @@
       controller: 'DateInputExampleController as vm',
       templateUrl: 'views/date-input.example.html'
     };
+    states['image-viewer'] = {
+      url: '/image-viewer',
+      controller: 'ImageViewerExampleController as vm',
+      templateUrl: 'views/image-viewer.example.html'
+    };
+    states['image-viewer-header'] = {
+      url: '/image-viewer-header',
+      controller: 'ImageViewerHeaderExampleController as vm',
+      templateUrl: 'views/image-viewer-header.example.html'
+    };
     states['dropdown'] = {
       url: '/dropdown',
       controller: 'DropdownExampleController as vm',
@@ -260,6 +270,8 @@ $templateCache.put("views/fitted-width.example.html","<h1>Fitted Width</h1><ul c
 $templateCache.put("views/flush-height.example.html","<div flush-height=flush-height style=background-color:grey>Flush Height</div>");
 $templateCache.put("views/focus-on-click.example.html","<button type=button focus-on-click=focus-on-click class=focus-on-click>should have red border when focused</button>");
 $templateCache.put("views/full-height.example.html","<div full-height=full-height style=background-color:grey>Full Height</div>");
+$templateCache.put("views/image-viewer-header.example.html","<image-viewer-header avatar={{vm.avatar}} handle={{vm.handle}} title={{vm.title}} toggle-comments=vm.toggleComments() comments-allowed=comments-allowed download-allowed=download-allowed></image-viewer-header>");
+$templateCache.put("views/image-viewer.example.html","<modal show=true background-click-close=background-click-close><image-viewer-header></image-viewer-header><image-slide-viewer files=vm.files starting-file=vm.startingFile show-notifications=vm.showNotifications></image-slide-viewer></modal>");
 $templateCache.put("views/loader.example.html","<loader></loader>");
 $templateCache.put("views/lock-height.example.html","<input type=text ng-model=vm.height><div style=\"height: {{ vm.height }}; background-color:green; overflow: hidden; padding:50px\" class=\"flex column\"><div lock-height=no-height style=\"background-color:grey; overflow:auto; font-size:36px;\" class=\"animate lock-height flex-grow\"><ul><li ng-repeat=\"n in [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] track by $index\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul></div></div>");
 $templateCache.put("views/modal.example.html","<button ng-click=\"vm.show = true\">Show</button><modal show=vm.show background-click-close=background-click-close><img src=http://petdogss.com/wp-content/uploads/2015/01/attention-seeking-puppy.jpg></modal>");
@@ -268,3 +280,73 @@ $templateCache.put("views/selectable.example.html","<p>button.widest.biggest(ng-
 $templateCache.put("views/selected-button.example.html","<selected-button ng-model=vm.value></selected-button><hr><selected-button ng-model=vm.value label=\"show me the money\"></selected-button><hr><h2>Show me the money?</h2><selected-button ng-model=vm.value label=yes value=true></selected-button><br><selected-button ng-model=vm.value label=no value=false></selected-button><hr><img src=http://i.perezhilton.com/wp-content/uploads/2013/07/tumblr_m3bwbqnjig1rrgbmqo1_500.gif ng-show=vm.value><h2>Tracking a list</h2><selected-button ng-model=vm.fruits label=apples value=vm.apples></selected-button><br><selected-button ng-model=vm.fruits label=oranges value=vm.oranges></selected-button><br><selected-button ng-model=vm.fruits label=mangos value=vm.mangos></selected-button><br><div class=fruits>{{ vm.fruits }}</div>");
 $templateCache.put("views/simple-countdown.example.html","<simple-countdown end=2015-12-10T19:41:15.354Z></simple-countdown>");
 $templateCache.put("views/tooltip.example.html","<div class=username><input type=text name=username ng-model=vm.username required placeholder=Username class=widest><div class=\"tooltip elevated\"><div class=arrow></div><p>Your username is public, please pick one that is:</p><p>Use letters, numbers, and these special characters: (-_.{}[])</p></div></div>");}]);
+(function() {
+  'use strict';
+  var ImageViewerExampleController;
+
+  ImageViewerExampleController = function($scope, $stateParams) {
+    var activate, vm;
+    vm = this;
+    vm.userHandle = "batman";
+    vm.userAvatar = "http://www.topcoder.com/i/m/cardiboy_big.jpg";
+    vm.showNotifications = false;
+    vm.files = [
+      {
+        fileId: "abc",
+        path: "work/1447877190406-e9c02ed7-00bf-4e52-8c57-4d73fec009ac/9be085da-2013-44e9-8701-507a03c6716e/Screen Shot 2015-12-01 at 1.13.17 PM.png",
+        caption: "this is an image",
+        url: "/images/flower.png"
+      }, {
+        fileId: "def",
+        path: "work/1447877190406-e9c02ed7-00bf-4e52-8c57-4d73fec009ac/cff190d6-c11e-4a42-ab32-9ea37f163334/Screen Shot 2015-12-01 at 1.13.17 PM.png",
+        caption: "this is an image also",
+        url: "/images/flower.png"
+      }, {
+        fileId: "ghi",
+        path: "work/1447877190406-e9c02ed7-00bf-4e52-8c57-4d73fec009ac/88e9df7c-96d2-482f-936d-a5dece0c67bf/Screen Shot 2015-12-01 at 1.01.35 PM.png",
+        caption: "this is a different image",
+        url: "/images/phone.jpg"
+      }, {
+        fileId: "klm",
+        path: "work/1447877190406-e9c02ed7-00bf-4e52-8c57-4d73fec009ac/fe819b7d-2534-4878-994b-35f7b2fec185/Screen Shot 2015-12-01 at 12.35.18 PM.png",
+        caption: "this is another one of the images",
+        url: "/images/turtles-breaking.jpg"
+      }
+    ];
+    vm.startingFile = vm.files[1];
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  ImageViewerExampleController.$inject = ['$scope', '$stateParams'];
+
+  angular.module('example').controller('ImageViewerExampleController', ImageViewerExampleController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var ImageViewerHeaderExampleController;
+
+  ImageViewerHeaderExampleController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.avatar = "http://www.topcoder.com/i/m/cardiboy_big.jpg";
+    vm.handle = "Darth Vader";
+    vm.title = "Hello World Report";
+    vm.toggleComments = function() {
+      return alert('comment toggled');
+    };
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  ImageViewerHeaderExampleController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-ui-components').controller('ImageViewerHeaderExampleController', ImageViewerHeaderExampleController);
+
+}).call(this);
