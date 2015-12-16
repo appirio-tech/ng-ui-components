@@ -54,6 +54,9 @@ config.module =
   ,
     test: /\.scss$/
     loader: ExtractTextPlugin.extract 'style-loader', 'css-loader!sass-loader'
+  ,
+    test: /\.css$/
+    loader: ExtractTextPlugin.extract 'style-loader', 'css-loader'
   ]
 
 config.plugins = [

@@ -1,3 +1,5 @@
+require 'react-select/dist/react-select.css'
+
 require 'zepto/zepto'
 require 'angular/angular'
 require 'angular-resource/angular-resource'

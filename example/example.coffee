@@ -13,32 +13,17 @@ exampleNav = require './nav.jade'
 
 $('#example-nav').html exampleNav()
 
+views = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
+viewPaths = views.keys()
+
 templateCache = ($templateCache) ->
-  views = [
-    'avatar.example'
-    'countdown.example'
-    'simple-countdown.example'
-    'loader.example'
-    'filters.example'
-    'modal.example'
-    'focus-on-click.example'
-    'checkbox.example'
-    'selected-button.example'
-    'selectable.example'
-    'scroll.example'
-    'flush-height.example'
-    'full-height.example'
-    'fitted-width.example'
-    'lock-height.example'
-    'tooltip.example'
-    'date-input.example'
-    'dropdown.example'
-  ]
+  for viewPath in viewPaths
+    viewPathClean = viewPath.split('./').pop()
 
-  for view in views
-    viewSrc = require "./views/#{view}"
+    # TODD: bug if .jade occurs more often than once
+    viewPathCleanHtml = viewPathClean.replace '.jade', '.html'
 
-    $templateCache.put "views/#{view}.html", viewSrc()
+    $templateCache.put "views/#{viewPathCleanHtml}", views(viewPath)()
 
 templateCache.$nject = ['$templateCache']
 
