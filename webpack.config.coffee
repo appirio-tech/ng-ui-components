@@ -9,7 +9,7 @@ config.context = __dirname
 
 config.entry =
   lib    : './example/lib.coffee'
-  main   : './example/main.coffee'
+  main   : './src/main.coffee'
   example: './example/example.coffee'
 
 config.output = filename: '[name].js'

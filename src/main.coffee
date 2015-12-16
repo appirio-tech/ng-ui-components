@@ -1,6 +1,6 @@
-require.context '../src/styles/', true, /^(.*\.(scss$))[^.]*$/igm
+require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
 
-require '../src/scripts/ng-ui-components.module'
+require './scripts/ng-ui-components.module'
 
 
 requireContextFiles = (files) ->
@@ -9,16 +9,16 @@ requireContextFiles = (files) ->
   for path in paths
     files path
 
-directives  = require.context '../src/scripts/directives/', true, /^(.*\.(coffee$))[^.]*$/igm
-controllers = require.context '../src/scripts/controllers/', true, /^(.*\.(coffee$))[^.]*$/igm
-filters     = require.context '../src/scripts/filters/', true, /^(.*\.(coffee$))[^.]*$/igm
+directives  = require.context './scripts/directives/', true, /^(.*\.(coffee$))[^.]*$/igm
+controllers = require.context './scripts/controllers/', true, /^(.*\.(coffee$))[^.]*$/igm
+filters     = require.context './scripts/filters/', true, /^(.*\.(coffee$))[^.]*$/igm
 
 requireContextFiles directives
 requireContextFiles controllers
 requireContextFiles filters
 
 
-views = require.context '../src/views/', true, /^(.*\.(jade$))[^.]*$/igm
+views = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
 viewPaths = views.keys()
 
 templateCache = ($templateCache) ->
