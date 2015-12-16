@@ -10,7 +10,7 @@ dir = ->
     title  : '@'
     commentsAllowed : '@'
     downloadAllowed : '@'
-    downloadUrl     : '@'
+    downloadUrl     : '='
     toggleComments: '&'
 
 
