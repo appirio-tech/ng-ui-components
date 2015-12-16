@@ -19,6 +19,8 @@ button.selected-button {
   .icon-container {
     @include display(flex);
     @include justify-content(space-around);
+    @include align-items(center);
+    @include flex-wrap(wrap);
 
     position    : absolute;
     top         : 0;
