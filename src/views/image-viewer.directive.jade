@@ -20,7 +20,7 @@ main.flex.column.middle.light-bg
 
       ul.thumbnails
         li.thumbnail(ng-repeat="file in vm.files" ng-class="{ elevated: !vm.isCurrent(file) }")
-          a(href="{{ file.detailUrl }}")
+          button.clean(ng-click="vm.selectFile(file)")
             img(ng-src="{{ file.url }}")
 
             .notification.absolute(ng-if="file.unreadMessages > 0 && vm.showNotifications") {{ file.unreadMessages }}

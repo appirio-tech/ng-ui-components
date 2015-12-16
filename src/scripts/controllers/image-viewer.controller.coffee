@@ -50,8 +50,17 @@ ImageViewerController = ($scope) ->
 
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
+  vm.selectFile = (file) ->
+    vm.file = file
+
+    vm.currentIndex = vm.files.indexOf vm.file
+
+    updateFiles()
+
+    vm.onFileChange({file: vm.file}) if vm.onFileChange
+
   vm.isCurrent = (file) ->
-    vm.files.indexOf file == vm.currentIndex
+    (vm.files.indexOf file) == vm.currentIndex
 
   activate()
 
