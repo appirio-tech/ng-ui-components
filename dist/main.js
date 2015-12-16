@@ -601,7 +601,7 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
         title: '@',
         commentsAllowed: '@',
         downloadAllowed: '@',
-        downloadUrl: '@',
+        downloadUrl: '=',
         toggleComments: '&'
       }
     };
