@@ -1,63 +1,22 @@
+require.context '../src/styles/', true, /^(.*\.(scss$))[^.]*$/igm
+
 require '../src/scripts/ng-ui-components.module'
 
-directives = [
-  'avatar'
-  'countdown'
-  'simple-countdown'
-  'loader'
-  'modal'
-  'focus-on-click'
-  'checkbox'
-  'selected-button'
-  'selectable'
-  'scroll'
-  'flush-height'
-  'full-height'
-  'fitted-width'
-  'lock-height'
-  'date-input'
-  'dropdown'
-]
+require.context '../src/scripts/directives/', true, /^(.*\.(coffee$))[^.]*$/igm
+require.context '../src/scripts/controllers/', true, /^(.*\.(coffee$))[^.]*$/igm
+require.context '../src/scripts/filters/', true, /^(.*\.(coffee$))[^.]*$/igm
 
-controllers = [
-  'countdown'
-  'simple-countdown'
-  'checkbox'
-  'selected-button'
-  'date-input'
-]
-
-filters = [
-  'time-lapse'
-  'ordinal-number'
-]
-
-for directive in directives
-  require "../src/scripts/directives/#{directive}.directive"
-
-for controller in controllers
-  require "../src/scripts/controllers/#{controller}.controller"
-
-for filter in filters
-  require "../src/scripts/filters/#{filter}.filter"
+views = require.context '../src/views/', true, /^(.*\.(jade$))[^.]*$/igm
+viewPaths = views.keys()
 
 templateCache = ($templateCache) ->
-  views = [
-    'avatar'
-    'checkbox'
-    'countdown'
-    'date-input'
-    'loader'
-    'modal'
-    'selectable'
-    'selected-button'
-    'simple-countdown'
-  ]
+  for viewPath in viewPaths
+    viewPathClean = viewPath.split('./').pop()
 
-  for view in views
-    viewSrc = require "../src/views/#{view}.directive"
+    # TODD: bug if .jade occurs more often than once
+    viewPathCleanHtml = viewPathClean.replace '.jade', '.html'
 
-    $templateCache.put "views/#{view}.directive.html", viewSrc()
+    $templateCache.put "views/#{viewPathCleanHtml}", views(viewPath)
 
 templateCache.$nject = ['$templateCache']
 
