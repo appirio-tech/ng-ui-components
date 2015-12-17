@@ -2,7 +2,6 @@ require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
 
 require './scripts/ng-ui-components.module'
 
-
 requireContextFiles = (files) ->
   paths = files.keys()
 
@@ -17,8 +16,7 @@ requireContextFiles directives
 requireContextFiles controllers
 requireContextFiles filters
 
-
-views = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
+views     = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
 viewPaths = views.keys()
 
 templateCache = ($templateCache) ->

@@ -10,24 +10,24 @@ config.context = __dirname
 config.entry =
   lib    : './example/lib.coffee'
   main   : './src/main.coffee'
-  example: './example/example.coffee'
+  example: [
+    'webpack-dev-server/client?http://localhost:8080'
+    './example/example.coffee'
+  ]
 
-config.output = filename: '[name].js'
+config.output =
+  path: './lib'
+  filename: '[name].js'
 
 config.devServer =
   contentBase       : './example/'
   historyApiFallback: true
-  hot               : true
-  port              : 9000
   publicPath        : '/assets/'
   noInfo            : false
 
 config.resolve =
   modulesDirectories: ['node_modules', 'bower_components']
   extensions: ['', '.js', '.json', '.coffee', '.jade', '.scss']
-  alias:
-    example: examplePath + '/actions/'
-    # src: srcPath + '/components/'
 
 config.sassLoader =
   includePaths: [
