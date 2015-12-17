@@ -1,5 +1,7 @@
 {
+  "name": "appirio-tech-ng-ui-components",
   "private": true,
+  "main": "./src/main.coffee",
   "engines": {
     "node": ">=0.10.0"
   },
