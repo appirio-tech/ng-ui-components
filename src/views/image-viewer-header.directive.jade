@@ -4,8 +4,11 @@ main.flex.column.light-bg
       a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
         avatar(avatar-url="{{ vm.avatar }}")
 
-      a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
-        p.name {{ vm.handle }}
+      .titles.flex.column.justify
+        a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
+          p.name {{ vm.handle }}
+
+        p.title(ng-if="vm.title") {{vm.title}}
 
     .icons
       button.clean(ng-if="vm.downloadAllowed")
@@ -14,7 +17,5 @@ main.flex.column.light-bg
 
       button.clean(ng-click="vm.toggleComments()" ng-if="vm.commentsAllowed")
        .icon.bubble
-
-  p.title(ng-if="vm.title") {{vm.title}}
 
   hr
