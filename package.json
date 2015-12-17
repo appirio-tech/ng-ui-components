@@ -32,9 +32,16 @@
     "build": "webpack --config webpack.config.js; cp example/index.html dist/"
   },
   "dependencies": {
+    "angular": "^1.4.8",
+    "angular-resource": "^1.4.8",
+    "angular-scroll": "^1.0.0",
+    "angular-ui-router": "^0.2.15",
+    "moment": "^2.10.6",
+    "ngreact": "^0.2.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-input-autosize": "^0.6.6",
-    "react-select": "^0.9.1"
+    "react-select": "^0.9.1",
+    "zepto": "0.0.4"
   }
 }

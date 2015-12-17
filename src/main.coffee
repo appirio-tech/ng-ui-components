@@ -3,12 +3,12 @@ require.context './images/', true, /^(.*\.(svg$))[^.]*$/igm
 
 require 'react-select/dist/react-select.css'
 
-require 'zepto/zepto'
-require 'angular/angular'
-require 'angular-resource/angular-resource'
-require 'angular-ui-router/release/angular-ui-router'
-require 'angular-scroll/angular-scroll'
-require 'ngReact/ngReact'
+require 'zepto/zepto.min.js'
+require 'angular'
+require 'angular-resource'
+require 'angular-ui-router'
+require 'angular-scroll'
+require 'ngReact'
 
 window.moment = require 'moment/moment'
 window.Select = require 'react-select'
