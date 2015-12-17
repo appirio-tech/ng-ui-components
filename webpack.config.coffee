@@ -57,6 +57,9 @@ config.module =
   ,
     test: /\.css$/
     loader: ExtractTextPlugin.extract 'style-loader', 'css-loader'
+  ,
+    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/
+    loader: 'file'
   ]
 
 config.plugins = [

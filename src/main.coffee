@@ -1,4 +1,5 @@
 require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
+require.context './images/', true, /^(.*\.(svg$))[^.]*$/igm
 
 require './scripts/ng-ui-components.module'
 
