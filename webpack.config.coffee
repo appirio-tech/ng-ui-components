@@ -8,7 +8,6 @@ config = {}
 config.context = __dirname
 
 config.entry =
-  lib    : './example/lib.coffee'
   main   : './src/main.coffee'
   example: [
     'webpack-dev-server/client?http://localhost:8080'
