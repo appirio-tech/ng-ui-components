@@ -15,13 +15,12 @@ config.entry =
   ]
 
 config.output =
-  path: './lib'
+  path: './dist'
   filename: '[name].js'
 
 config.devServer =
   contentBase       : './example/'
   historyApiFallback: true
-  publicPath        : '/assets/'
   noInfo            : false
 
 config.resolve =

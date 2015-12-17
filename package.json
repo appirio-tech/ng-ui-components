@@ -24,7 +24,9 @@
     "webpack-dev-server": "^1.10.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server -d --colors"
+    "dev": "webpack-dev-server -d --colors",
+    "clean": "rm -r dist",
+    "build": "webpack --config webpack.config.js; cp example/index.html dist/"
   },
   "dependencies": {
     "react": "^0.14.3",
