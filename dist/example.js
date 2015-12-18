@@ -7753,7 +7753,7 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 /* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var exampleNav, templateCache, viewPaths, views;
+	var controllers, exampleNav, requireContextFiles, templateCache, views;
 
 	__webpack_require__(75);
 
@@ -7761,28 +7761,30 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 
 	__webpack_require__(80);
 
-	__webpack_require__(81);
+	requireContextFiles = function(files) {
+	  var i, len, path, paths, results;
+	  paths = files.keys();
+	  results = [];
+	  for (i = 0, len = paths.length; i < len; i++) {
+	    path = paths[i];
+	    results.push(files(path));
+	  }
+	  return results;
+	};
 
-	__webpack_require__(82);
+	controllers = __webpack_require__(81);
 
-	__webpack_require__(83);
+	requireContextFiles(controllers);
 
-	__webpack_require__(84);
+	exampleNav = __webpack_require__(88);
 
-	__webpack_require__(85);
+	document.getElementById('example-nav').innerHTML = exampleNav();
 
-	__webpack_require__(86);
-
-	exampleNav = __webpack_require__(87);
-
-	$('#example-nav').html(exampleNav());
-
-	views = __webpack_require__(90);
-
-	viewPaths = views.keys();
+	views = __webpack_require__(91);
 
 	templateCache = function($templateCache) {
-	  var i, len, results, viewPath, viewPathClean, viewPathCleanHtml;
+	  var i, len, results, viewPath, viewPathClean, viewPathCleanHtml, viewPaths;
+	  viewPaths = views.keys();
 	  results = [];
 	  for (i = 0, len = viewPaths.length; i < len; i++) {
 	    viewPath = viewPaths[i];
@@ -7814,7 +7816,7 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	'use strict';
 	var dependencies;
 
-	dependencies = ['ui.router', 'ngResource', 'appirio-tech-ng-ui-components'];
+	dependencies = ['ui.router', 'appirio-tech-ng-ui-components'];
 
 	angular.module('example', dependencies);
 
@@ -7924,24 +7926,28 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 
 /***/ },
 /* 81 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-	var ModalExampleController;
-
-	ModalExampleController = function($scope) {
-	  var activate, vm;
-	  vm = this;
-	  vm.show = false;
-	  activate = function() {
-	    return vm;
-	  };
-	  return activate();
+	var map = {
+		"./checkbox-example.controller.coffee": 82,
+		"./date-input.example.controller.coffee": 83,
+		"./dropdown-example.controller.coffee": 84,
+		"./lock-height-example.controller.coffee": 85,
+		"./modal-example.controller.coffee": 86,
+		"./selected-button-example.controller.coffee": 87
 	};
-
-	ModalExampleController.$inject = ['$scope'];
-
-	angular.module('example').controller('ModalExampleController', ModalExampleController);
+	function webpackContext(req) {
+		return __webpack_require__(webpackContextResolve(req));
+	};
+	function webpackContextResolve(req) {
+		return map[req] || (function() { throw new Error("Cannot find module '" + req + "'.") }());
+	};
+	webpackContext.keys = function webpackContextKeys() {
+		return Object.keys(map);
+	};
+	webpackContext.resolve = webpackContextResolve;
+	module.exports = webpackContext;
+	webpackContext.id = 81;
 
 
 /***/ },
@@ -7971,51 +7977,27 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 /***/ function(module, exports) {
 
 	'use strict';
-	var SelectedButtonExampleController;
+	var DateInputExampleController;
 
-	SelectedButtonExampleController = function($scope) {
+	DateInputExampleController = function($scope) {
 	  var activate, vm;
 	  vm = this;
-	  vm.value = void 0;
-	  vm.fruits = [];
-	  vm.apples = 'apples';
-	  vm.oranges = 'oranges';
-	  vm.mangos = 'mangos';
+	  vm.date = '2015-12-01';
+	  vm.isDateValid = true;
+	  vm.date2 = null;
 	  activate = function() {
 	    return vm;
 	  };
 	  return activate();
 	};
 
-	SelectedButtonExampleController.$inject = ['$scope'];
+	DateInputExampleController.$inject = ['$scope'];
 
-	angular.module('example').controller('SelectedButtonExampleController', SelectedButtonExampleController);
+	angular.module('example').controller('DateInputExampleController', DateInputExampleController);
 
 
 /***/ },
 /* 84 */
-/***/ function(module, exports) {
-
-	'use strict';
-	var LockHeightExampleController;
-
-	LockHeightExampleController = function($scope) {
-	  var activate, vm;
-	  vm = this;
-	  vm.height = '500px';
-	  activate = function() {
-	    return vm;
-	  };
-	  return activate();
-	};
-
-	LockHeightExampleController.$inject = ['$scope'];
-
-	angular.module('example').controller('LockHeightExampleController', LockHeightExampleController);
-
-
-/***/ },
-/* 85 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8052,34 +8034,80 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 
 
 /***/ },
-/* 86 */
+/* 85 */
 /***/ function(module, exports) {
 
 	'use strict';
-	var DateInputExampleController;
+	var LockHeightExampleController;
 
-	DateInputExampleController = function($scope) {
+	LockHeightExampleController = function($scope) {
 	  var activate, vm;
 	  vm = this;
-	  vm.date = '2015-12-01';
-	  vm.isDateValid = true;
-	  vm.date2 = null;
+	  vm.height = '500px';
 	  activate = function() {
 	    return vm;
 	  };
 	  return activate();
 	};
 
-	DateInputExampleController.$inject = ['$scope'];
+	LockHeightExampleController.$inject = ['$scope'];
 
-	angular.module('example').controller('DateInputExampleController', DateInputExampleController);
+	angular.module('example').controller('LockHeightExampleController', LockHeightExampleController);
+
+
+/***/ },
+/* 86 */
+/***/ function(module, exports) {
+
+	'use strict';
+	var ModalExampleController;
+
+	ModalExampleController = function($scope) {
+	  var activate, vm;
+	  vm = this;
+	  vm.show = false;
+	  activate = function() {
+	    return vm;
+	  };
+	  return activate();
+	};
+
+	ModalExampleController.$inject = ['$scope'];
+
+	angular.module('example').controller('ModalExampleController', ModalExampleController);
 
 
 /***/ },
 /* 87 */
+/***/ function(module, exports) {
+
+	'use strict';
+	var SelectedButtonExampleController;
+
+	SelectedButtonExampleController = function($scope) {
+	  var activate, vm;
+	  vm = this;
+	  vm.value = void 0;
+	  vm.fruits = [];
+	  vm.apples = 'apples';
+	  vm.oranges = 'oranges';
+	  vm.mangos = 'mangos';
+	  activate = function() {
+	    return vm;
+	  };
+	  return activate();
+	};
+
+	SelectedButtonExampleController.$inject = ['$scope'];
+
+	angular.module('example').controller('SelectedButtonExampleController', SelectedButtonExampleController);
+
+
+/***/ },
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8090,7 +8118,7 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8310,7 +8338,7 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(89).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(90).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -8342,34 +8370,34 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./avatar.example.jade": 91,
-		"./checkbox.example.jade": 92,
-		"./countdown.example.jade": 93,
-		"./date-input.example.jade": 94,
-		"./dropdown.example.jade": 95,
-		"./filters.example.jade": 96,
-		"./fitted-width.example.jade": 97,
-		"./flush-height.example.jade": 98,
-		"./focus-on-click.example.jade": 99,
-		"./full-height.example.jade": 100,
-		"./loader.example.jade": 101,
-		"./lock-height.example.jade": 102,
-		"./modal.example.jade": 103,
-		"./scroll.example.jade": 104,
-		"./selectable.example.jade": 105,
-		"./selected-button.example.jade": 106,
-		"./simple-countdown.example.jade": 107,
-		"./tooltip.example.jade": 108
+		"./avatar.example.jade": 92,
+		"./checkbox.example.jade": 93,
+		"./countdown.example.jade": 94,
+		"./date-input.example.jade": 95,
+		"./dropdown.example.jade": 96,
+		"./filters.example.jade": 97,
+		"./fitted-width.example.jade": 98,
+		"./flush-height.example.jade": 99,
+		"./focus-on-click.example.jade": 100,
+		"./full-height.example.jade": 101,
+		"./loader.example.jade": 102,
+		"./lock-height.example.jade": 103,
+		"./modal.example.jade": 104,
+		"./scroll.example.jade": 105,
+		"./selectable.example.jade": 106,
+		"./selected-button.example.jade": 107,
+		"./simple-countdown.example.jade": 108,
+		"./tooltip.example.jade": 109
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -8382,14 +8410,14 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 90;
+	webpackContext.id = 91;
 
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8400,10 +8428,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8414,10 +8442,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8428,10 +8456,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8442,10 +8470,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8456,10 +8484,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8470,10 +8498,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8484,10 +8512,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8498,10 +8526,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8512,10 +8540,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8526,10 +8554,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8540,10 +8568,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8554,10 +8582,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8568,10 +8596,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8582,10 +8610,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8596,10 +8624,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8610,10 +8638,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];
@@ -8624,10 +8652,10 @@ $templateCache.put("views/tooltip.example.html","<div class=username><input type
 	}
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(88);
+	var jade = __webpack_require__(89);
 
 	module.exports = function template(locals) {
 	var buf = [];

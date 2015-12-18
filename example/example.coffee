@@ -1,22 +1,26 @@
 require './styles/main.scss'
-
 require './scripts/example.module'
 require './scripts/routes'
-require './scripts/modal-example.controller'
-require './scripts/checkbox-example.controller'
-require './scripts/selected-button-example.controller'
-require './scripts/lock-height-example.controller'
-require './scripts/dropdown.example.controller'
-require './scripts/date-input.example'
+
+requireContextFiles = (files) ->
+  paths = files.keys()
+
+  for path in paths
+    files path
+
+controllers = require.context './scripts/controllers/', true, /^(.*\.(coffee$))[^.]*$/igm
+
+requireContextFiles controllers
 
 exampleNav = require './nav.jade'
 
-$('#example-nav').html exampleNav()
+document.getElementById('example-nav').innerHTML = exampleNav()
 
 views = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
-viewPaths = views.keys()
 
 templateCache = ($templateCache) ->
+  viewPaths = views.keys()
+
   for viewPath in viewPaths
     viewPathClean = viewPath.split('./').pop()
 

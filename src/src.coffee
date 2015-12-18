@@ -2,7 +2,6 @@ require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
 require.context './images/', true, /^(.*\.(svg$))[^.]*$/igm
 
 require 'react-select/dist/react-select.css'
-
 require 'zepto/zepto.min.js'
 require 'angular'
 require 'angular-ui-router'
