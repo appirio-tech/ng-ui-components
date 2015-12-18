@@ -2,7 +2,6 @@
 
 dependencies = [
   'ui.router'
-  'ngResource'
   'appirio-tech-ng-ui-components'
 ]
 

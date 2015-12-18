@@ -1,17 +1,10 @@
 language: node_js
 node_js:
-- 0.12.7
+- 5.2.0
 before_install:
-- npm install -g gulp
-- npm install -g bower
 - npm install
-- bower install
 script:
-- gulp clean
-- gulp preprocessors
-- gulp test
-- gulp useref
-- gulp copy-files
+- webpack
 sudo: false
 deploy:
 - provider: s3
