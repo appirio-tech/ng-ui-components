@@ -5,14 +5,12 @@ require 'react-select/dist/react-select.css'
 
 require 'zepto/zepto.min.js'
 require 'angular'
-require 'angular-resource'
 require 'angular-ui-router'
 require 'angular-scroll'
 require 'ngReact'
 
 window.moment = require 'moment/moment'
 window.Select = require 'react-select'
-
 
 require './scripts/ng-ui-components.module'
 

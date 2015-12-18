@@ -7,7 +7,6 @@
     "node": ">=0.10.0"
   },
   "devDependencies": {
-    "appirio-gulp-tasks": "3.x.x",
     "appirio-styles": "0.x.x",
     "bourbon": "^4.2.6",
     "coffee-loader": "0.x.x",
@@ -15,7 +14,6 @@
     "css-loader": "^0.23.0",
     "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.5",
-    "gulp": "^3.8.11",
     "html-webpack-plugin": "~1.6.2",
     "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
@@ -33,7 +31,6 @@
   },
   "dependencies": {
     "angular": "^1.4.8",
-    "angular-resource": "^1.4.8",
     "angular-scroll": "^1.0.0",
     "angular-ui-router": "^0.2.15",
     "moment": "^2.10.6",
