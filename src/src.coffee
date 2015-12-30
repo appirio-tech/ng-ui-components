@@ -1,6 +1,3 @@
-require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
-require.context './images/', true, /^(.*\.(svg$))[^.]*$/igm
-
 require 'react-select/dist/react-select.css'
 require 'zepto/zepto.min.js'
 require 'angular'
@@ -19,10 +16,13 @@ requireContextFiles = (files) ->
   for path in paths
     files path
 
+images      = require.context './images/', true, /^(.*\.(svg$))[^.]*$/igm
+styles      = require.context './styles/', true, /^(.*\.(scss$))[^.]*$/igm
 directives  = require.context './scripts/directives/', true, /^(.*\.(coffee$))[^.]*$/igm
 controllers = require.context './scripts/controllers/', true, /^(.*\.(coffee$))[^.]*$/igm
 filters     = require.context './scripts/filters/', true, /^(.*\.(coffee$))[^.]*$/igm
 
+requireContextFiles styles
 requireContextFiles directives
 requireContextFiles controllers
 requireContextFiles filters
