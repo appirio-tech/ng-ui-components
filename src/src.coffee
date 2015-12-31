@@ -3,7 +3,7 @@ require 'zepto/zepto.min.js'
 require 'angular'
 require 'angular-ui-router'
 require 'angular-scroll'
-require 'ngReact'
+require 'ngreact'
 
 window.moment = require 'moment/moment'
 window.Select = require 'react-select'
