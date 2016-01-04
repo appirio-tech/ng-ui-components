@@ -5,8 +5,8 @@ ctrl = ($scope) ->
   vm.value = false
   vm.label = 'Show me the money'
 
-  vm.onChange = (checked) ->
-    vm.value = checked
+  vm.onChange =  ->
+    vm.value = !vm.value
 
   activate = ->
     vm
