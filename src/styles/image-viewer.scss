@@ -9,10 +9,13 @@ image-slide-viewer {
 
     .content {
       overflow: hidden;
+      text-align: center;
+
+      .file-name, .file-caption {
+        margin-top: 10px;
+      }
 
       .slideshow {
-        text-align: center;
-
         .icon.arrow {
           width: 33px;
           height: 74px;
