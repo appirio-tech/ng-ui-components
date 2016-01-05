@@ -1,6 +1,6 @@
 {
   "name": "appirio-tech-ng-ui-components",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "main": "./src/src.coffee",
   "devDependencies": {
     "appirio-tech-webpack-config": "0.x.x"
