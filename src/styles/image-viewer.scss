@@ -6,14 +6,11 @@ image-slide-viewer {
   main {
     width : 100vw;
     padding: 20px;
+    padding-top: 10px;
 
     .content {
       overflow: hidden;
       text-align: center;
-
-      .file-name, .file-caption {
-        margin-top: 10px;
-      }
 
       .slideshow {
         .icon.arrow {
