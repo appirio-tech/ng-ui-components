@@ -11,6 +11,8 @@ image-slide-viewer {
       overflow: hidden;
 
       .slideshow {
+        text-align: center;
+
         .icon.arrow {
           width: 33px;
           height: 74px;
@@ -63,7 +65,7 @@ image-slide-viewer {
             position: relative;
 
             &.elevated {
-              opacity: 0.6;
+              opacity: 0.4;
             }
           }
 
