@@ -1,9 +1,9 @@
 'use strict'
 
-checkbox = require '../elements/checkbox.element'
+Checkbox = require '../elements/Checkbox/Checkbox.cjsx'
 
 directive = (reactDirective) ->
-  reactDirective checkbox
+  reactDirective Checkbox
 
 directive.$inject = ['reactDirective']
 

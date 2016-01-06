@@ -1,0 +1,9 @@
+.Checkbox.flex.middle.poop
+  button.clean(className=btnClass type="button" onClick=onChange)
+    if checked
+      .icon.checkmark.active
+    else
+      .icon.plus.hollow
+
+  if label
+    label(onClick=onChange)= label
