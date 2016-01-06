@@ -1,7 +1,7 @@
 'use strict'
 
 directive = (reactDirective) ->
-  reactDirective 'progress-bar'
+  reactDirective Progress
 
 directive.$inject = ['reactDirective']
 
