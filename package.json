@@ -21,6 +21,7 @@
     "react-dom": "0.14.x",
     "react-input-autosize": "0.6.x",
     "react-select": "0.9.x",
+    "react-progressbar": "1.2.x",
     "zepto": "0.0.x"
   }
 }
