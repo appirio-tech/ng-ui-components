@@ -7,6 +7,7 @@ require 'ngreact'
 
 window.moment = require 'moment/moment'
 window.Select = require 'react-select'
+window.Progress = require 'react-progressbar'
 
 require './scripts/ng-ui-components.module'
 
