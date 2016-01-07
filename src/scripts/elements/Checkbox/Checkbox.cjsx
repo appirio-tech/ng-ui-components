@@ -3,7 +3,7 @@
 require './Checkbox.scss'
 
 React    = require 'react'
-Checkbox = require './Checkbox.jader'
+Checkbox = require './Checkbox.react.jade'
 
 Checkbox.propTypes =
   checked : React.PropTypes.bool
