@@ -8,6 +8,12 @@ config = ($stateProvider) ->
     title       : 'Avatar'
     templateUrl : 'views/avatar.example.html'
 
+  states['avatar-r'] =
+    url         : '/avatar-r'
+    title       : 'Avatar-r'
+    controller  : 'AvatarRExampleController as vm'
+    templateUrl : 'views/avatar-r.example.html'
+
   states['countdown'] =
     url         : '/countdown'
     templateUrl : 'views/countdown.example.html'
