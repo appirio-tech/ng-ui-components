@@ -8,8 +8,8 @@ dir = ->
     avatar : '@'
     handle : '@'
     title  : '@'
-    commentsAllowed : '@'
-    downloadAllowed : '@'
+    commentsAllowed : '='
+    downloadAllowed : '='
     downloadUrl     : '='
     toggleComments: '&'
 
