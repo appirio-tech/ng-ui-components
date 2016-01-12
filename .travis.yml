@@ -6,6 +6,8 @@ before_install:
 script:
 - webpack
 sudo: false
+before_deploy:
+- npm-prepublish --verbose
 deploy:
 - provider: s3
   cache_control: max-age=31536000
@@ -17,6 +19,11 @@ deploy:
   local_dir: dist
   on:
     branch: master
+- provider: npm
+  email: "$NPM_EMAIL"
+  api_key: "$NPM_API_KEY"
+  on:
+    tags: true
 env:
   global:
   - secure: mbTia+d32wFSIbNEFzG2fSBmWeeT399jp35gG3KIgbQ5vyQ10+BJqOSyi4U39llbQTKmVx2aKfvbWx039HDVTV3seul+dcAxl8I4yRxcDw+/u6i7Anh0ghtxD22Sg8kpSqXWQRhvV7Hewu4Z0imGfeZ0yZECYQdi9HY/QMlHODVfWOrSQgfkcFPAZvQoduQKpDfamgZPDLROUqycWYzKROOsODmB+WIgTj+2SDEcVGwaR+NUUZaQ0XGAfmkANonjGrJjfsRbfqELT/jP/Ce34vRayU4TGlDaNgybZyO7EH/oOPDDpWUnq/OmRnDGQEk/fcDSNBXGZJtFU7zmrpO4F4+kkkZd8FogNQFGYGmJ2U+HL0bXndhQuQ6tKyIcDwd6HyTiP8SjSK2oCGYnvY8R0PncLXTcGh3GcJskNA1rqZhg69YXpXtanvUa0UhootP7nJxDhoRaulQox5+mayZyPfemmioRhWVzOFgw/UPepKTsWAn5j6bGvb+/ieBFcJKltJVtnljmRrljzRXytApmZiOPrDIjI/Bn03Am+1Dex9v66RJXzqPsPqTpY65VU1yvvS23OwIrCRUjgQGm1GAOFV2I1RtEiQbWR8uYVyj/ryfPwF23pqTM2WPr3PKM/3Og7Hg0jLZ6topy1fu9iJ74AuXUhoyHhndcLagNXVxCt78=
