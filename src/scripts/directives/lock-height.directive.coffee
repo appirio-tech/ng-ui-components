@@ -37,18 +37,12 @@ dir = ($window, $timeout) ->
     element.ready -> # allow dom to render
       lockHeight $(element[0])
 
-      timeoutSet = false
+      scope.$watch 'refresh', -> # watch for data changes
+        if scope.refresh
+          callback = ->
+            lockHeight $(element[0])
 
-      # scope.$watch -> # watch for data changes
-      #   unless timeoutSet # only set it once
-      #     callback = ->
-      #       timeoutSet = false
-
-      #       lockHeight $(element[0])
-
-      #     $timeout callback, 0, false # run after digest cycle
-
-      #     timeoutSet = true
+          $timeout callback, 0, false # run after digest cycle
 
   restrict: 'A'
   link    : link
@@ -56,6 +50,7 @@ dir = ($window, $timeout) ->
   scope:
     retainClass: '@'
     ignoreContent: '@'
+    refresh: '@'
 
 dir.$inject = ['$window', '$timeout']
 
