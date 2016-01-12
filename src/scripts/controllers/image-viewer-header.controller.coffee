@@ -15,6 +15,9 @@ ImageViewerHeaderController = ($scope) ->
 
   activate = ->
 
+    $scope.$watch 'downloadUrl', (newValue) ->
+      vm.downloadUrl = newValue
+
     vm
 
   activate()
