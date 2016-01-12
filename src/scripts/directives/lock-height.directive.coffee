@@ -39,16 +39,16 @@ dir = ($window, $timeout) ->
 
       timeoutSet = false
 
-      scope.$watch -> # watch for data changes
-        unless timeoutSet # only set it once
-          callback = ->
-            timeoutSet = false
+      # scope.$watch -> # watch for data changes
+      #   unless timeoutSet # only set it once
+      #     callback = ->
+      #       timeoutSet = false
 
-            lockHeight $(element[0])
+      #       lockHeight $(element[0])
 
-          $timeout callback, 0, false # run after digest cycle
+      #     $timeout callback, 0, false # run after digest cycle
 
-          timeoutSet = true
+      #     timeoutSet = true
 
   restrict: 'A'
   link    : link
