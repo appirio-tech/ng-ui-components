@@ -84,11 +84,6 @@ config = ($stateProvider) ->
     url         : '/tooltip'
     templateUrl : 'views/tooltip.example.html'
 
-  states['date-input'] =
-    url         : '/date-input'
-    controller  : 'DateInputExampleController as vm'
-    templateUrl : 'views/date-input.example.html'
-
   states['image-viewer'] =
     url         : '/image-viewer'
     controller  : 'ImageViewerExampleController as vm'
