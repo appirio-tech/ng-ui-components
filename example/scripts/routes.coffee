@@ -8,12 +8,6 @@ config = ($stateProvider) ->
     title       : 'Avatar'
     templateUrl : 'views/avatar.example.html'
 
-  states['avatar-r'] =
-    url         : '/avatar-r'
-    title       : 'Avatar-r'
-    controller  : 'AvatarRExampleController as vm'
-    templateUrl : 'views/avatar-r.example.html'
-
   states['countdown'] =
     url         : '/countdown'
     templateUrl : 'views/countdown.example.html'
@@ -43,11 +37,6 @@ config = ($stateProvider) ->
     url         : '/checkbox'
     templateUrl : 'views/checkbox.example.html'
     controller  : 'CheckboxExampleController as vm'
-
-  states['checkbox-r'] =
-    url         : '/checkbox-r'
-    templateUrl : 'views/checkbox-r.example.html'
-    controller  : 'CheckboxRExampleController as vm'
 
   states['selected-button'] =
     url         : '/selected-button'
