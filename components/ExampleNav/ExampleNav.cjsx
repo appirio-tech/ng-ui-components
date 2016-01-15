@@ -16,10 +16,6 @@ component = ({data, state}) ->
     <li>
       <Link to="/CheckboxExamples">Checkbox</Link>
     </li>
-
-    <li>
-      <Link to="/UploadedFileExamples">UploadedFile</Link>
-    </li>
   </ul>
 
 module.exports = component
