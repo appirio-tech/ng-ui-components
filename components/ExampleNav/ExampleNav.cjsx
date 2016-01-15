@@ -14,7 +14,7 @@ component = ({data, state}) ->
     </li>
 
     <li>
-      <Link to="/Checkbox">Checkbox</Link>
+      <Link to="/CheckboxExamples">Checkbox</Link>
     </li>
   </ul>
 

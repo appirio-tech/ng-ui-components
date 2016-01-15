@@ -4,8 +4,8 @@ Avatar = require './Avatar.cjsx'
 React  = require 'react'
 
 AvatarExamples = ->
-  <div className="AvatarExamples">
-    <h1>No url is provided</h1>
+  <div className="AvatarExamples flex column middle center">
+    <h1>Default</h1>
 
     <Avatar />
 
