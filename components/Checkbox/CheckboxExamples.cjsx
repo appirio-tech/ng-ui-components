@@ -4,10 +4,10 @@ Checkbox = require './Checkbox.cjsx'
 React    = require 'react'
 
 CheckboxExamples = ->
-  <div className="CheckboxExamples">
-    <h1>Checked is false and no label</h1>
+  <div className="CheckboxExamples flex column middle center">
+    <h1>Default</h1>
 
-    <Checkbox checked={false} />
+    <Checkbox />
 
     <h1>Checked is true with label</h1>
 
