@@ -1,3 +1,4 @@
+require '../src/src'
 require './styles/main.scss'
 require './scripts/example.module'
 require './scripts/routes'
