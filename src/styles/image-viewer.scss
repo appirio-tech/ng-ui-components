@@ -19,7 +19,7 @@ image-slide-viewer {
         }
 
         .preview {
-          overflow: auto;
+          overflow: hidden;
           text-align: center;
           padding: 20px 0;
 
@@ -37,7 +37,6 @@ image-slide-viewer {
 
           .image {
             .img-container {
-              overflow: hidden;
               max-width: 1000px;
               max-height: 800px;
 
