@@ -1,7 +1,6 @@
 @import "work/work-includes";
 
 .ImageViewerHeader {
-  display: block;
 
   main {
     width: 100vw;
@@ -15,11 +14,6 @@
 
     .header {
       width  : 100%;
-
-      avatar {
-        width: 48px;
-        height: 48px;
-      }
 
       .user {
         min-width: 240px;

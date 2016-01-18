@@ -40,32 +40,20 @@ ImageViewerHeader = ({
             if downloadAllowed
               <button className="clean">
                 <a href={downloadUrl}>
-                  <div className="icon download">
-                  </div>
+                  <div className="icon download"/>
                 </a>
               </button>
           }
 
           {
             if commentsAllowed
-              <button className="clean" onClick={toggleComments()}>
-                <div className="icon bubble">
-                </div>
+              <button className="clean" onClick={toggleComments}>
+                <div className="icon bubble"/>
               </button>
           }
         </div>
       </div>
     </main>
   </div>
-
-
-ImageViewerHeader.propTypes =
-  avatar:          React.PropTypes.string
-  handle:          React.PropTypes.string
-  title:           React.PropTypes.string
-  downloadUrl:     React.PropTypes.string
-  commentsAllowed: React.PropTypes.bool
-  downloadAllowed: React.PropTypes.bool
-  toggleComments:  React.PropTypes.func
 
 module.exports = ImageViewerHeader
