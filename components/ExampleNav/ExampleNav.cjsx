@@ -16,6 +16,10 @@ component = ({data, state}) ->
     <li>
       <Link to="/CheckboxExamples">Checkbox</Link>
     </li>
+
+    <li>
+      <Link to="/ImageViewerHeader">Image Viewer Header</Link>
+    </li>
   </ul>
 
 module.exports = component

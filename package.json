@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server -d --colors --inline",
-    "react-dev": "webpack-dev-server -d --colors --react-dev",
+    "react-dev": "webpack-dev-server -d --colors --react-dev --inline",
     "clean": "rm -r dist",
     "build": "webpack --config webpack.config.js; cp example/index.html dist/"
   },
