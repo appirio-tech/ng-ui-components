@@ -11,9 +11,9 @@ main.flex.column.middle.light-bg
             button.clean.icon.arrow
 
         .image.flex.column.center
-          .img-container
+          .img-container(ng-class="{zoomed: vm.imageZoomedIn}")
 
-            img(ng-src="{{ vm.file.url }}")
+            img(ng-src="{{ vm.file.url }}" ng-click="vm.toggleZoom()")
 
         .next.flex.flex-grow
           a.arrow-next(ng-class="{invisible: !vm.nextFile}" ng-click="vm.viewNext()")

@@ -9,7 +9,7 @@
     "npm-prepublish": "^1.2.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server -d --colors",
+    "dev": "webpack-dev-server -d --colors --inline",
     "react-dev": "webpack-dev-server -d --colors --react-dev",
     "clean": "rm -r dist",
     "build": "webpack --config webpack.config.js; cp example/index.html dist/"
