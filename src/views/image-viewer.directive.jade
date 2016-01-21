@@ -13,7 +13,10 @@ main.flex.column.middle.light-bg
         .image.flex.column.center.middle
           .img-container.flex.flex-grow(ng-class="{zoomed: vm.imageZoomedIn}")
 
-            .bg-image(ng-click="vm.toggleZoom()" style="background-image: url({{ vm.file.url }}")
+            .bg-image(ng-if="!vm.imageZoomedIn" ng-click="vm.toggleZoom()" style="background-image: url({{vm.file.url}})")
+
+            .bg-image.zoomed(ng-if="vm.imageZoomedIn" ng-click="vm.toggleZoom()")
+              img(ng-src="{{vm.file.url}}")
 
         .next.flex.flex-grow
           a.arrow-next(ng-class="{invisible: !vm.nextFile}" ng-click="vm.viewNext()")
