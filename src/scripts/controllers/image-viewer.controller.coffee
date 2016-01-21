@@ -71,10 +71,6 @@ ImageViewerController = ($scope) ->
 
   vm.toggleZoom = ->
     vm.imageZoomedIn = !vm.imageZoomedIn
-    if vm.imageZoomedIn
-      vm.imageStyle = "{background-image: url(vm.file.url)}"
-    else
-      vm.imageStyle = ""
 
   activate()
 
