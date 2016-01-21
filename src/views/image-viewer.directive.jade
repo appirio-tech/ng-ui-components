@@ -10,10 +10,10 @@ main.flex.column.middle.light-bg
           a.arrow-previous(ng-class="{invisible: !vm.prevFile}" ng-click="vm.viewPrevious()")
             button.clean.icon.arrow
 
-        .image.flex.column.center
-          .img-container(ng-class="{zoomed: vm.imageZoomedIn}")
+        .image.flex.column.center.middle
+          .img-container.flex.flex-grow(ng-class="{zoomed: vm.imageZoomedIn}")
 
-            img(ng-src="{{ vm.file.url }}" ng-click="vm.toggleZoom()")
+            .bg-image(ng-click="vm.toggleZoom()" style="background-image: url({{ vm.file.url }}")
 
         .next.flex.flex-grow
           a.arrow-next(ng-class="{invisible: !vm.nextFile}" ng-click="vm.viewNext()")
