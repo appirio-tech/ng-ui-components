@@ -29,17 +29,19 @@ image-slide-viewer {
             min-width: 50px;
 
             .arrow-previous {
-              margin: auto 80px auto auto
+              margin: auto auto auto auto
             }
 
             .arrow-next {
-              margin: auto auto auto 80px
+              margin: auto auto auto auto
             }
           }
 
           .image {
             width: 100%;
             max-width: 1000px;
+            margin-right: 80px;
+            margin-left: 80px;
 
             .img-container {
               width: 100%;
@@ -53,7 +55,6 @@ image-slide-viewer {
                   overflow: auto;
 
                   img {
-                    margin: auto;
 
                     &:hover {
                       cursor: zoom-out;
