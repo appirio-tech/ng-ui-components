@@ -1,10 +1,10 @@
 @import "work/work-includes";
 
-image-slide-viewer {
-  display: block;
+.ImageViewer {
 
   main {
     width : 100vw;
+    height: 100vh;
     padding: 20px;
     padding-top: 10px;
 
@@ -49,25 +49,21 @@ image-slide-viewer {
               max-height: 800px;
               max-width: 1000px;
 
-              &.zoomed {
-
-                > .bg-image {
-                  overflow: auto;
-
-                  img {
-
-                    &:hover {
-                      cursor: zoom-out;
-                    }
-                  }
-                }
-              }
-
               .bg-image {
                 margin-top: 40px;
                 background-size: contain;
                 background-repeat: no-repeat;
                 width: 100%;
+
+                &.zoomed {
+                  overflow: auto;
+
+                  img {
+                    &:hover {
+                      cursor: zoom-out;
+                    }
+                  }
+                }
 
                 &:hover {
                   cursor: zoom-in;

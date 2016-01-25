@@ -8,6 +8,7 @@ ImageViewerController = ($scope) ->
   vm.onFileChange      = $scope.onFileChange
   vm.prevFile          = null
   vm.nextFile          = null
+  vm.imageZoomedIn     = false
 
   updateFiles = ->
     if vm.currentIndex + 1 < vm.files.length
@@ -38,6 +39,8 @@ ImageViewerController = ($scope) ->
 
     updateFiles()
 
+    vm.imageZoomedIn = false
+
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
 
@@ -48,6 +51,8 @@ ImageViewerController = ($scope) ->
 
     updateFiles()
 
+    vm.imageZoomedIn = false
+
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
   vm.selectFile = (file) ->
@@ -57,10 +62,15 @@ ImageViewerController = ($scope) ->
 
     updateFiles()
 
+    vm.imageZoomedIn = false
+
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
   vm.isCurrent = (file) ->
     (vm.files.indexOf file) == vm.currentIndex
+
+  vm.toggleZoom = ->
+    vm.imageZoomedIn = !vm.imageZoomedIn
 
   activate()
 

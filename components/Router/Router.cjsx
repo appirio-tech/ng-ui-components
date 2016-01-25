@@ -6,6 +6,8 @@ Router               = require '../Router/Router.cjsx'
 AvatarExamples       = require '../Avatar/AvatarExamples.cjsx'
 CheckboxExamples     = require '../Checkbox/CheckboxExamples.cjsx'
 ImageViewerHeader    = require '../ImageViewerHeader/ImageViewerHeaderExamples.cjsx'
+ImageViewer          = require '../ImageViewer/ImageViewerExamples.cjsx'
+
 
 { Router, Route, Link, IndexRoute, browserHistory } = require 'react-router'
 
@@ -17,6 +19,8 @@ component = ->
       <Route path="/CheckboxExamples" component={CheckboxExamples} />
 
       <Route path="/ImageViewerHeader" component={ImageViewerHeader} />
+
+      <Route path="/ImageViewer" component={ImageViewer} />
 
     </Route>
   </Router>
