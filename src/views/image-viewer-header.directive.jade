@@ -1,7 +1,7 @@
 main.flex.column.light-bg
   .header.flex.middle.space-between
     .user.flex.middle
-      a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
+      a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank" ng-if="vm.handle")
         avatar(avatar-url="{{ vm.avatar }}")
 
       .titles.flex.column
