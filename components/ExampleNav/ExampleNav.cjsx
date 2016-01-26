@@ -20,6 +20,10 @@ component = ({data, state}) ->
     <li>
       <Link to="/ImageViewerHeader">Image Viewer Header</Link>
     </li>
+
+    <li>
+      <Link to="/ImageViewer">Image Viewer</Link>
+    </li>
   </ul>
 
 module.exports = component
