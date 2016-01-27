@@ -8,6 +8,7 @@ dir = ->
     avatar : '@'
     handle : '@'
     title  : '@'
+    hideUserInfo: '='
     commentsAllowed : '='
     downloadAllowed : '='
     downloadUrl     : '='

@@ -1,12 +1,14 @@
 main.flex.column.light-bg
   .header.flex.middle.space-between
     .user.flex.middle
-      a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
+      a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank" ng-if="vm.handle && !vm.hideUserInfo")
         avatar(avatar-url="{{ vm.avatar }}")
 
       .titles.flex.column
-        a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank")
+        a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank" ng-if="vm.handle && !vm.hideUserInfo")
           p.name {{ vm.handle }}
+
+        label(ng-if="vm.handle && vm.hideUserInfo") {{vm.handle}}
 
         p.title(ng-if="vm.title") {{vm.title}}
 

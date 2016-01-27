@@ -9,6 +9,7 @@ ImageViewerHeaderController = ($scope) ->
   vm.downloadAllowed = $scope.downloadAllowed
   vm.toggleComments  = $scope.toggleComments
   vm.downloadUrl     = $scope.downloadUrl
+  vm.hideUserInfo    = $scope.hideUserInfo
 
   vm.generateProfileUrl = (handle) ->
     "https://www.topcoder.com/members/#{handle}"
