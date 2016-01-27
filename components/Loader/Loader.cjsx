@@ -1,6 +1,6 @@
 'use strict'
 
-require './Loader.scss'
+require './LoaderStyle.scss'
 
 React = require 'react'
 

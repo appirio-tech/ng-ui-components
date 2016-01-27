@@ -1,6 +1,6 @@
 'use strict'
 
-Loader = require './Loader.cjsx'
+Loader = require './Loader'
 React  = require 'react'
 
 LoaderExamples = ->
