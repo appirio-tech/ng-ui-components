@@ -13,21 +13,30 @@ ImageViewerHeader = ({
   commentsAllowed
   downloadAllowed
   toggleComments
+  hideUserInfo
  }) ->
 
   <div className="ImageViewerHeader">
     <main className="flex column light-bg">
       <div className="header flex space-between">
         <div className="user flex middle">
-          <a href={"https://www.topcoder.com/members/" + handle}>
-            <Avatar avatar-url="{avatar}" />
-          </a>
+          {if handle && !hideUserInfo
+            <a href={"https://www.topcoder.com/members/" + handle}>
+              <Avatar avatar-url="{avatar}" />
+            </a>
+          }
 
           <div className="titles flex column">
-            <a hrf={"https://www.topcoder.com/members/" + handle}>
-              <p className="name"> {handle}
-              </p>
-            </a>
+            {if handle && !hideUserInfo
+              <a hrf={"https://www.topcoder.com/members/" + handle}>
+                <p className="name"> {handle}
+                </p>
+              </a>
+            }
+
+            {if handle && hideUserInfo
+              <label> {handle} </label>
+            }
 
             <p className="title">
               {title}

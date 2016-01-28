@@ -14,7 +14,7 @@ ImageViewerHeaderExamples = ->
 
     <h1>With Params</h1>
 
-    <ImageViewerHeader handle={'Batmannn'} downloadUrl={'http://google.com'} downloadAllowed={true} commentsAllowed={true} title={'Important Report'} toggleComments={alertMessage}/>
+    <ImageViewerHeader handle={'Batmannn'} downloadUrl={'http://google.com'} downloadAllowed={true} commentsAllowed={true} title={'Important Report'} toggleComments={alertMessage} />
 
   </div>
 
