@@ -39,5 +39,7 @@ templateCache = ($templateCache) ->
 
     $templateCache.put "views/#{viewPathCleanHtml}", views(viewPath)()
 
+templateCache.$inject = ['$templateCache']
+
 angular.module('appirio-tech-ng-ui-components').run templateCache
 
