@@ -2,7 +2,8 @@
 
 require './Checkbox.scss'
 
-React    = require 'react'
+React     = require 'react'
+PropTypes = React.PropTypes
 
 Checkbox = ({onChange, checked, label}) ->
   if checked
@@ -20,5 +21,9 @@ Checkbox = ({onChange, checked, label}) ->
         <label onClick={onChange}>{label}</label>
     }
   </div>
+
+Checkbox.propTypes =
+  checked: PropTypes.bool
+  label: PropTypes.string
 
 module.exports = Checkbox

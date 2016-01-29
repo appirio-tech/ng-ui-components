@@ -88,6 +88,11 @@ config = ($stateProvider) ->
     controller  : 'DropdownExampleController as vm'
     templateUrl : 'views/dropdown.example.html'
 
+  states['provider'] =
+    url         : '/provider'
+    controller  : 'ProviderExampleController as vm'
+    templateUrl : 'views/provider.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 

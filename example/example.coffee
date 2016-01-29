@@ -10,8 +10,10 @@ requireContextFiles = (files) ->
     files path
 
 controllers = require.context './scripts/controllers/', true, /^(.*\.(coffee$))[^.]*$/igm
+directives = require.context './scripts/directives/', true, /^(.*\.(coffee$))[^.]*$/igm
 
 requireContextFiles controllers
+requireContextFiles directives
 
 exampleNav = require './nav.jade'
 
