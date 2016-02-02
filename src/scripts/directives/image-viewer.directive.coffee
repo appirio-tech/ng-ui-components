@@ -1,6 +1,6 @@
 'use strict'
 
-directive = ->
+directive = ($window)->
   link = (scope, element, attrs) ->
       checkHeights = ->
         container = $('.img-container')
@@ -15,6 +15,7 @@ directive = ->
         if imageHeight > 0 && imageWidth > 0
           if imageHeight < containerHeight && imageWidth < containerWidth
             scope.showSmallImage = true
+            scope.vm.imageZoomedIn = false
           else
             scope.showSmallImage = false
 
@@ -22,6 +23,10 @@ directive = ->
         if newVal
           scope.setAutoBg = false
           checkHeights()
+
+      $($window).bind 'resize', ->
+        checkHeights()
+        scope.$digest()
 
   restrict:    'E'
   controller:  'ImageViewerController as vm'
@@ -32,5 +37,7 @@ directive = ->
     startingFile      : '='
     showNotifications : '='
     onFileChange      : '&'
+
+directive.$inject = ['$window']
 
 angular.module('appirio-tech-ng-ui-components').directive 'imageSlideViewer', directive

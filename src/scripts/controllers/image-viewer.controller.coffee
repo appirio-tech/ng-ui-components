@@ -6,11 +6,12 @@ ImageViewerController = ($scope) ->
   vm.showNotifications = $scope.showNotifications
   startingFile         = $scope.startingFile
   vm.onFileChange      = $scope.onFileChange
+  vm.imageZoomedIn     = false
   vm.prevFile          = null
   vm.nextFile          = null
-  vm.imageZoomedIn     = false
+  vm.showSmallImage    = false
   $scope.setAutoBg     = false
-  vm.showSmallImage = false
+
 
   updateFiles = ->
     if vm.currentIndex + 1 < vm.files.length
@@ -51,7 +52,6 @@ ImageViewerController = ($scope) ->
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
     $scope.setAutoBg = true
-
 
 
   vm.viewPrevious = ->
