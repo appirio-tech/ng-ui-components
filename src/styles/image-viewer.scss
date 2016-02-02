@@ -63,6 +63,12 @@ image-slide-viewer {
                 }
               }
 
+              &.small {
+                > .bg-image {
+                  overflow: auto;
+                }
+              }
+
               .bg-image {
                 margin-top: 40px;
                 background-size: contain;
@@ -72,6 +78,12 @@ image-slide-viewer {
 
                 &:hover {
                   cursor: zoom-in;
+                }
+
+                &.small {
+                  &:hover {
+                    cursor: inherit;
+                  }
                 }
               }
             }
