@@ -73,6 +73,14 @@ image-slide-viewer {
                 &:hover {
                   cursor: zoom-in;
                 }
+
+                &.auto-container {
+                  background-size: auto;
+                  background-color: red;
+                  &:hover {
+                    cursor: inherit;
+                  }
+                }
               }
             }
           }
