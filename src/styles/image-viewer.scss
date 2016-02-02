@@ -73,6 +73,12 @@ image-slide-viewer {
                 &:hover {
                   cursor: zoom-in;
                 }
+
+                &.small {
+                  &:hover {
+                    cursor: inherit;
+                  }
+                }
               }
             }
           }

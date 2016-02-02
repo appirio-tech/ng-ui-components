@@ -10,7 +10,7 @@ ImageViewerController = ($scope) ->
   vm.nextFile          = null
   vm.imageZoomedIn     = false
   $scope.setAutoBg     = false
-  $scope.showSmallImage = false
+  vm.showSmallImage = false
 
   updateFiles = ->
     if vm.currentIndex + 1 < vm.files.length
@@ -37,8 +37,7 @@ ImageViewerController = ($scope) ->
     $scope.setAutoBg = true
 
     $scope.$watch 'showSmallImage', (newVal, OldVal) ->
-      if newVal
-        $scope.showSmallImage = newVal
+      vm.showSmallImage = newVal
 
   vm.viewNext = ->
     vm.file = vm.files[vm.currentIndex + 1]

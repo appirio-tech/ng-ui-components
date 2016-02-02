@@ -4,7 +4,7 @@ main.flex.column.middle.light-bg
 
     p.file-caption(ng-if="vm.file.caption") {{ vm.file.caption }}
 
-    h1(ng-if="showSmallImage") {{showSmallImage}} show
+    h1(ng-if="vm.showSmallImage") {{showSmallImage}} show
     .slideshow.flex.column.flex-grow
       .preview.flex.center.flex-grow.flex-shrink
         .previous.flex.flex-grow
@@ -14,12 +14,12 @@ main.flex.column.middle.light-bg
         .image.flex.column.center
           .img-container.flex.flex-grow(ng-class="{zoomed: vm.imageZoomedIn, small: showSmallImage}")
 
-            .bg-image(ng-show="!vm.imageZoomedIn && !showSmallImage" ng-click="vm.toggleZoom()" style="background-image: url({{vm.file.url}})")
+            .bg-image(ng-show="!vm.imageZoomedIn && !vm.showSmallImage" ng-click="vm.toggleZoom()" style="background-image: url({{vm.file.url}})")
 
-            .bg-image.zoomed.elevated(ng-show="vm.imageZoomedIn && !showSmallImage" ng-click="vm.toggleZoom()")
+            .bg-image.zoomed.elevated(ng-show="vm.imageZoomedIn && !vm.showSmallImage" ng-click="vm.toggleZoom()")
               img(ng-src="{{vm.file.url}}")
 
-            .bg-image.small(ng-show="showSmallImage")
+            .bg-image.zoomed.small.flex.center.middle(ng-show="!vm.imageZoomedIn && vm.showSmallImage")
               img(ng-src="{{vm.file.url}}")
 
 
