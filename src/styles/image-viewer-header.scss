@@ -24,6 +24,10 @@ image-viewer-header {
       .user {
         min-width: 240px;
 
+        &.noAvatar {
+          margin-top: 5px;
+        }
+
         .titles {
           text-align: left;
           margin-left: 15px;

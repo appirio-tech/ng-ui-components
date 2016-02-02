@@ -1,6 +1,6 @@
 main.flex.column.light-bg
   .header.flex.middle.space-between
-    .user.flex.middle
+    .user.flex.middle(ng-class="{noAvatar: vm.handle && vm.hideUserInfo}")
       a(href="{{vm.generateProfileUrl(vm.handle)}}" target="_blank" ng-if="vm.handle && !vm.hideUserInfo")
         avatar(avatar-url="{{ vm.avatar }}")
 
