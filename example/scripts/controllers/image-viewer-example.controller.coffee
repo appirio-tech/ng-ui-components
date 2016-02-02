@@ -29,6 +29,12 @@ ImageViewerExampleController = ($scope, $stateParams) ->
       path: "work/1447877190406-e9c02ed7-00bf-4e52-8c57-4d73fec009ac/fe819b7d-2534-4878-994b-35f7b2fec185/Screen Shot 2015-12-01 at 12.35.18 PM.png",
       caption: "this is another one of the images",
       url: require "../../images/turtles-breaking.jpg"
+    },
+    {
+     fileId: "nop",
+     path: "work/1447877190406-e9c02ed7-00bf-4e52-8c57-4d73fec009ac/fe819b7d-2534-4878-994b-35f7b2fec185/Screen Shot 2015-12-01 at 12.35.18 PM.png",
+     caption: "this is another one too",
+     url: require "../../images/shortimage.png" 
     }
   ]
 

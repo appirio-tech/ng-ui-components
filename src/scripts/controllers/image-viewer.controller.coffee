@@ -9,6 +9,8 @@ ImageViewerController = ($scope) ->
   vm.prevFile          = null
   vm.nextFile          = null
   vm.imageZoomedIn     = false
+  $scope.setAutoBg     = false
+  $scope.showSmallImage = false
 
   updateFiles = ->
     if vm.currentIndex + 1 < vm.files.length
@@ -32,6 +34,12 @@ ImageViewerController = ($scope) ->
 
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
+    $scope.setAutoBg = true
+
+    $scope.$watch 'showSmallImage', (newVal, OldVal) ->
+      if newVal
+        $scope.showSmallImage = newVal
+
   vm.viewNext = ->
     vm.file = vm.files[vm.currentIndex + 1]
 
@@ -42,6 +50,9 @@ ImageViewerController = ($scope) ->
     vm.imageZoomedIn = false
 
     vm.onFileChange({file: vm.file}) if vm.onFileChange
+
+    $scope.setAutoBg = true
+
 
 
   vm.viewPrevious = ->
@@ -55,6 +66,9 @@ ImageViewerController = ($scope) ->
 
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
+    $scope.setAutoBg = true
+
+
   vm.selectFile = (file) ->
     vm.file = file
 
@@ -65,6 +79,9 @@ ImageViewerController = ($scope) ->
     vm.imageZoomedIn = false
 
     vm.onFileChange({file: vm.file}) if vm.onFileChange
+
+    $scope.setAutoBg = true
+
 
   vm.isCurrent = (file) ->
     (vm.files.indexOf file) == vm.currentIndex

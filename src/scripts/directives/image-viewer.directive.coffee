@@ -2,18 +2,28 @@
 
 directive = ->
   link = (scope, element, attrs) ->
-      angular.element(document).ready ->
-        container = $('.img-container')
-        backgroundContainer = $('.bg-image')
-        containerHeight = container.height()
-        containerWidth = container.width()
+      checkHeights = ->
+        angular.element(document).ready ->
+          container = $('.img-container')
+          backgroundContainer = $('.bg-image')[0]
+          containerHeight = container.height()
+          containerWidth = container.width()
 
-        image  = container.find('img')
-        imageHeight = image.attr('height')
-        imageWidth = image.attr('width')
+          image  = container.find('img')
+          imageHeight = image.attr('height')
+          imageWidth = image.attr('width')
 
-        if imageHeight < containerHeight && imageWidth < containerWidth
-          backgroundContainer.addClass('auto-bg')
+          if imageHeight < containerHeight && imageWidth < containerWidth
+            scope.showSmallImage = true
+          else
+            scope.showSmallImage = false
+
+      checkHeights true
+
+      scope.$watch 'setAutoBg', (newVal, oldVal) ->
+        if newVal
+          scope.setAutoBg = false
+          checkHeights()
 
 
 
