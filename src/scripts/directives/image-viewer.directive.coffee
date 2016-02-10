@@ -3,21 +3,22 @@
 directive = ($window)->
   link = (scope, element, attrs) ->
       checkHeights = ->
-        container = $('.img-container')
-        backgroundContainer = $('.bg-image')[0]
-        containerHeight = container.height()
-        containerWidth = container.width()
+        angular.element(document).ready ->
+          container = $('.img-container')
+          backgroundContainer = $('.bg-image')[0]
+          containerHeight = container.height()
+          containerWidth = container.width()
 
-        image  = container.find('img')
-        imageHeight = image.attr('height')
-        imageWidth = image.attr('width')
+          image  = container.find('img')
+          imageHeight = image.attr('height')
+          imageWidth = image.attr('width')
 
-        if imageHeight > 0 && imageWidth > 0
-          if imageHeight < containerHeight && imageWidth < containerWidth
-            scope.showSmallImage = true
-            scope.vm.imageZoomedIn = false
-          else
-            scope.showSmallImage = false
+          if imageHeight > 0 && imageWidth > 0
+            if imageHeight < containerHeight && imageWidth < containerWidth
+              scope.showSmallImage = true
+              scope.vm.imageZoomedIn = false
+            else
+              scope.showSmallImage = false
 
       scope.$watch 'setAutoBg', (newVal, oldVal) ->
         if newVal
