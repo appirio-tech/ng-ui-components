@@ -12,10 +12,9 @@ main.flex.column.light-bg
 
         p.title(ng-if="vm.title") {{vm.title}}
 
-    .icons
-      button.clean(ng-if="vm.downloadAllowed")
-        a(href="{{ vm.downloadUrl }}" target="_blank")
-          .icon.download
+    .icons.flex.middle
+      a(href="{{ vm.downloadUrl }}" target="_blank" ng-if="vm.downloadAllowed")
+        .icon.download
 
       button.clean(ng-click="vm.toggleComments()" ng-if="vm.commentsAllowed")
        .icon.bubble
