@@ -20,10 +20,15 @@ image-slide-viewer {
       align-items: stretch;
 
       .previous, .next {
-        flex-basis: 60px;
+        flex-basis: 75px;
 
         .arrow-previous, .arrow-next {
-          margin: auto
+          margin: auto;
+
+          .icon.arrow {
+            width: 33px;
+            height: 74px
+          }
         }
       }
 
@@ -62,10 +67,11 @@ image-slide-viewer {
     }
 
     .thumbnails {
-      flex-basis: 120px;
+      flex-basis: 110px;
+      flex-shrink: 0;
       text-align: center;
       width: 100vw;
-      padding: 30px;
+      padding: 25px;
       overflow: auto;
       white-space: nowrap;
 
