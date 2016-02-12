@@ -9,8 +9,8 @@ main.flex.column.light-bg
       a.arrow-previous(ng-class="{invisible: !vm.prevFile}" ng-click="vm.viewPrevious()")
         button.clean.icon.arrow
 
-    .image-container.flex-grow(ng-class="{ 'small' : !vm.largeImage, 'fit' : vm.largeImage && !vm.zoom, 'full': vm.largeImage && vm.zoom }")
-      img.preview-image.elevated(ng-src="{{vm.file.url}}" ng-click="vm.toggleZoom()")
+    .image-container.flex-grow(ng-class="{ 'small' : !vm.largeImage, 'fit' : vm.largeImage && !vm.zoom, 'full elevated': vm.largeImage && vm.zoom }")
+      img.preview-image(ng-src="{{vm.file.url}}" ng-click="vm.toggleZoom()" ng-class="{ 'elevated': !vm.zoom }")
 
     .next.flex
       a.arrow-next(ng-class="{invisible: !vm.nextFile}" ng-click="vm.viewNext()")

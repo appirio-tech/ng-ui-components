@@ -50,6 +50,9 @@ image-slide-viewer {
 
         &.full {
           overflow: scroll;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           img {
             cursor: zoom-out;
