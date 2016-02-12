@@ -1,41 +1,31 @@
 'use strict'
 
 directive = ($window)->
-  link = (scope, element, attrs) ->
-      checkHeights = ->
-        container = $('.img-container')
-        backgroundContainer = $('.bg-image')[0]
-        containerHeight = container.height()
-        containerWidth = container.width()
+  link = (scope) ->
+    container = document.getElementsByClassName('image-container')[0]
+    image = document.getElementsByClassName('preview-image')[0]
 
-        image  = container.find('img')
-        imageHeight = image.attr('height')
-        imageWidth = image.attr('width')
+    checkOverflow = ->
+      wide = image.naturalWidth > container.clientWidth
+      tall = image.naturalHeight > container.clientHeight
 
-        if imageHeight > 0 && imageWidth > 0
-          if imageHeight < containerHeight && imageWidth < containerWidth
-            scope.showSmallImage = true
-            scope.vm.imageZoomedIn = false
-          else
-            scope.showSmallImage = false
+      scope.$apply "vm.largeImage = #{ wide || tall }"
 
-      scope.$watch 'setAutoBg', (newVal, oldVal) ->
-        if newVal
-          scope.setAutoBg = false
-          checkHeights()
+    image.onload = ->
+      checkOverflow()
 
-      $($window).bind 'resize', ->
-        checkHeights()
-        scope.$digest()
+    $($window).bind 'resize', ->
+      checkOverflow()
 
   restrict:    'E'
   controller:  'ImageViewerController as vm'
   templateUrl: 'views/image-viewer.directive.html'
   link: link
-  scope:
+  scope: {}
+  bindToController:
     files             : '='
     startingFile      : '='
-    showNotifications : '='
+    showNotifications : '&'
     onFileChange      : '&'
 
 directive.$inject = ['$window']
