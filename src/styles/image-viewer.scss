@@ -71,10 +71,15 @@ image-slide-viewer {
 
               .bg-image {
                 margin-top: 40px;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
                 width: 100%;
+
+                img {
+                  &.scaled {
+                    width: 100%;
+                    object-fit: contain;
+                    border: 1px solid red;
+                  }
+                }
 
                 &:hover {
                   cursor: zoom-in;
