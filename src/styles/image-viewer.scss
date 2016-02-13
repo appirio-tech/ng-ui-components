@@ -18,6 +18,7 @@ image-slide-viewer {
 
     .content {
       align-items: stretch;
+      min-height: 1px;
 
       .previous, .next {
         flex-basis: 75px;
@@ -55,9 +56,7 @@ image-slide-viewer {
 
         &.full {
           overflow: scroll;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          text-align: center;
 
           img {
             cursor: zoom-out;
