@@ -1,4 +1,5 @@
-modal.flex.column(show="true" background-click-close=true)
-  image-viewer-header.flex(handle="batman" title="My Very Important Project Images" download-allowed="true")
+modal(show="true" background-click-close=true)
+  .image-viewer-container.flex.column
+    image-viewer-header.flex(handle="batman" title="My Very Important Project Images" download-allowed="true")
 
-  image-slide-viewer.flex.flex-grow(files="vm.files" starting-file="vm.startingFile" show-notifications="vm.showNotifications")
+    image-slide-viewer.flex.flex-grow(files="vm.files" starting-file="vm.startingFile" show-notifications="vm.showNotifications")
