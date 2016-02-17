@@ -1,34 +1,24 @@
-main.flex.column.middle.light-bg
-  .content.flex.column.flex-grow
+main.flex.column.light-bg
+  .meta
     p.file-name(ng-if="vm.file.name") {{ vm.file.name }}
 
     p.file-caption(ng-if="vm.file.caption") {{ vm.file.caption }}
 
-    .slideshow.flex.column.flex-grow
-      .preview.flex.center.flex-grow.flex-shrink
-        .previous.flex.flex-grow
-          a.arrow-previous(ng-class="{invisible: !vm.prevFile}" ng-click="vm.viewPrevious()")
-            button.clean.icon.arrow
+  .content.flex.flex-grow
+    .previous.flex
+      a.arrow-previous(ng-class="{invisible: !vm.prevFile}" ng-click="vm.viewPrevious()")
+        button.clean.icon.arrow
 
-        .image.flex.column.center
-          .img-container.flex.flex-grow(ng-class="{zoomed: vm.imageZoomedIn, small: showSmallImage}")
+    .image-container.flex-grow(ng-class="{ 'small' : !vm.largeImage, 'fit' : vm.largeImage && !vm.zoom, 'full elevated': vm.largeImage && vm.zoom }")
+      img.preview-image(ng-src="{{vm.file.url}}" ng-click="vm.toggleZoom()" ng-class="{ 'elevated': !vm.largeImage || (vm.largeImage && !vm.zoom) }")
 
-            .bg-image(ng-show="!vm.imageZoomedIn && !vm.showSmallImage" ng-click="vm.toggleZoom()" style="background-image: url({{vm.file.url}})")
+    .next.flex
+      a.arrow-next(ng-class="{invisible: !vm.nextFile}" ng-click="vm.viewNext()")
+        button.clean.icon.arrow.right
 
-            .bg-image.zoomed.elevated(ng-show="vm.imageZoomedIn && !vm.showSmallImage" ng-click="vm.toggleZoom()")
-              img(ng-src="{{vm.file.url}}")
+  ul.thumbnails
+    li.thumbnail(ng-repeat="file in vm.files" ng-class="{ elevated: !vm.isCurrent(file) }")
+      button.clean(ng-click="vm.selectFile(file)")
+        img(ng-src="{{ file.url }}")
 
-            .bg-image.zoomed.small.flex.center.middle(ng-show="!vm.imageZoomedIn && vm.showSmallImage")
-              img(ng-src="{{vm.file.url}}")
-
-
-        .next.flex.flex-grow
-          a.arrow-next(ng-class="{invisible: !vm.nextFile}" ng-click="vm.viewNext()")
-            button.clean.icon.arrow.right
-
-      ul.thumbnails
-        li.thumbnail(ng-repeat="file in vm.files" ng-class="{ elevated: !vm.isCurrent(file) }")
-          button.clean(ng-click="vm.selectFile(file)")
-            img(ng-src="{{ file.url }}")
-
-            .notification.absolute(ng-if="file.unreadMessages > 0 && vm.showNotifications") {{ file.unreadMessages }}
+        .notification.absolute(ng-if="file.unreadMessages > 0 && vm.showNotifications") {{ file.unreadMessages }}

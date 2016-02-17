@@ -1,120 +1,94 @@
 @import "work/work-includes";
 
 image-slide-viewer {
-  display: block;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  margin-top: 100px;
+  padding-bottom: 100px;
+  box-sizing: border-box;
 
   main {
     width : 100vw;
-    padding: 20px;
-    padding-top: 10px;
+
+    .meta {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
     .content {
-      overflow: hidden;
+      align-items: stretch;
+      min-height: 1px;
+
+      .previous, .next {
+        flex-basis: 75px;
+
+        .arrow-previous, .arrow-next {
+          margin: auto;
+
+          .icon.arrow {
+            width: 33px;
+            height: 74px
+          }
+        }
+      }
+
+      .image-container {
+        position: relative;
+        text-align: center;
+
+        &.small, &.fit {
+          img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+
+        &.fit {
+          img {
+            cursor: zoom-in;
+          }
+        }
+
+        &.full {
+          overflow: scroll;
+          text-align: center;
+
+          img {
+            cursor: zoom-out;
+          }
+        }
+      }
+    }
+
+    .thumbnails {
+      flex-basis: 110px;
+      flex-shrink: 0;
       text-align: center;
-      width: 100%;
+      width: 100vw;
+      padding: 25px;
+      overflow: auto;
+      white-space: nowrap;
 
-      .slideshow {
-        width: 100%;
-        .icon.arrow {
-          width: 33px;
-          height: 74px;
+      > * {
+        display: inline-block;
+        margin: 0 10px;
+        position: relative;
+
+        &.elevated {
+          opacity: 0.4;
         }
+      }
 
-        .preview {
-          overflow: hidden;
-          text-align: center;
-          padding: 20px 0;
-
-          .previous, .next {
-            min-width: 50px;
-
-            .arrow-previous, .arrow-next {
-              margin: auto
-            }
-
-            .arrow-next {
-              margin: auto
-            }
-          }
-
-          .image {
-            width: 100%;
-            max-width: 1000px;
-            margin-right: 80px;
-            margin-left: 80px;
-
-            .img-container {
-              width: 100%;
-              height: 100%;
-              max-height: 800px;
-              max-width: 1000px;
-
-              &.zoomed {
-
-                > .bg-image {
-                  overflow: auto;
-
-                  img {
-
-                    &:hover {
-                      cursor: zoom-out;
-                    }
-                  }
-                }
-              }
-
-              &.small {
-                > .bg-image {
-                  overflow: auto;
-                }
-              }
-
-              .bg-image {
-                margin-top: 40px;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                width: 100%;
-
-                &:hover {
-                  cursor: zoom-in;
-                }
-
-                &.small {
-                  &:hover {
-                    cursor: inherit;
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        .thumbnails {
-          text-align: center;
-          max-width: 100vw;
-          padding: 20px;
-          min-height: 100px;
-          overflow: auto;
-          white-space: nowrap;
-
-          > * {
-            display: inline-block;
-            margin: 10px;
-            position: relative;
-
-            &.elevated {
-              opacity: 0.4;
-            }
-          }
-
-          button {
-            img {
-              width  : 60px;
-              height : 50px;
-              display: block;
-            }
-          }
+      button {
+        img {
+          width  : 60px;
+          height : 50px;
+          display: block;
         }
       }
     }
