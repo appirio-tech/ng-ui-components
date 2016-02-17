@@ -10,7 +10,7 @@ main.flex.column.light-bg
         button.clean.icon.arrow
 
     .image-container.flex-grow(ng-class="{ 'small' : !vm.largeImage, 'fit' : vm.largeImage && !vm.zoom, 'full elevated': vm.largeImage && vm.zoom }")
-      img.preview-image(ng-src="{{vm.file.url}}" ng-click="vm.toggleZoom()" ng-class="{ 'elevated': !vm.zoom }")
+      img.preview-image(ng-src="{{vm.file.url}}" ng-click="vm.toggleZoom()" ng-class="{ 'elevated': !vm.largeImage || (vm.largeImage && !vm.zoom) }")
 
     .next.flex
       a.arrow-next(ng-class="{invisible: !vm.nextFile}" ng-click="vm.viewNext()")
