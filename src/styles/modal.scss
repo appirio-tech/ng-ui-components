@@ -5,8 +5,7 @@ modal {
   @include display(flex);
   @include justify-content(center);
   @include flex-wrap(wrap);
-  // @include transform(scale(0));
-  @include transition (top 0.2s ease-in-out);
+  @include transition (all 0.2s ease-in-out);
 
   position  : fixed;
   top       : 100vh;
@@ -17,7 +16,6 @@ modal {
   opacity   : 0;
 
   &.show {
-    // @include transform(scale(1));
     top: 0;
     opacity: 1;
   }
@@ -35,4 +33,3 @@ modal {
     }
   }
 }
-
