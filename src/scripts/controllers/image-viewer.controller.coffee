@@ -19,6 +19,10 @@ ImageViewerController = ->
 
     vm.onFileChange({file: vm.file}) if vm.onFileChange
 
+  vm.isImage =  ->
+    pattern = new RegExp('image.*')
+    pattern.test(vm.file.type)
+
   vm.viewNext = ->
     update(vm.currentIndex + 1)
 
