@@ -11,7 +11,7 @@ directive = ($window)->
 
       scope.$apply "vm.largeImage = #{ wide || tall }"
 
-    image.onload = ->
+    image?.onload = ->
       checkOverflow()
 
     $($window).bind 'resize', ->
