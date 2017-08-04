@@ -1,7 +1,7 @@
 require 'react-select/dist/react-select.css'
 require 'zepto/zepto.min.js'
 require 'angular'
-require 'angular-ui-router'
+require '@uirouter/angularjs'
 require 'angular-scroll'
 require 'ngreact'
 
